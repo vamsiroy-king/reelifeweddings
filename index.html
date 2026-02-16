@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REEL LIFE v11: PREMIUM WHITE</title>
+
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- FontAwesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/instagram.css">
+</head>
+
+<body class="industrial-theme">
+
+  <!-- Logo (Fixed outside of flow, animated by JS) -->
+  <div class="scroll-logo" id="mainLogo">
+    <img src="/assets/logo.png" alt="Reel Life Badge"
+      onerror="this.src='/assets/logo.svg'; this.onerror=function(){this.style.display='none'};">
+  </div>
+
+  <!-- Header: V10 Hybrid -->
+  <header class="header-v10" id="mainHeader">
+    <nav class="nav-split">
+      <!-- Desktop Nav Groups -->
+      <div class="nav-group desktop-only">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT</a>
+        <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+      </div>
+
+      <!-- Center Gap for Logo -->
+
+      <div class="nav-group desktop-only">
+        <a href="services.html" class="nav-link">SERVICES</a>
+        <a href="faqs.html" class="nav-link">FAQs</a>
+        <a href="contact.html" class="nav-link">BOOK NOW</a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="mobile-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-link">HOME</a>
+      <a href="about.html" class="mobile-link">ABOUT</a>
+      <a href="portfolio.html" class="mobile-link">PORTFOLIO</a>
+      <a href="services.html" class="mobile-link">SERVICES</a>
+      <a href="faqs.html" class="mobile-link">FAQs</a>
+      <a href="contact.html" class="mobile-link">BOOK NOW</a>
+    </nav>
+  </div>
+
+  <!-- Hero: Single Frame Video -->
+  <section class="hero-v9">
+    <video class="hero-single-video" autoplay muted loop playsinline>
+      <source src="/assets/videos/video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </section>
+
+  <!-- Intro Section: Content Creator Style -->
+  <!-- Hero Tagline Section (Two Lines w/ Heart) -->
+  <section class="section-tagline-hero fade-in-up">
+    <div class="tagline-container">
+
+      <div class="tagline-split-vertical">
+        <!-- Row 1 -->
+        <div class="tagline-row">
+          <span class="tagline-small">THE MAGIC YOU</span>
+          <span class="tagline-big highlight-feel">FEEL</span>
+        </div>
+
+        <!-- Heart Center -->
+        <i class="fas fa-heart tagline-heart-middle"></i>
+
+        <!-- Row 2 -->
+        <div class="tagline-row">
+          <span class="tagline-small">THE MOMENTS WE</span>
+          <span class="tagline-big highlight-reel">REEL</span>
+        </div>
+      </div>
+
+      <!-- 3. Two-Line Creative Bio -->
+      <div class="tagline-bio">
+        <span class="bio-line">WE CAPTURE THE UNSCRIPTED MAGIC OF YOUR LOVE STORY.</span>
+        <span class="bio-line">TURNING FLEETING MOMENTS INTO FOREVER MEMORIES.</span>
+      </div>
+
+      <a href="services.html" class="btn-intro-minimal">VIEW PACKAGES</a>
+    </div>
+  </section>
+
+  <!-- Content Sections (Masonry) -->
+  <section class="section-industrial">
+    <div class="container-fluid">
+      <h2 class="mb-lg" style="text-align: center;">LATEST <span class="text-outline">WORK</span></h2>
+      <!-- Dynamic Instagram Feed -->
+      <div id="instagram-feed-container">
+        <!-- Loading State -->
+        <div style="text-align:center; padding: 2rem;">
+          <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--text-muted);"></i>
+        </div>
+      </div>
+      <!-- ── SURPRISE: Cinematic Marquee (Creative Variations) ── -->
+      <div class="marquee-container">
+        <div class="marquee-content">
+          <span>ALL THE FEELS</span> <span class="dot">•</span> <span>ALL ON REEL</span> <span class="dot">•</span>
+          <span>YOUR VIBE IS REAL</span> <span class="dot">•</span> <span>WE MAKE IT REEL</span> <span
+            class="dot">•</span>
+          <span>THE MAGIC YOU FEEL</span> <span class="dot">•</span> <span>THE MOMENTS WE REEL</span> <span
+            class="dot">•</span>
+          <span>ALL THE FEELS</span> <span class="dot">•</span> <span>ALL ON REEL</span> <span class="dot">•</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Footer V15 (Dark Icons) ── -->
+    <!-- ── Footer V18 (Top-Notch Editorial Grid) ── -->
+    <footer>
+      <div class="footer-grid">
+        <!-- 1. The Hook (Left) -->
+        <div class="footer-col-hook">
+          <h2>ALL THE FEELS.<br>ALL ON REEL.</h2>
+          <p>Don't just remember how it looked. Remember exactly how it <strong>felt</strong>. We capture the vibe, the
+            tears, and the crazy.</p>
+          <a href="contact.html" class="btn-footer-editorial">START YOUR REEL JOURNEY &rarr;</a>
+        </div>
+
+        <!-- 2. The Links (Center) -->
+        <div class="footer-col-links">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. The Brand (Right) -->
+        <div class="footer-col-brand">
+          <img src="/assets/logo.png" alt="Reel Life Weddings" class="footer-logo-small">
+          <address class="footer-address">
+            BANGALORE • GOA • WORLDWIDE<br>
+            bookings@reelifeweddings.com<br>
+            +91 98765 43210
+          </address>
+          <div class="footer-social-row">
+            <a href="https://www.instagram.com/reelifeweddings?igsh=MTk3djBpcHNma3Uw&utm_source=qr" target="_blank"
+              class="social-circle" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-circle" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="mailto:bookings@reelifeweddings.com" class="social-circle" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>© 2025 REEL LIFE WEDDINGS.</p>
+        <div class="footer-bottom-links">
+          <a href="#">PRIVACY</a>
+          <a href="#">TERMS</a>
+          <a href="#">BACK TO TOP</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/instagram.js"></script>
+</body>
+
+</html>

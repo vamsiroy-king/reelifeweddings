@@ -1,0 +1,58 @@
+/* ═══════════════════════════════════════════════════
+   Main Layout — Modern Gallery
+   ═══════════════════════════════════════════════════ */
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.container--narrow {
+    max-width: 800px;
+}
+
+.section {
+    padding: var(--space-xl) 0;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: var(--space-lg) 0;
+    }
+}
+
+/* Asymmetric / Broken Grid Utility */
+.grid-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+}
+
+@media (min-width: 900px) {
+    .grid-gallery {
+        grid-template-columns: repeat(12, 1fr);
+        align-items: start;
+        gap: var(--space-lg);
+    }
+}
+
+.flex {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.flex--center {
+    align-items: center;
+    justify-content: center;
+}
+
+.mt-lg {
+    margin-top: var(--space-lg);
+}
+
+.mb-lg {
+    margin-bottom: var(--space-lg);
+}

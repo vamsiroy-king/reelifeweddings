@@ -1,0 +1,44 @@
+/* ═══════════════════════════════════════════════════
+   Design Tokens — Candy Pink & Romantic Pop (V18)
+   Background: Soft Candy Pink
+   Text: Deep Burgundy/Cocoa (High Impact, Wedding Vibe)
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg-body: #FFF0F5;
+  /* Lavender Blush - Soft Candy Pink */
+  --bg-surface: #FFEBF0;
+  /* Slightly deeper pink for sections */
+
+  /* ── Text (Romantic Pop - NO Black/Grey) ── */
+  --text-main: #5D3A3A;
+  /* Deep Cocoa/Burgundy - Warm, High Impact */
+  --text-muted: #8B5A5A;
+  /* Muted Rose Brown */
+  --text-light: #B07C7C;
+  /* Soft Rose text */
+
+  /* ── Brand / Accents ── */
+  --brand-primary: #FF6B8B;
+  /* Vibrant Pop Pink */
+  --brand-dark: #D44D6A;
+  /* Deep Pop Pink for hover */
+  --brand-light: #FFF0F3;
+  /* Very light pink */
+  --brand-white: #FFFFFF;
+
+  /* ── UI Elements ── */
+  --border-subtle: rgba(139, 90, 90, 0.15);
+  /* Warm Brown Border */
+
+  /* ── Typography ── */
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+
+  /* ── Spacing ── */
+  --space-unit: 8px;
+  --space-md: 40px;
+  --space-lg: 100px;
+  --header-height-scrolled: 100px;
+}

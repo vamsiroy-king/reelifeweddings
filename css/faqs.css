@@ -1,0 +1,36 @@
+/* ═══════════════════════════════════════════════════
+   FAQs Page — Minimal
+   ═══════════════════════════════════════════════════ */
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: var(--space-2xl);
+}
+
+.accordion {
+    border-bottom: 1px solid var(--border);
+    transition: border-color var(--transition-fast);
+}
+
+.accordion:hover {
+    border-color: var(--border-strong);
+}
+
+.accordion:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.accordion__trigger {
+    padding: 40px 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: var(--font-body);
+    /* Clean approach */
+}
+
+/* Override component style specifically for FAQ page uniqueness */
+.accordion__trigger {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+}

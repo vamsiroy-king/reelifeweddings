@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs — Reel Life Weddings</title>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background: white;
+            color: black;
+        }
+
+        .faq-hero {
+            padding: 180px 20px 80px 20px;
+            text-align: center;
+        }
+
+        .faq-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto 100px auto;
+            border-top: 1px solid #eee;
+        }
+
+        details {
+            border-bottom: 1px solid #eee;
+            padding: 30px 0;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        details:hover {
+            background: #fafafa;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        summary {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: black;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        .faq-answer {
+            padding-top: 20px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+            max-width: 90%;
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Static Header (Consistent) ── -->
+    <header class="header-v10 header-static">
+        <nav class="nav-split">
+            <div class="nav-group desktop-only">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="about.html" class="nav-link">ABOUT</a>
+                <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+            </div>
+            <div class="nav-group desktop-only">
+                <a href="services.html" class="nav-link">SERVICES</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </div>
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    <button class="mobile-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="scroll-logo logo-scrolled"
+        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: auto; pointer-events: all; transition: none;">
+        <a href="index.html"><img src="/assets/logo.png" alt="Reel Life Weddings"></a>
+    </div>
+    </header>
+
+    <!-- ── Mobile Menu ── -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="booking.html" class="mobile-link">Book Now</a>
+        </nav>
+    </div>
+
+    <!-- ── Content ── -->
+    <section class="faq-hero">
+        <h1>COMMON QUESTIONS</h1>
+        <p style="color:#666;">Everything you need to know about how we work.</p>
+    </section>
+
+    <div class="faq-container">
+        <details>
+            <summary>Do you travel for weddings?</summary>
+            <p class="faq-answer">Absolutely. We are based in Goa & Bangalore but travel worldwide. From Udaipur to Lake
+                Como, we are ready to fly anywhere your love story takes us.</p>
+        </details>
+
+        <details>
+            <summary>What is your delivery timeline?</summary>
+            <p class="faq-answer">We pride ourselves on speed. You get a set of 10 Social Reels within 24-48 hours. The
+                full cinematic highlights and documentary film are delivered within 4-6 weeks.</p>
+        </details>
+
+        <details>
+            <summary>Do you provide Raw Footage?</summary>
+            <p class="faq-answer">Yes, we believe your memories belong to you. We provide all raw footage on a
+                high-speed SSD upon request at no extra charge (if hard drive is provided by you).</p>
+        </details>
+
+        <details>
+            <summary>How do we book you?</summary>
+            <p class="faq-answer">It is simple. Fill out our <a href="booking.html">Booking Form</a> to check
+                availability. We require a 50% retainer to lock your dates.</p>
+        </details>
+    </div>
+
+    <!-- ── Footer V15 (Dark Icons) ── -->
+    <footer>
+        <div class="footer-centered-stack">
+            <!-- 1. The Brand -->
+            <div class="footer-brand-center">
+                <img src="/assets/logo.png" alt="Reel Life Weddings" class="footer-logo-center">
+                <p class="footer-tagline-center">From <strong>REAL</strong> Moments<br>to <strong>REEL</strong>
+                    Memories.</p>
+            </div>
+
+            <!-- 2. The Icons -->
+            <nav class="footer-nav-center">
+                <a href="https://www.instagram.com/reelifeweddings" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:bookings@reelifeweddings.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </nav>
+
+            <div class="footer-action">
+                <a href="booking.html" class="btn-footer-final">START YOUR JOURNEY</a>
+            </div>
+
+            <p class="footer-city">BANGALORE • GOA • WORLDWIDE</p>
+        </div>
+        <div class="footer-minimal-bar">
+            <p>© 2025 REEL LIFE WEDDINGS</p>
+            <a href="#">BACK TO TOP</a>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

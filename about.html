@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Reel Life Weddings</title>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background: white;
+            color: black;
+        }
+
+        .about-hero {
+            padding: 180px 20px 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            line-height: 1.1;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding: 60px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @media (max-width: 900px) {
+            .about-hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Static Header (Consistent) ── -->
+    <header class="header-v10 header-static">
+        <nav class="nav-split">
+            <div class="nav-group desktop-only">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="about.html" class="nav-link">ABOUT</a>
+                <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+            </div>
+            <div class="nav-group desktop-only">
+                <a href="services.html" class="nav-link">SERVICES</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+                <div class="scroll-logo logo-scrolled"
+                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: auto; pointer-events: all; transition: none;">
+                    <a href="index.html"><img src="/assets/logo.png" alt="Reel Life Weddings"></a>
+                </div>
+    </header>
+
+    <!-- ── Mobile Menu ── -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="booking.html" class="mobile-link">Book Now</a>
+        </nav>
+    </div>
+
+    <!-- ── Content ── -->
+    <section class="about-hero">
+        <h1>WE CAPTURE THE <br><strong>REAL</strong> YOU.</h1>
+        <p>
+            Reel Life Weddings is not just about photography. It is about preserving the unscripted, raw, and beautiful
+            chaos of your celebration.
+            We believe in prompt delivery, cinematic storytelling, and making you feel like the main character of your
+            own movie.
+        </p>
+    </section>
+
+    <section class="about-grid">
+        <img src="https://images.unsplash.com/photo-1511285560982-1351cdeb9821?w=800&fit=crop" class="about-img">
+        <div class="about-text">
+            <h2>THE PHILOSOPHY</h2>
+            <p>
+                Weddings are fast. Moments are fleeting. We are the pause button.
+            </p>
+            <p>
+                Our team specializes in distinct, high-fashion, and emotional storytelling. We don't ask you to pose
+                awkwardly. We ask you to be yourself, and we handle the rest.
+            </p>
+            <a href="portfolio.html" class="btn-read-more"
+                style="color:black; border-color:black; margin-top:20px; display:inline-block;">VIEW OUR WORK</a>
+        </div>
+    </section>
+
+    <!-- ── Footer V15 (Dark Icons) ── -->
+    <footer>
+        <div class="footer-centered-stack">
+            <!-- 1. The Brand -->
+            <div class="footer-brand-center">
+                <img src="/assets/logo.png" alt="Reel Life Weddings" class="footer-logo-center">
+                <p class="footer-tagline-center">From <strong>REAL</strong> Moments<br>to <strong>REEL</strong>
+                    Memories.</p>
+            </div>
+
+            <!-- 2. The Icons -->
+            <nav class="footer-nav-center">
+                <a href="https://www.instagram.com/reelifeweddings" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:bookings@reelifeweddings.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </nav>
+
+            <div class="footer-action">
+                <a href="booking.html" class="btn-footer-final">START YOUR JOURNEY</a>
+            </div>
+
+            <p class="footer-city">BANGALORE • GOA • WORLDWIDE</p>
+        </div>
+        <div class="footer-minimal-bar">
+            <p>© 2025 REEL LIFE WEDDINGS</p>
+            <a href="#">BACK TO TOP</a>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Reel Life Weddings</title>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/home.css"> <!-- Reusing Grid Styles -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background: white;
+            color: black;
+        }
+
+        .page-spacer {
+            padding-top: 180px;
+            padding-bottom: 100px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px black;
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Static Header (Consistent) ── -->
+    <header class="header-v10 header-static">
+        <nav class="nav-split">
+            <div class="nav-group desktop-only">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="about.html" class="nav-link">ABOUT</a>
+                <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+            </div>
+            <div class="nav-group desktop-only">
+                <a href="services.html" class="nav-link">SERVICES</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </div>
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Centered Logo (Black) -->
+        <div class="scroll-logo logo-scrolled"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: auto; pointer-events: all; transition: none;">
+            <a href="index.html"><img src="/assets/logo.png" alt="Reel Life Weddings"></a>
+        </div>
+    </header>
+
+    <!-- ── Mobile Menu ── -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="booking.html" class="mobile-link">Book Now</a>
+        </nav>
+    </div>
+
+    <div class="container-fluid page-spacer">
+        <h1 class="page-title">THE <span class="text-outline">ARCHIVE</span></h1>
+
+        <div class="masonry-grid">
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=800&fit=crop">
+                <div class="item-overlay">
+                    <h4>GOA 2025</h4>
+                </div>
+            </div>
+            <div class="grid-item tall">
+                <img src="https://images.unsplash.com/photo-1583089892943-e02e5b017b6a?w=600&h=1000&fit=crop">
+                <div class="item-overlay">
+                    <h4>JAIPUR</h4>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop">
+                <div class="item-overlay">
+                    <h4>UDAIPUR</h4>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&h=800&fit=crop">
+                <div class="item-overlay">
+                    <h4>MUMBAI</h4>
+                </div>
+            </div>
+            <!-- More Items -->
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1511285560982-1351cdeb9821?w=600&h=800&fit=crop">
+                <div class="item-overlay">
+                    <h4>KERALA</h4>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=800&fit=crop">
+                <div class="item-overlay">
+                    <h4>DELHI</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Footer V15 (Dark Icons) ── -->
+    <footer>
+        <div class="footer-centered-stack">
+            <!-- 1. The Brand -->
+            <div class="footer-brand-center">
+                <img src="/assets/logo.png" alt="Reel Life Weddings" class="footer-logo-center">
+                <p class="footer-tagline-center">From <strong>REAL</strong> Moments<br>to <strong>REEL</strong>
+                    Memories.</p>
+            </div>
+
+            <!-- 2. The Icons -->
+            <nav class="footer-nav-center">
+                <a href="https://www.instagram.com/reelifeweddings" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:bookings@reelifeweddings.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </nav>
+
+            <div class="footer-action">
+                <a href="booking.html" class="btn-footer-final">START YOUR JOURNEY</a>
+            </div>
+
+            <p class="footer-city">BANGALORE • GOA • WORLDWIDE</p>
+        </div>
+        <div class="footer-minimal-bar">
+            <p>© 2025 REEL LIFE WEDDINGS</p>
+            <a href="#">BACK TO TOP</a>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

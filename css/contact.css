@@ -1,0 +1,27 @@
+/* ═══════════════════════════════════════════════════
+   Contact Page — Clean Form
+   ═══════════════════════════════════════════════════ */
+
+.contact-layout {
+    display: grid;
+    gap: var(--space-xl);
+    padding-top: 140px;
+}
+
+@media (min-width: 900px) {
+    .contact-layout {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+
+.contact-info__mail {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    margin-bottom: var(--space-lg);
+    display: block;
+}
+
+/* Form is styled by components.css */

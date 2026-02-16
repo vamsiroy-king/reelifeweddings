@@ -1,0 +1,15 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular Border -->
+  <circle cx="100" cy="100" r="95" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="2" stroke-dasharray="4 4"/>
+  <circle cx="100" cy="100" r="85" stroke="white" stroke-width="1" fill="none"/>
+  
+  <!-- Text -->
+  <text x="100" y="80" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="48" fill="white">Reel</text>
+  <text x="100" y="115" text-anchor="middle" font-family="'Playfair Display', serif" font-size="42" font-weight="bold" fill="white">Life</text>
+  
+  <!-- Arched Text -->
+  <text x="100" y="145" text-anchor="middle" font-family="'Manrope', sans-serif" font-size="12" letter-spacing="0.3em" fill="white" text-transform="uppercase">WEDDINGS</text>
+  
+  <!-- Icon (Camera Heart) -->
+  <path d="M100 55 L105 50 L95 50 Z" fill="white"/>
+</svg>

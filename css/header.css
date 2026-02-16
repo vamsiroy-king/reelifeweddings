@@ -1,0 +1,298 @@
+/* ═══════════════════════════════════════════════════
+   Header V11 — Bigger & bolder
+   ═══════════════════════════════════════════════════ */
+
+/* ── Header V10 Hybrid (Bigger & Bolder) ── */
+.header-v10 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    /* Even Taller */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    background: transparent;
+    /* Overlay on Hero */
+    padding: 0 60px;
+    /* Wide editorial padding */
+}
+
+/* Scrolled State: Ivory & Seamless */
+.header-v10.scrolled {
+    background: var(--bg-body);
+    height: 110px;
+    /* Substantial scrolled height */
+    box-shadow: none;
+    border-bottom: none;
+    padding: 0 60px;
+}
+
+.nav-split {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.nav-group {
+    display: flex;
+    gap: 50px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 15px;
+    position: relative;
+    letter-spacing: 0.15em;
+    font-family: var(--font-heading);
+    transition: color 0.3s;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Scrolled state: Links match theme */
+.header-v10.scrolled .nav-link {
+    color: var(--text-main);
+    text-shadow: none;
+}
+
+/* ── STATIC HEADER (For Sub-Pages) ── */
+.header-v10.header-static {
+    background: var(--bg-body);
+    box-shadow: none;
+    border-bottom: none;
+    position: fixed;
+}
+
+.header-v10.header-static .nav-link {
+    color: var(--text-main);
+    text-shadow: none;
+}
+
+.header-v10.header-static .mobile-toggle span {
+    background: var(--text-main);
+}
+
+/* ── Mobile Menu Toggle ── */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* ── The Travelling Logo (CSS Base) ── */
+.scroll-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 600px;
+    /* MASSIVE INITIAL SIZE */
+    height: 600px;
+    z-index: 1002;
+    /* Higher than Header (1000) */
+    pointer-events: none;
+    transition: filter 0.3s ease, transform 0.1s linear, top 0.1s linear;
+    /* Small transition on transform/top helps smooth out JS frame jitters */
+}
+
+/* When Logo enters header, turn it BLACK */
+.scroll-logo.logo-scrolled img {
+    filter: brightness(0);
+}
+
+.scroll-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    transition: filter 0.3s;
+}
+
+/* ── Mobile Toggle ── */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    /* Above everything */
+}
+
+.mobile-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: white;
+    /* Start White (Visible over Video) */
+    transition: all 0.3s;
+}
+
+/* ── Mobile Menu Overlay ── */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-body);
+    z-index: 1001;
+    /* Under Toggle, Over Header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.mobile-link {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.mobile-menu-overlay.active .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Delay for Menu Items */
+.mobile-menu-overlay.active .mobile-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.mobile-menu-overlay.active .mobile-link:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.mobile-menu-overlay.active .mobile-link:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.mobile-menu-overlay.active .mobile-link:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.mobile-menu-overlay.active .mobile-link:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.mobile-menu-overlay.active .mobile-link:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+
+@media (max-width: 1000px) {
+    .header-v10 {
+        padding: 20px;
+    }
+
+    .nav-group {
+        gap: 20px;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .desktop-only {
+        display: none;
+        /* Hide Desktop Nav */
+    }
+
+    .mobile-toggle {
+        display: flex;
+        margin-left: auto;
+        /* Push to right */
+    }
+
+    .header-v10 {
+        padding: 0 20px;
+        justify-content: flex-end;
+        /* Align toggle to right */
+    }
+
+    /* Mobile Logo Sizing */
+    .scroll-logo {
+        width: 80vw;
+        /* Responsive width */
+        height: 80vw;
+    }
+
+    /* Ensure Header BG handles toggle visibility */
+    .header-v10.scrolled .mobile-toggle span {
+        background: var(--text-main);
+        /* Turn Charcoal when Header becomes Ivory */
+    }
+}
+
+/* ── Static Logo Override (For Sub-Pages) ── */
+/* ── Static Logo Override (For Sub-Pages) ── */
+body.static-logo-page .scroll-logo {
+    top: 70px !important;
+    transform: translate(-50%, -50%) scale(0.38) !important;
+    width: 600px;
+    height: 600px;
+    transition: none !important;
+    /* NO ANIMATION */
+    opacity: 1 !important;
+}
+
+/* ALWAYS Force Black Logo (Matches Text) - No Invert */
+body.static-logo-page .scroll-logo img {
+    filter: brightness(0) !important;
+    /* brightness(0) makes it black. invert(1) made it white. We want BLACK. */
+}
+
+/* Scrolled State (Ivory Header): Black Logo */
+/* We depend on .logo-scrolled class added by JS */
+body.static-logo-page .scroll-logo.logo-scrolled img {
+    filter: brightness(0);
+}
+
+@media (max-width: 1000px) {
+    body.static-logo-page .scroll-logo {
+        transform: translate(-50%, -50%) scale(0.50) !important;
+        /* Mobile Scale */
+    }
+}

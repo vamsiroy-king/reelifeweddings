@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "media_type": "VIDEO",
+            "media_url": "/assets/videos/video.mp4",
+            "thumbnail_url": "/assets/videos/video.mp4",
+            "permalink": "https://www.instagram.com/",
+            "caption": "POV: You just realized this is the beginning of forever. ✨ The emotions were so real today! #ReelLifeWeddings #WeddingReel",
+            "timestamp": "2023-10-01T12:00:00+0000"
+        },
+        {
+            "id": "2",
+            "media_type": "VIDEO",
+            "media_url": "/assets/videos/video.mp4",
+            "thumbnail_url": "/assets/videos/video.mp4",
+            "permalink": "https://www.instagram.com/",
+            "caption": "Capturing the little moments that mean the most. 🤍 Muted tones and honest emotions. #LoveStory #CinematicWedding",
+            "timestamp": "2023-09-28T09:30:00+0000"
+        },
+        {
+            "id": "3",
+            "media_type": "IMAGE",
+            "media_url": "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=800&fit=crop",
+            "thumbnail_url": "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=800&fit=crop",
+            "permalink": "https://www.instagram.com/",
+            "caption": "Dance floor energy was unmatched! 💃🕺 The party didn't stop until 4AM! #WeddingParty #Celebration",
+            "timestamp": "2023-09-25T18:45:00+0000"
+        },
+        {
+            "id": "4",
+            "media_type": "VIDEO",
+            "media_url": "/assets/videos/video.mp4",
+            "thumbnail_url": "/assets/videos/video.mp4",
+            "permalink": "https://www.instagram.com/",
+            "caption": "Just married! ❤️ Walking into our future together. #JustMarried #Love #WeddingDay",
+            "timestamp": "2023-09-20T14:15:00+0000"
+        }
+    ]
+}

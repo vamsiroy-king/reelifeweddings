@@ -1,0 +1,82 @@
+/* ═══════════════════════════════════════════════════
+   Portfolio Page — Broken Grid
+   ═══════════════════════════════════════════════════ */
+
+.portfolio-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding: 140px 0 60px;
+}
+
+.portfolio-filter {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding-bottom: 4px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.portfolio-filter.is-active,
+.portfolio-filter:hover {
+    color: var(--text-primary);
+}
+
+.portfolio-filter.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--text-primary);
+    border-radius: 50%;
+}
+
+.visual-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 var(--space-md);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.visual-item {
+    position: relative;
+    margin-bottom: var(--space-lg);
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .visual-item {
+        width: 45%;
+        margin-right: 5%;
+    }
+
+    /* Asymmetric layout */
+    .visual-item:nth-child(even) {
+        margin-top: 120px;
+        /* Push down */
+    }
+
+    .visual-item:nth-child(3n) {
+        width: 30%;
+        margin-right: 3%;
+    }
+}
+
+.visual-item__caption {
+    margin-top: var(--space-sm);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}

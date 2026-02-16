@@ -1,0 +1,71 @@
+/* ═══════════════════════════════════════════════════
+   Typography — Clean Sans-Serif (ShaadiBTS Match)
+   ═══════════════════════════════════════════════════ */
+
+/* Using Montserrat (Headers) and Open Sans (Body) for that clean, standard premium look */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap');
+
+:root {
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    /* Reference uses specific casing, don't force uppercase */
+    margin-bottom: 1rem;
+}
+
+/* Nav & Buttons */
+.nav-link,
+.btn-read-more {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    /* Matches "What is Shaadi BTS?" size */
+    line-height: 1.2;
+}
+
+p {
+    color: var(--text-muted);
+    /* Dark Grey for readability */
+    font-size: 1rem;
+    max-width: 65ch;
+    line-height: 1.7;
+}
+
+/* ── Utilities ── */
+.text-center {
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: 700;
+}

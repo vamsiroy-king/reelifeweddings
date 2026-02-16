@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Us — Reel Life Weddings</title>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Page Specific Styles */
+        body {
+            background: white;
+            color: black;
+        }
+
+        .booking-hero {
+            padding: 180px 20px 60px 20px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .booking-hero h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+            margin-bottom: 20px;
+        }
+
+        .booking-hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .booking-form-container {
+            max-width: 900px;
+            margin: 0 auto 100px auto;
+            padding: 60px;
+            background: #fafafa;
+            border: 1px solid #eee;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            color: #999;
+            font-weight: 700;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 15px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: black;
+            transition: border-color 0.3s;
+            border-radius: 0;
+            /* Remove default styling */
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-bottom-color: black;
+        }
+
+        .form-section-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin: 60px 0 30px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            color: black;
+        }
+
+        .btn-submit-booking {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: black;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 40px;
+        }
+
+        .btn-submit-booking:hover {
+            background: #FF0000;
+            /* Brand Red */
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .booking-form-container {
+                padding: 30px;
+            }
+
+            .booking-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Static Header (Consistent) ── -->
+    <header class="header-v10 header-static">
+        <nav class="nav-split">
+            <div class="nav-group desktop-only">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="about.html" class="nav-link">ABOUT</a>
+                <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+            </div>
+            <div class="nav-group desktop-only">
+                <a href="services.html" class="nav-link">SERVICES</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </div>
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Centered Logo (Black for Static Header) -->
+        <div class="scroll-logo logo-scrolled"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: auto; pointer-events: all; transition: none;">
+            <a href="index.html"><img src="/assets/logo.png" alt="Reel Life Weddings"></a>
+        </div>
+    </header>
+
+    <!-- ── Mobile Menu (Overlay) ── -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="about.html" class="mobile-link">About</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="booking.html" class="mobile-link">Book Now</a>
+        </nav>
+    </div>
+
+    <!-- ── Booking Hero ── -->
+    <section class="booking-hero">
+        <h1>Start Your Journey</h1>
+        <p>Tell us about your story. We take on a limited number of weddings each year to ensure the highest quality of
+            cinematic storytelling.</p>
+    </section>
+
+    <!-- ── Detailed Form ── -->
+    <div class="booking-form-container">
+        <form>
+            <!-- Couple Details -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Groom's Name</label>
+                    <input type="text" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Bride's Name</label>
+                    <input type="text" class="form-input" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" required>
+                </div>
+            </div>
+
+            <h3 class="form-section-title">The Big Day</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Wedding Date(s)</label>
+                    <input type="text" class="form-input" placeholder="dd/mm/yyyy" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Location / City</label>
+                    <input type="text" class="form-input" placeholder="e.g. Udaipur, Bangalore" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Venue Name(s)</label>
+                <input type="text" class="form-input" placeholder="Where is it happening?">
+            </div>
+
+            <h3 class="form-section-title">Details</h3>
+
+            <div class="form-group">
+                <label class="form-label">Estimated Budget range</label>
+                <select class="form-select">
+                    <option>Select Range</option>
+                    <option>₹3 Lakh - ₹5 Lakh</option>
+                    <option>₹5 Lakh - ₹8 Lakh</option>
+                    <option>₹8 Lakh - ₹12 Lakh</option>
+                    <option>₹12 Lakh +</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Tell us your story (How did you meet?)</label>
+                <textarea class="form-textarea" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">How did you find us?</label>
+                <select class="form-select">
+                    <option>Instagram</option>
+                    <option>Referral</option>
+                    <option>Google Search</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit-booking">SUBMIT INQUIRY</button>
+        </form>
+    </div>
+
+    <!-- ── Footer V15 (Dark Icons) ── -->
+    <footer>
+        <div class="footer-centered-stack">
+            <!-- 1. The Brand -->
+            <div class="footer-brand-center">
+                <img src="/assets/logo.png" alt="Reel Life Weddings" class="footer-logo-center">
+                <p class="footer-tagline-center">From <strong>REAL</strong> Moments<br>to <strong>REEL</strong>
+                    Memories.</p>
+            </div>
+
+            <!-- 2. The Icons -->
+            <nav class="footer-nav-center">
+                <a href="https://www.instagram.com/reelifeweddings" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:bookings@reelifeweddings.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </nav>
+
+            <div class="footer-action">
+                <a href="booking.html" class="btn-footer-final">START YOUR JOURNEY</a>
+            </div>
+
+            <p class="footer-city">BANGALORE • GOA • WORLDWIDE</p>
+        </div>
+        <div class="footer-minimal-bar">
+            <p>© 2025 REEL LIFE WEDDINGS</p>
+            <a href="#">BACK TO TOP</a>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

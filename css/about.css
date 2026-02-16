@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════
+   About Page — Minimal Text + Floating Images
+   ═══════════════════════════════════════════════════ */
+
+.about-header {
+    text-align: center;
+    padding: 180px 0 100px;
+}
+
+.about-story {
+    display: grid;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+@media (min-width: 900px) {
+    .about-story {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+}
+
+.about-img-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--bg-secondary);
+}
+
+.about-img-frame img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Floating Image Effect */
+.float-img {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+
+    50% {
+        transform: translate(-50%, -55%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.team-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-lg);
+}
+
+.team-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.team-name {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+}
+
+.team-role {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+}

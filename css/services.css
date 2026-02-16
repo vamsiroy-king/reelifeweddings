@@ -1,0 +1,261 @@
+/* ═══════════════════════════════════════════════════
+   Services Page — Shaadi BTS Style (No Pricing)
+   ═══════════════════════════════════════════════════ */
+
+body {
+    background: var(--bg-body);
+    /* Match Header/Home Color */
+    color: var(--text-main);
+}
+
+/* ── Common Utilities ── */
+.container-narrow {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.section-heading-centered {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.divider-line {
+    width: 100px;
+    height: 1px;
+    background: #ddd;
+    margin: 0 auto 50px auto;
+}
+
+.section-subtext {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 80px auto;
+}
+
+.text-italic {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* ── Section 1: Why Choose Us? ── */
+/* ── Section 1: Why Choose Us? ── */
+.section-why-choose {
+    padding: 180px 20px 100px 20px;
+    /* Top padding for header clearance */
+    background: transparent;
+    /* Flow through body color */
+}
+
+.why-us-block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.why-us-item {
+    background: transparent;
+    /* Entire page same color */
+    padding: 20px 30px;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.why-us-item:hover,
+.why-us-item.open {
+    background: transparent;
+    border-bottom: 2px solid var(--text-main);
+    /* Simple underline */
+}
+
+.why-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.why-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.why-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, margin-top 0.4s ease;
+    margin-top: 0;
+}
+
+.why-us-item.open .why-content {
+    max-height: 200px;
+    /* Adjust based on content */
+    margin-top: 15px;
+}
+
+.why-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+/* ── Section 2: What Have We Got For You? (Zig Zag) ── */
+.section-services-list {
+    padding: 80px 0;
+    background: transparent;
+    /* Flow through body color */
+}
+
+.services-zigzag-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows stacking */
+    gap: 0;
+    /* Remove gap, we manage with padding within items if needed, or keeping tight */
+}
+
+/* Flex Row Logic */
+.zigzag-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.zigzag-text {
+    flex: 1;
+    padding: 0 50px;
+    text-align: left;
+}
+
+.zigzag-image {
+    flex: 1;
+    height: 600px;
+    /* Tall vertical reels style */
+    overflow: hidden;
+}
+
+.zigzag-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.zigzag-item:hover .zigzag-image img {
+    transform: scale(1.03);
+}
+
+.zigzag-text h3 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.zigzag-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* ── CTA ── */
+.services-cta {
+    text-align: center;
+    padding: 100px 20px;
+    background: var(--text-main);
+    color: white;
+}
+
+.cta-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.services-cta .btn-intro-minimal {
+    border-color: white;
+    color: white;
+}
+
+.services-cta .btn-intro-minimal:hover {
+    color: var(--text-main);
+    background: white;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 900px) {
+    .section-why-choose {
+        padding-top: 140px;
+    }
+
+    .zigzag-item {
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+
+    /* On mobile, usually Image first, then Text? Or Text then Image? 
+       Reference has Image -> Text side by side, but mobile stacks.
+       Let's stack Image OPENING the section, then Text. 
+       Or standard Text then Image. Let's do Image Top for visual break.
+    */
+
+    .zigzag-item:nth-child(even),
+    .zigzag-item:nth-child(odd) {
+        /* Reset direction for mobile to be consistent */
+        flex-direction: column-reverse;
+        /* Image on top? No, column-reverse puts image on top if image is 2nd child. */
+        /* Structure is: Text, Image (odd) | Image, Text (even) */
+    }
+
+    /* Wait, I hardcoded structure in HTML. 
+       Item 1: Text, Image. -> Column Reverse = Image Top.
+       Item 2: Image, Text. -> Column = Image Top.
+    */
+    .zigzag-item {
+        flex-direction: column-reverse;
+    }
+
+    /* Correction for Item 2 where Image is first child */
+    .zigzag-item:nth-child(even) {
+        flex-direction: column;
+        /* Image is first, so Column puts Image Top */
+    }
+
+    .zigzag-text {
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .zigzag-image {
+        height: 500px;
+        width: 100%;
+    }
+
+    .section-heading-centered {
+        font-size: 2.2rem;
+    }
+}

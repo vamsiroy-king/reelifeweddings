@@ -1,0 +1,241 @@
+/* ── Marquee (Editorial Style) ── */
+.marquee-container {
+    background: var(--bg-body);
+    color: var(--text-light);
+    padding: 80px 0 60px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 40s linear infinite;
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    /* Massive, Impactful */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: rgba(93, 58, 58, 0.1);
+    /* Very subtle burgundy watermark */
+}
+
+.marquee-content span {
+    margin: 0 60px;
+}
+
+.marquee-content .dot {
+    color: var(--brand-primary);
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ── Footer (Top-Notch Editorial Grid) ── */
+footer {
+    background: var(--bg-surface);
+    /* Return to Soft Pink for cohesion */
+    color: var(--text-main);
+    font-family: var(--font-body);
+    padding: 100px 5% 50px 5%;
+    /* Wide padding */
+    margin-top: 0;
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* Unique Grid Layout */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    /* Asymmetric: Big CTA | Links | Brand */
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto 100px auto;
+}
+
+/* Column 1: The Hook */
+.footer-col-hook h2 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: var(--text-main);
+}
+
+.footer-col-hook p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 400px;
+}
+
+.btn-footer-editorial {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--brand-primary);
+    padding-bottom: 5px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-footer-editorial:hover {
+    color: var(--brand-primary);
+    padding-right: 20px;
+    /* Slide effect */
+}
+
+/* Column 2: Curated Links */
+.footer-col-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col-links li {
+    margin-bottom: 20px;
+}
+
+.footer-col-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.footer-col-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 0;
+    height: 10px;
+    background: var(--brand-primary);
+    opacity: 0.3;
+    transition: width 0.3s;
+    z-index: -1;
+}
+
+.footer-col-links a:hover::after {
+    width: 100%;
+    /* Highlight effect */
+}
+
+/* Column 3: Brand & Socials */
+.footer-col-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-small {
+    width: 180px;
+    margin-bottom: 30px;
+}
+
+.footer-address {
+    font-style: normal;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.footer-social-row {
+    display: flex;
+    gap: 20px;
+}
+
+.social-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.social-circle:hover {
+    background: var(--brand-primary);
+    color: white;
+    border-color: var(--brand-primary);
+    transform: rotate(15deg);
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.footer-bottom-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 30px;
+    transition: color 0.3s;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--brand-primary);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .footer-col-brand {
+        align-items: center;
+    }
+
+    .footer-col-hook h2 {
+        font-size: 2.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-bottom-links a {
+        margin: 0 10px;
+    }
+}
