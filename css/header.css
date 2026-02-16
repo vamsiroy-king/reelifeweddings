@@ -109,8 +109,8 @@
     z-index: 1002;
     /* Higher than Header (1000) */
     pointer-events: none;
-    transition: filter 0.3s ease, transform 0.1s linear, top 0.1s linear;
-    /* Small transition on transform/top helps smooth out JS frame jitters */
+    /* REMOVED transition: transform/top to let GSAP handle it smoothly */
+    transition: filter 0.3s ease;
 }
 
 /* When Logo enters header, turn it BLACK */
@@ -155,7 +155,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
+    /* Dynamic Viewport for Mobile */
     background: var(--bg-body);
     z-index: 1001;
     /* Under Toggle, Over Header */
