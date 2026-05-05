@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollLogo();
     initMobileMenu();
+    initWhatsAppCTA();
 });
 
 /* ── 1. Lenis Smooth Scroll (The "Thick" App Feel) ── */
@@ -42,84 +43,71 @@ function initSmoothScroll() {
     document.body.classList.add('smooth-scroll-active');
 }
 
-/* ── 2. GSAP Logo Animation (Precision 60fps) ── */
+/* ── 2. Static Logo Handler (Native App Feel) ── */
 function initScrollLogo() {
     const logo = document.getElementById('mainLogo');
     const header = document.getElementById('mainHeader');
 
-    // Safety checks
     if (!logo || !header) return;
 
-    // Detect Mobile (Simple width check for initial config)
-    // We utilize GSAP's responsive matching/functions for better handling usually,
-    // but for this specific logic, a simple check works for the timeline setup.
-    const isMobile = window.innerWidth < 1000;
-    const isStaticPage = document.body.classList.contains('static-logo-page');
+    // Remove complex scroll animations for a clean, static, "React Native" feel.
+    // Ensure the logo stays neatly in the header area globally.
+    gsap.set(logo, { top: '70px', scale: window.innerWidth < 1000 ? 0.5 : 0.38, y: '-50%', x: '-50%' });
 
-    // STATIC PAGE: No heavy animation, just ensure it's in place
-    if (isStaticPage) {
-        gsap.set(logo, { top: '70px', scale: isMobile ? 0.5 : 0.38, y: '-50%', x: '-50%' });
-        // Header background toggle for static pages
-        ScrollTrigger.create({
-            trigger: "body",
-            start: "top -100",
-            onUpdate: (self) => {
-                if (self.scroll() > 100) {
-                    header.classList.add('scrolled');
-                    logo.classList.add('logo-scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                    logo.classList.remove('logo-scrolled');
-                }
-            }
-        });
-        return;
-    }
-
-    // HOME PAGE ANIMATION
-    // Initial State (Center of Screen)
-    // defined in CSS, but let's enforce via GSAP to prevent FOUC
-    // CSS: top: 50%, left: 50%, transform: translate(-50%, -50%) scale(1)
-
-    // We want to animate TO:
-    // top: 70px (Header center)
-    // scale: 0.38 (Desktop) / 0.5 (Mobile)
-
-    const endScale = isMobile ? 0.50 : 0.38;
-    const scrollDistance = window.innerHeight; // 100vh scroll distance
-
-    // Create a Timeline linked to Scroll
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "body",       // Entire page scroll drives it
-            start: "top top",      // Start when top of body hits top of viewport
-            end: `+=${scrollDistance}`, // End after scrolling 1 screen height
-            scrub: 1,              // 1 second "catch up" smoothing (The "Weighty" feel)
-            priority: 1
-        }
-    });
-
-    // The Animation
-    tl.to(logo, {
-        top: '70px',
-        scale: endScale,
-        ease: "power2.out" // Slight ease out for premium feel
-    });
-
-    // Header Background & Logo Color Toggle
-    // This needs to happen exactly when the logo reaches the header area.
-    // We can use a separate ScrollTrigger for precise class toggling.
+    // Header background toggle on scroll
     ScrollTrigger.create({
         trigger: "body",
-        start: `top -${scrollDistance - 100}`, // Just before the animation ends
-        onEnter: () => {
-            header.classList.add('scrolled');
-            logo.classList.add('logo-scrolled');
-        },
-        onLeaveBack: () => {
-            header.classList.remove('scrolled');
-            logo.classList.remove('logo-scrolled');
+        start: "top -50",
+        onUpdate: (self) => {
+            if (self.scroll() > 50) {
+                header.classList.add('scrolled');
+                logo.classList.add('logo-scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                logo.classList.remove('logo-scrolled');
+            }
         }
+    });
+}
+
+/* ── Add WhatsApp Floating CTA ── */
+function initWhatsAppCTA() {
+    // Wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'whatsapp-cta-wrapper';
+
+    // Tooltip
+    const tooltip = document.createElement('div');
+    tooltip.className = 'whatsapp-tooltip';
+    tooltip.innerText = 'Hi! How can we help you?';
+    
+    // WhatsApp Button
+    const waCTA = document.createElement('a');
+    waCTA.href = 'https://wa.me/919148132417';
+    waCTA.target = '_blank';
+    waCTA.className = 'whatsapp-cta-global';
+    waCTA.innerHTML = '<i class="fab fa-whatsapp"></i>';
+
+    wrapper.appendChild(tooltip);
+    wrapper.appendChild(waCTA);
+    document.body.appendChild(wrapper);
+
+    // Animate Tooltip In after delay
+    gsap.to(tooltip, {
+        opacity: 1,
+        x: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        delay: 2 // Wait 2 seconds before showing
+    });
+
+    // Optionally hide tooltip after 8 seconds
+    gsap.to(tooltip, {
+        opacity: 0,
+        x: 20,
+        duration: 0.6,
+        ease: 'power2.in',
+        delay: 10
     });
 }
 

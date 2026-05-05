@@ -168,7 +168,7 @@
             <a href="index.html" class="mobile-link">Home</a>
             <a href="about.html" class="mobile-link">About</a>
             <a href="contact.html" class="mobile-link">Contact</a>
-            <a href="booking.html" class="mobile-link">Book Now</a>
+            <a href="contact.html" class="mobile-link">Book Now</a>
         </nav>
     </div>
 
@@ -180,40 +180,166 @@
                 <h1>HAVE QUESTIONS?<br>GET IN TOUCH.</h1>
                 <div class="contact-details">
                     <p>
-                        For general inquiries, collaborations, or just to say hello.<br>
-                        If you are ready to book your date, please use our <a href="booking.html"><strong>Booking
-                                Form</strong></a>.
+                        We take on a limited number of weddings each year to ensure the highest quality of cinematic storytelling.<br><br>
+                        Fill out the form to secure your dates.
                     </p>
                     <br>
                     <p><strong>EMAIL</strong><br><a
-                            href="mailto:hello@reelifeweddings.com">hello@reelifeweddings.com</a></p>
-                    <p><strong>PHONE</strong><br><a href="tel:+919876543210">+91 987 654 3210</a></p>
-                    <p><strong>STUDIO</strong><br>Bangalore, India</p>
+                            href="mailto:reelifeweddings@gmail.com">reelifeweddings@gmail.com</a></p>
+                    <p><strong>PHONE</strong><br><a href="tel:+919148132417">+91 9148132417</a></p>
                 </div>
             </div>
 
-            <!-- Right: Quick Form -->
-            <form class="form-box">
-                <div class="form-group">
-                    <label class="form-label">Name</label>
-                    <input type="text" class="form-input" placeholder="Your Name">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" placeholder="Your Email">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Subject</label>
-                    <input type="text" class="form-input" placeholder="Inquiry Subject">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Message</label>
-                    <textarea class="form-textarea" rows="4" placeholder="How can we help?"></textarea>
-                </div>
-                <button type="submit" class="btn-submit">SEND MESSAGE</button>
-            </form>
+            <!-- Right: Dynamic Form -->
+            <div class="form-box">
+                <form id="contactForm">
+                    <!-- Web3Forms Access Key (Placeholder for actual key) -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" id="contactName" name="name" class="form-input" placeholder="Your Full Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number</label>
+                        <input type="tel" id="contactMobile" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Event Date</label>
+                        <input type="date" id="contactDate" name="date" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Location</label>
+                        <select id="contactLocation" name="location" class="form-input" required style="appearance: auto; background: transparent;">
+                            <option value="" disabled selected>Select City</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Udaipur">Udaipur</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Other">Other (Specify in Message)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Type of Event</label>
+                        <select id="contactEventType" name="event_type" class="form-input" required style="appearance: auto; background: transparent;">
+                            <option value="" disabled selected>Select Event Type</option>
+                            <option value="Wedding">Wedding</option>
+                            <option value="Pre-Wedding">Pre-Wedding Shoot</option>
+                            <option value="Engagement">Engagement</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Hidden by default, shown if Wedding is selected -->
+                    <div class="form-group" id="weddingEventsGroup" style="display: none; padding: 15px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+                        <label class="form-label" style="margin-bottom: 15px;">Events to be Covered</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" name="wedding_events" value="Haldi"> Haldi
+                            </label>
+                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" name="wedding_events" value="Mehendi"> Mehendi
+                            </label>
+                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" name="wedding_events" value="Sangeet"> Sangeet
+                            </label>
+                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" name="wedding_events" value="Wedding Ceremony"> Wedding Ceremony
+                            </label>
+                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" name="wedding_events" value="Reception"> Reception
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Custom Message / Details</label>
+                        <textarea id="contactMessage" name="message" class="form-textarea" rows="4" placeholder="Tell us more about your event... (Optional)"></textarea>
+                    </div>
+
+                    <!-- Success Message Container -->
+                    <div id="formSuccessMessage" style="display: none; color: #25D366; font-weight: bold; margin-bottom: 20px; padding: 15px; background: rgba(37, 211, 102, 0.1); border-radius: 8px;">
+                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i> Redirecting to WhatsApp...
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-submit">SEND ENQUIRY</button>
+                </form>
+            </div>
         </div>
     </section>
+
+    <script>
+        // Logic to show/hide Wedding Events based on Event Type selection
+        const eventTypeSelect = document.getElementById('contactEventType');
+        const weddingEventsGroup = document.getElementById('weddingEventsGroup');
+
+        eventTypeSelect.addEventListener('change', function() {
+            if (this.value === 'Wedding') {
+                weddingEventsGroup.style.display = 'block';
+            } else {
+                weddingEventsGroup.style.display = 'none';
+                // Uncheck boxes if changed
+                const checkboxes = weddingEventsGroup.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = false);
+            }
+        });
+
+        // Form Submission Logic
+        const form = document.getElementById('contactForm');
+        const successMsg = document.getElementById('formSuccessMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            submitBtn.innerText = "OPENING WHATSAPP...";
+            submitBtn.disabled = true;
+
+            // Gather Data
+            const name = document.getElementById('contactName').value;
+            const mobile = document.getElementById('contactMobile').value;
+            const date = document.getElementById('contactDate').value;
+            const location = document.getElementById('contactLocation').value;
+            const eventType = document.getElementById('contactEventType').value;
+            const customMessage = document.getElementById('contactMessage').value;
+
+            // Gather selected wedding events if applicable
+            let eventsText = '';
+            if (eventType === 'Wedding') {
+                const checkboxes = weddingEventsGroup.querySelectorAll('input[type="checkbox"]:checked');
+                const selectedEvents = Array.from(checkboxes).map(cb => cb.value);
+                if (selectedEvents.length > 0) {
+                    eventsText = `%0A*Events to Cover:* ${selectedEvents.join(', ')}`;
+                }
+            }
+
+            // Build WhatsApp Message
+            const whatsappMessage = `Hello Reel Life Weddings!%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Date:* ${date}%0A*Location:* ${location}%0A*Event Type:* ${eventType}${eventsText}%0A*Additional Details:* ${customMessage ? customMessage : 'None'}`;
+            const whatsappUrl = `https://wa.me/919148132417?text=${whatsappMessage}`;
+
+            // Show success message briefly
+            successMsg.style.display = 'block';
+            
+            // Redirect to WhatsApp
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset form
+                form.reset();
+                weddingEventsGroup.style.display = 'none';
+                submitBtn.innerText = "SEND ENQUIRY";
+                submitBtn.disabled = false;
+                successMsg.style.display = 'none';
+            }, 800);
+        });
+    </script>
 
     <!-- ── Footer V15 (Dark Icons) ── -->
     <footer>
@@ -233,13 +359,13 @@
                 <a href="#" aria-label="YouTube">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <a href="mailto:bookings@reelifeweddings.com" aria-label="Email">
+                <a href="mailto:reelifeweddings@gmail.com" aria-label="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
             </nav>
 
             <div class="footer-action">
-                <a href="booking.html" class="btn-footer-final">START YOUR JOURNEY</a>
+                <a href="contact.html" class="btn-footer-final">START YOUR JOURNEY</a>
             </div>
 
             <p class="footer-city">BANGALORE • GOA • WORLDWIDE</p>
@@ -254,3 +380,4 @@
 </body>
 
 </html>
+

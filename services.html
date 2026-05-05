@@ -281,8 +281,8 @@
                 <img src="/assets/logo-optimized.webp" alt="Reel Life Weddings" class="footer-logo-small">
                 <address class="footer-address">
                     BANGALORE • GOA • WORLDWIDE<br>
-                    bookings@reelifeweddings.com<br>
-                    +91 98765 43210
+                    reelifeweddings@gmail.com<br>
+                    +91 9148132417
                 </address>
             </div>
         </div>
@@ -299,19 +299,45 @@
     </footer>
 
     <script type="module" src="/js/main.js"></script>
-    <script>
+    <script type="module">
+        import gsap from 'gsap';
+        import { ScrollTrigger } from 'gsap/all';
+
+        gsap.registerPlugin(ScrollTrigger);
+
         // Simple Accordion Script for "Why Choose Us"
         document.querySelectorAll('.why-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
-                // Close others (Optional, user might want multiple open)
+                // Close others
                 document.querySelectorAll('.why-us-item').forEach(i => {
                     if (i !== item) i.classList.remove('open');
                 });
                 item.classList.toggle('open');
             });
         });
+
+        // Premium Fade-in for ZigZag Items
+        document.querySelectorAll('.zigzag-item').forEach((item, index) => {
+            const isEven = index % 2 !== 0; // Check if image is on right or left (based on HTML structure)
+            
+            gsap.fromTo(item, 
+                { opacity: 0, y: 50 }, 
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 1, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%", // Reveal when 80% down the screen
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
     </script>
 </body>
 
 </html>
+
