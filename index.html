@@ -16,189 +16,195 @@
 </head>
 <body>
 
-    <!-- ── Header ── -->
-    <header class="header-main" id="mainHeader">
-        <nav class="nav-desktop">
-            <a href="index.html" class="nav-link">HOME</a>
-            <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
-            <img src="/assets/logo-dark.webp" alt="Reelife Weddings" class="nav-logo" onerror="this.src='/assets/logo-optimized.webp'">
-            <a href="#pricing" class="nav-link">PRICING</a>
-            <a href="contact.html" class="nav-link">BOOK NOW</a>
-        </nav>
-        
-        <button class="mobile-toggle" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
+    <!-- ── Header (Pill Shaped Glass) ── -->
+    <div class="header-wrapper">
+        <header class="header-main" id="mainHeader">
+            <a href="index.html">
+                <!-- Using original logo since theme is light -->
+                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Book Now</a>
+            </nav>
+            
+            <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.85rem; display: none;">Let's Talk</a>
+            
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-dark.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;" onerror="this.src='/assets/logo-optimized.webp'">
-        <a href="index.html" class="nav-link">Home</a>
+        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;">
+        <a href="index.html" class="nav-link active">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="#pricing" class="nav-link">Pricing</a>
         <a href="contact.html" class="nav-link">Book Now</a>
     </div>
 
-    <!-- ── Hero Cinematic ── -->
+    <!-- ── Hero 3D Curved Reels ── -->
     <section class="hero">
-        <div class="hero-video-wrap">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="/assets/videos/hero.mp4" type="video/mp4">
-                <source src="/assets/videos/video.mp4" type="video/mp4"> <!-- Fallback -->
-            </video>
-        </div>
         <div class="hero-content">
-            <h1 class="hero-title">India's Premier Wedding Content Creators</h1>
-            <p class="hero-subtitle">We capture the unscripted magic of your love story. Turning fleeting moments into forever memories.</p>
-            
-            <div class="hero-stats">
-                <span class="stat-item">45+ Weddings</span>
-                <span class="stat-divider">•</span>
-                <span class="stat-item">1,000+ Reels</span>
-                <span class="stat-divider">•</span>
-                <span class="stat-item">4.9★ Rating</span>
+            <h1 class="hero-title">India's 1st <span class="accent-text">Unscripted</span><br>Wedding Creators</h1>
+            <p class="hero-subtitle">We capture the raw magic of your love story. Turning fleeting moments into forever memories.</p>
+            <div style="display: flex; gap: 16px; justify-content: center;">
+                <a href="contact.html" class="btn btn-primary">Book Your Shoot <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
             </div>
-            
-            <a href="contact.html" class="btn btn-primary">BOOK YOUR SHOOT</a>
         </div>
-    </section>
 
-    <!-- ── Portfolio Marquee ── -->
-    <section class="portfolio-section">
-        <div class="section-header">
-            <p class="section-subtitle">WORK THAT INSPIRES</p>
-            <h2 class="section-title">Real Events. Real Reels.</h2>
-        </div>
-        
-        <div class="marquee-wrapper">
-            <div class="marquee-track">
-                <!-- Placeholders, to be replaced by actual logic/images -->
-                <div class="portfolio-card"><img src="/assets/logo-optimized.webp" class="portfolio-img" alt="Work 1"></div>
-                <div class="portfolio-card" style="background:#ddd;"></div>
-                <div class="portfolio-card" style="background:#ccc;"></div>
-                <div class="portfolio-card" style="background:#bbb;"></div>
-                <div class="portfolio-card" style="background:#aaa;"></div>
-                <!-- Duplicate for seamless scroll -->
-                <div class="portfolio-card"><img src="/assets/logo-optimized.webp" class="portfolio-img" alt="Work 1"></div>
-                <div class="portfolio-card" style="background:#ddd;"></div>
-                <div class="portfolio-card" style="background:#ccc;"></div>
-                <div class="portfolio-card" style="background:#bbb;"></div>
-                <div class="portfolio-card" style="background:#aaa;"></div>
+        <div class="hero-reels-container">
+            <div class="hero-reels-track">
+                <!-- Fallback to image if no video, but user wants reels here -->
+                <!-- I'll use the original video in a loop for the mockup -->
+                <div class="hero-reel-card">
+                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4"></video>
+                </div>
+                <div class="hero-reel-card">
+                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 0.5s;"></video>
+                </div>
+                <div class="hero-reel-card">
+                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 1.2s;"></video>
+                </div>
+                <div class="hero-reel-card">
+                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 0.8s;"></video>
+                </div>
+                <div class="hero-reel-card">
+                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 1.5s;"></video>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ── How It Works ── -->
-    <section class="steps-section">
+    <!-- ── Pricing (White Cards) ── -->
+    <section class="pricing-section" id="pricing" style="background: var(--color-white); padding: 120px 24px;">
         <div class="section-header">
-            <p class="section-subtitle">PROCESS</p>
-            <h2 class="section-title">How Reelife Works</h2>
-        </div>
-        
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <h3 class="step-title">Tell Us Your Vision</h3>
-                <p class="text-muted">Fill out our quick form with your dates, events, and preferred package to lock us in.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <h3 class="step-title">We Show Up as Family</h3>
-                <p class="text-muted">Our creators blend into your celebration seamlessly, capturing every raw emotion.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <h3 class="step-title">Get Instant Reels</h3>
-                <p class="text-muted">Receive same-day previews and professionally edited reels delivered straight to your phone.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── Pricing ── -->
-    <section class="pricing-section" id="pricing">
-        <div class="section-header">
-            <p class="section-subtitle">PACKAGES</p>
+            <p class="section-subtitle">Packages</p>
             <h2 class="section-title">Pick Your Plan. Book Instantly.</h2>
         </div>
         
-        <div class="pricing-grid">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; max-width: 1100px; margin: 0 auto;">
             <!-- MOMENTS -->
-            <div class="pricing-card">
-                <h3 class="pkg-name">Moments</h3>
-                <div class="pkg-price">₹9,999<span> / EVENT</span></div>
-                <p class="text-muted" style="margin-bottom: 24px;">For intimate celebrations and essential memories.</p>
+            <div style="background: var(--color-offwhite); border-radius: 24px; padding: 48px 32px; text-align: left; border: 1px solid var(--color-light-gray);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Moments</h3>
+                <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">₹9,999<span style="font-size: 1rem; color: var(--text-muted);"> / event</span></div>
                 
-                <ul class="pkg-features">
-                    <li><i class="fas fa-check"></i> 1 Content Creator</li>
-                    <li><i class="fas fa-check"></i> Complete Event Coverage</li>
-                    <li><i class="fas fa-check"></i> 2 Professionally Edited Reels</li>
-                    <li><i class="fas fa-check"></i> BTS Coverage</li>
-                    <li><i class="fas fa-check"></i> Up to 15 Stories</li>
-                    <li><i class="fas fa-check"></i> Mobile Portraits</li>
-                    <li><i class="fas fa-check"></i> Same-Day Preview</li>
+                <ul style="list-style: none; margin-bottom: 32px;">
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 1 Content Creator</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Complete Coverage</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 2 Edited Reels</li>
+                    <li style="padding: 12px 0;"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Up to 15 Stories</li>
                 </ul>
-                
-                <a href="contact.html?package=moments" class="btn btn-pricing">SELECT MOMENTS</a>
+                <a href="contact.html?package=moments" class="btn btn-glass" style="width: 100%;">Select Moments</a>
             </div>
 
             <!-- SIGNATURE -->
-            <div class="pricing-card featured">
-                <h3 class="pkg-name">Signature</h3>
-                <div class="pkg-price">₹14,999<span> / EVENT</span></div>
-                <p class="text-muted" style="margin-bottom: 24px;">For couples who want their story shared beautifully.</p>
+            <div style="background: var(--color-white); border-radius: 24px; padding: 48px 32px; text-align: left; border: 2px solid var(--color-primary); box-shadow: 0 20px 40px rgba(255, 32, 51, 0.1); position: relative; transform: translateY(-10px);">
+                <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--color-primary); color: white; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700;">MOST POPULAR</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Signature</h3>
+                <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">₹14,999<span style="font-size: 1rem; color: var(--text-muted);"> / event</span></div>
                 
-                <ul class="pkg-features">
-                    <li><i class="fas fa-check"></i> 1 Content Creator</li>
-                    <li><i class="fas fa-check"></i> Complete Event Coverage</li>
-                    <li><i class="fas fa-check"></i> 4 Professionally Edited Reels</li>
-                    <li><i class="fas fa-check"></i> Live Story Coverage</li>
-                    <li><i class="fas fa-check"></i> Custom Couple Hashtag</li>
-                    <li><i class="fas fa-check"></i> Priority Editing</li>
-                    <li><i class="fas fa-check"></i> Same-Day Highlight Reel</li>
+                <ul style="list-style: none; margin-bottom: 32px;">
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 1 Content Creator</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Complete Coverage</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 4 Edited Reels</li>
+                    <li style="padding: 12px 0;"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Same-Day Highlights</li>
                 </ul>
-                
-                <a href="contact.html?package=signature" class="btn btn-pricing">SELECT SIGNATURE</a>
+                <a href="contact.html?package=signature" class="btn btn-primary" style="width: 100%;">Select Signature</a>
             </div>
 
             <!-- LEGACY -->
-            <div class="pricing-card">
-                <h3 class="pkg-name">Legacy</h3>
-                <div class="pkg-price">₹24,999<span> / EVENT</span></div>
-                <p class="text-muted" style="margin-bottom: 24px;">For couples who want every emotion preserved.</p>
+            <div style="background: var(--color-offwhite); border-radius: 24px; padding: 48px 32px; text-align: left; border: 1px solid var(--color-light-gray);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Legacy</h3>
+                <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">₹24,999<span style="font-size: 1rem; color: var(--text-muted);"> / event</span></div>
                 
-                <ul class="pkg-features">
-                    <li><i class="fas fa-check"></i> 2 Content Creators</li>
-                    <li><i class="fas fa-check"></i> Complete Event Coverage</li>
-                    <li><i class="fas fa-check"></i> 6 Professionally Edited Reels</li>
-                    <li><i class="fas fa-check"></i> Unlimited Stories</li>
-                    <li><i class="fas fa-check"></i> Same-Day Reel Delivery</li>
-                    <li><i class="fas fa-check"></i> Pre-Event Consultation</li>
-                    <li><i class="fas fa-check"></i> Couple Interaction Clips</li>
+                <ul style="list-style: none; margin-bottom: 32px;">
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 2 Content Creators</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Complete Coverage</li>
+                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 6 Edited Reels</li>
+                    <li style="padding: 12px 0;"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Unlimited Stories</li>
                 </ul>
-                
-                <a href="contact.html?package=legacy" class="btn btn-pricing">SELECT LEGACY</a>
+                <a href="contact.html?package=legacy" class="btn btn-glass" style="width: 100%;">Select Legacy</a>
             </div>
         </div>
     </section>
 
-    <!-- ── Creator Section ── -->
+    <!-- ── Creator Application Section ── -->
     <section class="creator-section">
-        <div class="creator-card">
-            <h2>Join the Reelife Creator Network</h2>
-            <p>Are you a passionate content creator? Join our elite team and work on premium weddings across India. Flexible schedule, competitive pay, and beautiful projects.</p>
-            <a href="mailto:reelifeweddings@gmail.com?subject=Creator Application" class="btn btn-primary">APPLY NOW</a>
+        <div class="creator-container">
+            <div class="creator-info">
+                <h2>Join the Reelife <span class="accent-text">Creator</span> Crew</h2>
+                <p>Apply to become a Reelife Creator. We connect top talent with premium wedding assignments across India.</p>
+                
+                <div class="creator-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-video"></i></div>
+                        <div class="benefit-text">
+                            <h4>Premium Assignments</h4>
+                            <p>Work on luxury weddings and high-profile events.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-wallet"></i></div>
+                        <div class="benefit-text">
+                            <h4>Fast Payouts</h4>
+                            <p>Earnings are credited directly after your shoot is verified.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WhatsApp Integrated Form -->
+            <div class="creator-form-card">
+                <form id="creatorForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="creatorName" class="form-input" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number</label>
+                        <input type="tel" id="creatorMobile" class="form-input" required placeholder="+91">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Instagram Handle</label>
+                        <input type="text" id="creatorInsta" class="form-input" required placeholder="@username">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" id="creatorCity" class="form-input" required placeholder="e.g. Bangalore">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Primary Device</label>
+                            <select id="creatorDevice" class="form-select" required>
+                                <option value="" disabled selected>Select Phone</option>
+                                <option value="iPhone 15 Pro / Max">iPhone 15 Pro / Max</option>
+                                <option value="iPhone 14 Pro / Max">iPhone 14 Pro / Max</option>
+                                <option value="iPhone 13 Pro / Max">iPhone 13 Pro / Max</option>
+                                <option value="Samsung S24/S23 Ultra">Samsung S24/S23 Ultra</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" id="creatorSubmitBtn" class="btn btn-primary" style="width: 100%; margin-top: 16px;">Apply via WhatsApp</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- ── Footer ── -->
     <footer class="footer">
-        <div class="footer-watermark">reelife</div>
+        <div class="footer-watermark" style="color: var(--color-offwhite);">reelife</div>
         
         <div class="footer-content">
-            <img src="/assets/logo-dark.webp" alt="Reelife Weddings" class="footer-logo" onerror="this.src='/assets/logo-optimized.webp'">
+            <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo">
             
             <div class="footer-socials">
                 <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>

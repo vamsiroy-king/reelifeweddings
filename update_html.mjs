@@ -13,26 +13,33 @@ const new_head_content = `    <!-- Core CSS -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">`;
 
-const new_header_content = `    <!-- ── Header ── -->
-    <header class="header-main" id="mainHeader" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--border-light);">
-        <nav class="nav-desktop">
-            <a href="index.html" class="nav-link" style="color: var(--text-dark)">HOME</a>
-            <a href="portfolio.html" class="nav-link" style="color: var(--text-dark)">PORTFOLIO</a>
-            <a href="index.html"><img src="/assets/logo-light.webp" alt="Reelife Weddings" class="nav-logo" onerror="this.src='/assets/logo-optimized.webp'"></a>
-            <a href="index.html#pricing" class="nav-link" style="color: var(--text-dark)">PRICING</a>
-            <a href="contact.html" class="nav-link" style="color: var(--text-dark)">BOOK NOW</a>
-        </nav>
-        
-        <button class="mobile-toggle" aria-label="Menu">
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-        </button>
-    </header>
+const new_header_content = `    <!-- ── Header (Pill Shaped Glass) ── -->
+    <div class="header-wrapper">
+        <header class="header-main" id="mainHeader">
+            <a href="index.html">
+                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="index.html#pricing" class="nav-link">Pricing</a>
+                <a href="contact.html" class="nav-link">Book Now</a>
+            </nav>
+            
+            <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.85rem; display: none;">Let's Talk</a>
+            
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-dark.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;" onerror="this.src='/assets/logo-optimized.webp'">
+        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="index.html#pricing" class="nav-link">Pricing</a>
@@ -41,10 +48,10 @@ const new_header_content = `    <!-- ── Header ── -->
 
 const new_footer_content = `    <!-- ── Footer ── -->
     <footer class="footer">
-        <div class="footer-watermark">reelife</div>
+        <div class="footer-watermark" style="color: var(--color-offwhite);">reelife</div>
         
         <div class="footer-content">
-            <img src="/assets/logo-dark.webp" alt="Reelife Weddings" class="footer-logo" onerror="this.src='/assets/logo-optimized.webp'">
+            <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo">
             
             <div class="footer-socials">
                 <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -71,7 +78,7 @@ const new_footer_content = `    <!-- ── Footer ── -->
 const files = fs.readdirSync(__dirname).filter(f => f.endsWith('.html'));
 
 files.forEach(f => {
-    if (['index.html', 'contact.html'].includes(f)) return;
+    if (['index.html'].includes(f)) return; // skip index since I already did it completely
 
     let content = fs.readFileSync(path.join(__dirname, f), 'utf8');
 
@@ -79,19 +86,13 @@ files.forEach(f => {
     content = content.replace(/<!-- Core CSS -->[\s\S]*?<link rel="stylesheet" href="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/font-awesome\/[^"]+">/, new_head_content);
 
     // 2. Replace Header and mobile menu overlay
-    content = content.replace(/<header[\s\S]*?<\/header>\s*(?:<!-- Mobile Menu Overlay -->)?\s*(?:<div class="mobile-menu-overlay">[\s\S]*?<\/nav>\s*<\/div>)?/, new_header_content);
+    content = content.replace(/<!-- ── Header .*?<\/div>\s*<\/div>/, new_header_content);
     
     // 3. Replace Footer and everything after to </body>
-    content = content.replace(/<footer[\s\S]*?<\/body>/, new_footer_content);
+    content = content.replace(/<!-- ── Footer ── -->[\s\S]*?<\/body>/, new_footer_content);
 
-    // 4. Force body style
-    content = content.replace(/<body[^>]*>/, '<body style="background-color: var(--bg-cream); color: var(--text-dark);">');
-    
-    // 5. Fix inline styles
-    content = content.replace(/background:\s*white;/g, '');
-    content = content.replace(/color:\s*black;/g, '');
-    content = content.replace(/color:\s*#fff;/g, 'color: var(--text-dark);');
-    content = content.replace(/background:\s*#000;/g, 'background: var(--bg-cream);');
+    // 4. Force body style for subpages (padding top for the pill header to clear)
+    content = content.replace(/<body[^>]*>/, '<body style="background-color: var(--color-offwhite); color: var(--text-main); padding-top: 100px;">');
 
     fs.writeFileSync(path.join(__dirname, f), content, 'utf8');
     console.log(`Updated ${f}`);

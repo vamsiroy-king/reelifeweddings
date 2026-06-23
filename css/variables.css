@@ -1,34 +1,46 @@
 /* ═══════════════════════════════════════════════════
-   Design Tokens — Reelife Redux
-   Vibe: Minimal, editorial, luxury (Charcoal + Cream)
+   Design Tokens — Reelife Red & Glassmorphism
+   Vibe: Vibrant Red, Pure White, Frosted Glass, Apple-esque
    ═══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
+  /* ── Core Colors ── */
+  --color-primary: #FF2033; /* Reelife Red (vibrant) */
+  --color-primary-dark: #D91020;
+  --color-primary-light: #FFEBED;
+  --color-white: #FFFFFF;
+  --color-offwhite: #F8F9FA;
+  --color-black: #111111;
+  --color-dark-gray: #333333;
+  --color-gray: #888888;
+  --color-light-gray: #E0E0E0;
+
   /* ── Backgrounds ── */
-  --bg-dark: #121212;      /* Deepest Charcoal / Soft Black */
-  --bg-dark-elevated: #1E1E1E; /* Slightly lighter for cards on dark bg */
-  --bg-cream: #F9F7F3;     /* Warm Cream / Ivory for light sections */
-  --bg-white: #FFFFFF;     /* Pure white for ultimate contrast */
+  --bg-main: var(--color-offwhite);
+  --bg-card: var(--color-white);
+  --bg-dark: var(--color-black);
 
   /* ── Text ── */
-  --text-cream: #EAE6DF;   /* Text on dark backgrounds */
-  --text-dark: #1A1A1A;    /* Text on light backgrounds */
-  --text-muted-dark: rgba(255, 255, 255, 0.5); /* Muted text on dark */
-  --text-muted-light: rgba(0, 0, 0, 0.5);      /* Muted text on light */
+  --text-main: var(--color-black);
+  --text-muted: var(--color-gray);
+  --text-inverse: var(--color-white);
 
-  /* ── Accents ── */
-  --accent: #B88B58;       /* Sophisticated Warm Gold/Bronze */
-  --accent-hover: #9E7445; /* Darker Gold for hover states */
-
-  /* ── UI Elements ── */
-  --border-light: rgba(0, 0, 0, 0.08);
-  --border-dark: rgba(255, 255, 255, 0.1);
+  /* ── Glassmorphism ── */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-dark: rgba(17, 17, 17, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  --glass-blur: blur(16px);
 
   /* ── Typography ── */
-  --font-heading: 'Sora', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  /* Apple-style primary font */
+  --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  /* Thick display font */
+  --font-display: 'Inter', var(--font-primary);
+  /* Calligraphy font for accents */
+  --font-accent: 'Dancing Script', cursive;
 
   /* ── Spacing & Layout ── */
   --space-unit: 8px;
@@ -36,10 +48,11 @@
   --space-md: 48px;
   --space-lg: 120px;
   
-  --header-height: 90px;
+  --header-height: 80px;
   --max-width: 1400px;
 
   /* ── Transitions ── */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-fast: 0.2s var(--ease-smooth);
   --transition-normal: 0.4s var(--ease-smooth);

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact — Reelife Weddings</title>
-    <!-- Core CSS -->
+        <!-- Core CSS -->
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/components.css">
@@ -104,7 +104,7 @@
         .mobile-toggle span { background-color: var(--text-dark); }
     </style>
 </head>
-<body class="contact-page">
+<body style="background-color: var(--color-offwhite); color: var(--text-main); padding-top: 100px;">
 
     <!-- ── Header ── -->
     <header class="header-main" id="mainHeader" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--border-light);">
@@ -250,12 +250,12 @@
         </div>
     </section>
 
-    <!-- ── Footer ── -->
+        <!-- ── Footer ── -->
     <footer class="footer">
-        <div class="footer-watermark">reelife</div>
+        <div class="footer-watermark" style="color: var(--color-offwhite);">reelife</div>
         
         <div class="footer-content">
-            <img src="/assets/logo-dark.webp" alt="Reelife Weddings" class="footer-logo" onerror="this.src='/assets/logo-optimized.webp'">
+            <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo">
             
             <div class="footer-socials">
                 <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -270,88 +270,12 @@
         </div>
     </footer>
 
-    <script>
-        // Auto-select package from URL params
-        const urlParams = new URLSearchParams(window.location.search);
-        const packageParam = urlParams.get('package');
-        if (packageParam) {
-            const packageSelect = document.getElementById('contactPackage');
-            const options = packageSelect.options;
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].value.toLowerCase().includes(packageParam.toLowerCase())) {
-                    packageSelect.selectedIndex = i;
-                    break;
-                }
-            }
-        }
+    <!-- WhatsApp CTA -->
+    <a href="https://wa.me/919148132417" target="_blank" class="wa-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-        // Event chip toggle styling
-        document.querySelectorAll('.event-chip').forEach(chip => {
-            const checkbox = chip.querySelector('input[type="checkbox"]');
-            chip.addEventListener('click', function(e) {
-                e.preventDefault();
-                checkbox.checked = !checkbox.checked;
-                if (checkbox.checked) {
-                    chip.style.background = 'var(--text-dark)';
-                    chip.style.color = 'var(--bg-white)';
-                    chip.style.borderColor = 'var(--text-dark)';
-                } else {
-                    chip.style.background = 'transparent';
-                    chip.style.color = 'var(--text-dark)';
-                    chip.style.borderColor = 'var(--border-light)';
-                }
-            });
-        });
-
-        // Form Submission Logic
-        const form = document.getElementById('contactForm');
-        const successMsg = document.getElementById('formSuccessMessage');
-        const submitBtn = document.getElementById('submitBtn');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            submitBtn.innerText = "OPENING WHATSAPP...";
-            submitBtn.disabled = true;
-
-            // Gather Data
-            const name = document.getElementById('contactName').value;
-            const mobile = document.getElementById('contactMobile').value;
-            const dateStart = document.getElementById('contactDateStart').value;
-            const dateEnd = document.getElementById('contactDateEnd').value;
-            const pkg = document.getElementById('contactPackage').value;
-            const eventCount = document.getElementById('contactEventCount').value;
-            const location = document.getElementById('contactLocation').value;
-            const customMessage = document.getElementById('contactMessage').value;
-
-            // Gather selected events
-            const checkboxes = document.querySelectorAll('input[name="wedding_events"]:checked');
-            const selectedEvents = Array.from(checkboxes).map(cb => cb.value);
-            let eventsText = selectedEvents.length > 0 ? `%0A*Events:* ${selectedEvents.join(', ')}` : '';
-
-            const dateText = dateEnd ? `${dateStart} to ${dateEnd}` : dateStart;
-
-            // Build WhatsApp Message
-            const whatsappMessage = `Hello Reelife Weddings!%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Dates:* ${dateText}%0A*Package:* ${pkg}%0A*No. of Events:* ${eventCount}%0A*Location:* ${location}${eventsText}%0A*Details:* ${customMessage ? customMessage : 'None'}`;
-            const whatsappUrl = `https://wa.me/919148132417?text=${whatsappMessage}`;
-
-            successMsg.style.display = 'block';
-            
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-                
-                form.reset();
-                document.querySelectorAll('.event-chip').forEach(chip => {
-                    chip.style.background = 'transparent';
-                    chip.style.color = 'var(--text-dark)';
-                    chip.style.borderColor = 'var(--border-light)';
-                });
-                submitBtn.innerText = "BOOK SHOOT ↗";
-                submitBtn.disabled = false;
-                successMsg.style.display = 'none';
-            }, 800);
-        });
-    </script>
+    <!-- Scripts -->
     <script type="module" src="/js/main.js"></script>
 </body>
 </html>
