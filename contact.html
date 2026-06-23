@@ -151,6 +151,7 @@
             </div>
             <div class="nav-group desktop-only">
                 <a href="services.html" class="nav-link">SERVICES</a>
+                <a href="pricing.html" class="nav-link">PRICING</a>
                 <a href="faqs.html" class="nav-link">FAQS</a>
                 <a href="contact.html" class="nav-link">CONTACT</a>
 
@@ -177,11 +178,11 @@
         <div class="contact-split">
             <!-- Left: Info -->
             <div class="contact-info">
-                <h1>HAVE QUESTIONS?<br>GET IN TOUCH.</h1>
+                <h1>BOOK YOUR<br>SHOOT.</h1>
                 <div class="contact-details">
                     <p>
                         We take on a limited number of weddings each year to ensure the highest quality of cinematic storytelling.<br><br>
-                        Fill out the form to secure your dates.
+                        Select your package, choose your events, and secure your dates.
                     </p>
                     <br>
                     <p><strong>EMAIL</strong><br><a
@@ -193,9 +194,6 @@
             <!-- Right: Dynamic Form -->
             <div class="form-box">
                 <form id="contactForm">
-                    <!-- Web3Forms Access Key (Placeholder for actual key) -->
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-
                     <div class="form-group">
                         <label class="form-label">Name</label>
                         <input type="text" id="contactName" name="name" class="form-input" placeholder="Your Full Name" required>
@@ -206,9 +204,30 @@
                         <input type="tel" id="contactMobile" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
                     </div>
 
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div class="form-group">
+                            <label class="form-label">Event Start Date</label>
+                            <input type="date" id="contactDateStart" name="date_start" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Event End Date</label>
+                            <input type="date" id="contactDateEnd" name="date_end" class="form-input">
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label class="form-label">Event Date</label>
-                        <input type="date" id="contactDate" name="date" class="form-input" required>
+                        <label class="form-label">Package</label>
+                        <select id="contactPackage" name="package" class="form-input" required style="appearance: auto; background: transparent;">
+                            <option value="" disabled selected>Select Package</option>
+                            <option value="Moments – ₹9,999/event">MOMENTS — ₹9,999 / Event</option>
+                            <option value="Signature – ₹14,999/event">SIGNATURE — ₹14,999 / Event</option>
+                            <option value="Legacy – ₹24,999/event">LEGACY — ₹24,999 / Event</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Number of Events</label>
+                        <input type="number" id="contactEventCount" name="event_count" class="form-input" placeholder="How many events?" min="1" max="20" required>
                     </div>
 
                     <div class="form-group">
@@ -216,52 +235,52 @@
                         <select id="contactLocation" name="location" class="form-input" required style="appearance: auto; background: transparent;">
                             <option value="" disabled selected>Select City</option>
                             <option value="Bangalore">Bangalore</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Chennai">Chennai</option>
                             <option value="Goa">Goa</option>
                             <option value="Udaipur">Udaipur</option>
                             <option value="Jaipur">Jaipur</option>
                             <option value="Mumbai">Mumbai</option>
                             <option value="Delhi">Delhi</option>
                             <option value="Kerala">Kerala</option>
+                            <option value="Vizag">Vizag</option>
                             <option value="Other">Other (Specify in Message)</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Type of Event</label>
-                        <select id="contactEventType" name="event_type" class="form-input" required style="appearance: auto; background: transparent;">
-                            <option value="" disabled selected>Select Event Type</option>
-                            <option value="Wedding">Wedding</option>
-                            <option value="Pre-Wedding">Pre-Wedding Shoot</option>
-                            <option value="Engagement">Engagement</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <!-- Hidden by default, shown if Wedding is selected -->
-                    <div class="form-group" id="weddingEventsGroup" style="display: none; padding: 15px; background: rgba(0,0,0,0.03); border-radius: 8px;">
-                        <label class="form-label" style="margin-bottom: 15px;">Events to be Covered</label>
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="wedding_events" value="Haldi"> Haldi
+                    <div class="form-group" id="weddingEventsGroup" style="padding: 20px; background: rgba(0,0,0,0.03); border-radius: 8px;">
+                        <label class="form-label" style="margin-bottom: 15px;">Choose Events to Cover</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Haldi" style="display:none;"> Haldi
                             </label>
-                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="wedding_events" value="Mehendi"> Mehendi
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Mehendi" style="display:none;"> Mehendi
                             </label>
-                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="wedding_events" value="Sangeet"> Sangeet
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Sangeet" style="display:none;"> Sangeet
                             </label>
-                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="wedding_events" value="Wedding Ceremony"> Wedding Ceremony
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Wedding" style="display:none;"> Wedding
                             </label>
-                            <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="wedding_events" value="Reception"> Reception
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Engagement" style="display:none;"> Engagement
+                            </label>
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Pellikuturu" style="display:none;"> Pellikuturu
+                            </label>
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Pellikoduku" style="display:none;"> Pellikoduku
+                            </label>
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                                <input type="checkbox" name="wedding_events" value="Reception" style="display:none;"> Reception
                             </label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Custom Message / Details</label>
-                        <textarea id="contactMessage" name="message" class="form-textarea" rows="4" placeholder="Tell us more about your event... (Optional)"></textarea>
+                        <label class="form-label">Additional Details (Optional)</label>
+                        <textarea id="contactMessage" name="message" class="form-textarea" rows="3" placeholder="Anything else we should know..."></textarea>
                     </div>
 
                     <!-- Success Message Container -->
@@ -269,26 +288,43 @@
                         <i class="fas fa-check-circle" style="margin-right: 10px;"></i> Redirecting to WhatsApp...
                     </div>
 
-                    <button type="submit" id="submitBtn" class="btn-submit">SEND ENQUIRY</button>
+                    <button type="submit" id="submitBtn" class="btn-submit">BOOK SHOOT ↗</button>
                 </form>
             </div>
         </div>
     </section>
 
     <script>
-        // Logic to show/hide Wedding Events based on Event Type selection
-        const eventTypeSelect = document.getElementById('contactEventType');
-        const weddingEventsGroup = document.getElementById('weddingEventsGroup');
-
-        eventTypeSelect.addEventListener('change', function() {
-            if (this.value === 'Wedding') {
-                weddingEventsGroup.style.display = 'block';
-            } else {
-                weddingEventsGroup.style.display = 'none';
-                // Uncheck boxes if changed
-                const checkboxes = weddingEventsGroup.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach(cb => cb.checked = false);
+        // Auto-select package from URL params (from pricing page)
+        const urlParams = new URLSearchParams(window.location.search);
+        const packageParam = urlParams.get('package');
+        if (packageParam) {
+            const packageSelect = document.getElementById('contactPackage');
+            const options = packageSelect.options;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value.toLowerCase().includes(packageParam.toLowerCase())) {
+                    packageSelect.selectedIndex = i;
+                    break;
+                }
             }
+        }
+
+        // Event chip toggle styling
+        document.querySelectorAll('.event-chip').forEach(chip => {
+            const checkbox = chip.querySelector('input[type="checkbox"]');
+            chip.addEventListener('click', function(e) {
+                e.preventDefault();
+                checkbox.checked = !checkbox.checked;
+                if (checkbox.checked) {
+                    chip.style.background = 'var(--text-main, #5D3A3A)';
+                    chip.style.color = 'white';
+                    chip.style.borderColor = 'var(--text-main, #5D3A3A)';
+                } else {
+                    chip.style.background = 'transparent';
+                    chip.style.color = 'inherit';
+                    chip.style.borderColor = '#ddd';
+                }
+            });
         });
 
         // Form Submission Logic
@@ -305,23 +341,22 @@
             // Gather Data
             const name = document.getElementById('contactName').value;
             const mobile = document.getElementById('contactMobile').value;
-            const date = document.getElementById('contactDate').value;
+            const dateStart = document.getElementById('contactDateStart').value;
+            const dateEnd = document.getElementById('contactDateEnd').value;
+            const pkg = document.getElementById('contactPackage').value;
+            const eventCount = document.getElementById('contactEventCount').value;
             const location = document.getElementById('contactLocation').value;
-            const eventType = document.getElementById('contactEventType').value;
             const customMessage = document.getElementById('contactMessage').value;
 
-            // Gather selected wedding events if applicable
-            let eventsText = '';
-            if (eventType === 'Wedding') {
-                const checkboxes = weddingEventsGroup.querySelectorAll('input[type="checkbox"]:checked');
-                const selectedEvents = Array.from(checkboxes).map(cb => cb.value);
-                if (selectedEvents.length > 0) {
-                    eventsText = `%0A*Events to Cover:* ${selectedEvents.join(', ')}`;
-                }
-            }
+            // Gather selected events
+            const checkboxes = document.querySelectorAll('input[name="wedding_events"]:checked');
+            const selectedEvents = Array.from(checkboxes).map(cb => cb.value);
+            let eventsText = selectedEvents.length > 0 ? `%0A*Events:* ${selectedEvents.join(', ')}` : '';
+
+            const dateText = dateEnd ? `${dateStart} to ${dateEnd}` : dateStart;
 
             // Build WhatsApp Message
-            const whatsappMessage = `Hello Reel Life Weddings!%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Date:* ${date}%0A*Location:* ${location}%0A*Event Type:* ${eventType}${eventsText}%0A*Additional Details:* ${customMessage ? customMessage : 'None'}`;
+            const whatsappMessage = `Hello Reel Life Weddings!%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Dates:* ${dateText}%0A*Package:* ${pkg}%0A*No. of Events:* ${eventCount}%0A*Location:* ${location}${eventsText}%0A*Details:* ${customMessage ? customMessage : 'None'}`;
             const whatsappUrl = `https://wa.me/919148132417?text=${whatsappMessage}`;
 
             // Show success message briefly
@@ -333,8 +368,12 @@
                 
                 // Reset form
                 form.reset();
-                weddingEventsGroup.style.display = 'none';
-                submitBtn.innerText = "SEND ENQUIRY";
+                document.querySelectorAll('.event-chip').forEach(chip => {
+                    chip.style.background = 'transparent';
+                    chip.style.color = 'inherit';
+                    chip.style.borderColor = '#ddd';
+                });
+                submitBtn.innerText = "BOOK SHOOT ↗";
                 submitBtn.disabled = false;
                 successMsg.style.display = 'none';
             }, 800);
@@ -380,4 +419,6 @@
 </body>
 
 </html>
+
+
 
