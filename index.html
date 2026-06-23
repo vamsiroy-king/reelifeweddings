@@ -1,175 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REEL LIFE v11: PREMIUM WHITE</title>
-
-  <link rel="stylesheet" href="/css/variables.css">
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/typography.css">
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/animations.css">
-  <link rel="stylesheet" href="/css/header.css">
-  <link rel="stylesheet" href="/css/home.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- FontAwesome for Social Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/instagram.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reelife Weddings — India's Premier Wedding Content Creators</title>
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/sections.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<body>
 
-<body class="industrial-theme">
+    <!-- ── Header ── -->
+    <header class="header-main" id="mainHeader">
+        <nav class="nav-desktop">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+            <img src="/assets/logo-dark.webp" alt="Reelife Weddings" class="nav-logo" onerror="this.src='/assets/logo-optimized.webp'">
+            <a href="#pricing" class="nav-link">PRICING</a>
+            <a href="contact.html" class="nav-link">BOOK NOW</a>
+        </nav>
+        
+        <button class="mobile-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-  <!-- Logo (Fixed outside of flow, animated by JS) -->
-  <div class="scroll-logo" id="mainLogo">
-    <img src="/assets/logo-optimized.webp" alt="Reel Life Badge"
-      onerror="this.src='/assets/logo.svg'; this.onerror=function(){this.style.display='none'};">
-  </div>
-
-  <!-- Header: V10 Hybrid -->
-  <header class="header-v10" id="mainHeader">
-    <nav class="nav-split">
-      <!-- Desktop Nav Groups -->
-      <div class="nav-group desktop-only">
-        <a href="index.html" class="nav-link">HOME</a>
-        <a href="about.html" class="nav-link">ABOUT</a>
-        <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
-      </div>
-
-      <!-- Center Gap for Logo -->
-
-      <div class="nav-group desktop-only">
-        <a href="services.html" class="nav-link">SERVICES</a>
-                <a href="pricing.html" class="nav-link">PRICING</a>
-        <a href="faqs.html" class="nav-link">FAQs</a>
-        <a href="contact.html" class="nav-link">BOOK NOW</a>
-      </div>
-
-      <!-- Mobile Toggle -->
-      <button class="mobile-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
-  </header>
-
-  <!-- Mobile Menu Overlay -->
-  <div class="mobile-menu-overlay">
-    <nav class="mobile-nav">
-      <a href="index.html" class="mobile-link">HOME</a>
-      <a href="about.html" class="mobile-link">ABOUT</a>
-      <a href="portfolio.html" class="mobile-link">PORTFOLIO</a>
-      <a href="services.html" class="mobile-link">SERVICES</a>
-      <a href="faqs.html" class="mobile-link">FAQs</a>
-      <a href="contact.html" class="mobile-link">BOOK NOW</a>
-    </nav>
-  </div>
-
-  <!-- Hero: Single Frame Video -->
-  <section class="hero-v9">
-    <video class="hero-single-video" autoplay muted loop playsinline>
-      <source src="/assets/videos/video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-  </section>
-
-  <!-- Intro Section: Content Creator Style -->
-  <!-- Hero Tagline Section (Two Lines w/ Heart) -->
-  <section class="section-tagline-hero fade-in-up">
-    <div class="tagline-container">
-
-      <div class="tagline-split-vertical">
-        <!-- Row 1 -->
-        <div class="tagline-row">
-          <span class="tagline-small">THE MAGIC YOU</span>
-          <span class="tagline-big highlight-feel">FEEL</span>
-        </div>
-
-        <!-- Heart Center -->
-        <i class="fas fa-heart tagline-heart-middle"></i>
-
-        <!-- Row 2 -->
-        <div class="tagline-row">
-          <span class="tagline-small">THE MOMENTS WE</span>
-          <span class="tagline-big highlight-reel">REEL</span>
-        </div>
-      </div>
-
-      <!-- 3. Two-Line Creative Bio -->
-      <div class="tagline-bio">
-        <span class="bio-line">WE CAPTURE THE UNSCRIPTED MAGIC OF YOUR LOVE STORY.</span>
-        <span class="bio-line">TURNING FLEETING MOMENTS INTO FOREVER MEMORIES.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Content Sections (Masonry) -->
-  <section class="section-industrial">
-    <div class="container-fluid">
-      <h2 class="mb-lg" style="text-align: center;">LATEST <span class="text-outline">WORK</span></h2>
-      <!-- Dynamic Instagram Feed -->
-      <div id="instagram-feed-container">
-        <!-- Loading State -->
-        <div style="text-align:center; padding: 2rem;">
-          <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--text-muted);"></i>
-        </div>
-      </div>
-      <!-- ── SURPRISE: Cinematic Marquee (Creative Variations) ── -->
-      <div class="marquee-container">
-        <div class="marquee-content">
-          <span>ALL THE FEELS</span> <span class="dot">•</span> <span>ALL ON REEL</span> <span class="dot">•</span>
-          <span>YOUR VIBE IS REAL</span> <span class="dot">•</span> <span>WE MAKE IT REEL</span> <span
-            class="dot">•</span>
-          <span>THE MAGIC YOU FEEL</span> <span class="dot">•</span> <span>THE MOMENTS WE REEL</span> <span
-            class="dot">•</span>
-          <span>ALL THE FEELS</span> <span class="dot">•</span> <span>ALL ON REEL</span> <span class="dot">•</span>
-        </div>
-      </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <img src="/assets/logo-dark.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;" onerror="this.src='/assets/logo-optimized.webp'">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="contact.html" class="nav-link">Book Now</a>
     </div>
 
-    <!-- ── Footer V15 (Dark Icons) ── -->
-    <footer>
-        <div class="footer-centered-stack">
-            <!-- 1. The Brand -->
-            <div class="footer-brand-center">
-                <img src="/assets/logo-optimized.webp" alt="Reel Life Weddings" class="footer-logo-center">
-                <p class="footer-tagline-center">From <strong>REAL</strong> Moments<br>to <strong>REEL</strong> Memories.</p>
-            </div>
-
-            <!-- 2. The Icons -->
-            <nav class="footer-nav-center">
-                <a href="https://www.instagram.com/reelifeweddings" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="mailto:reelifeweddings@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </nav>
-
-            <div class="footer-action">
-                <a href="contact.html" class="btn-footer-final">START YOUR JOURNEY</a>
-            </div>
-
-            <p class="footer-city">Based in Bangalore. Available across India & Worldwide.</p>
+    <!-- ── Hero Cinematic ── -->
+    <section class="hero">
+        <div class="hero-video-wrap">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="/assets/videos/hero.mp4" type="video/mp4">
+                <source src="/assets/videos/video.mp4" type="video/mp4"> <!-- Fallback -->
+            </video>
         </div>
-        <div class="footer-minimal-bar">
-            <p>© 2025 REEL LIFE WEDDINGS</p>
-            <a href="#">BACK TO TOP</a>
+        <div class="hero-content">
+            <h1 class="hero-title">India's Premier Wedding Content Creators</h1>
+            <p class="hero-subtitle">We capture the unscripted magic of your love story. Turning fleeting moments into forever memories.</p>
+            
+            <div class="hero-stats">
+                <span class="stat-item">45+ Weddings</span>
+                <span class="stat-divider">•</span>
+                <span class="stat-item">1,000+ Reels</span>
+                <span class="stat-divider">•</span>
+                <span class="stat-item">4.9★ Rating</span>
+            </div>
+            
+            <a href="contact.html" class="btn btn-primary">BOOK YOUR SHOOT</a>
+        </div>
+    </section>
+
+    <!-- ── Portfolio Marquee ── -->
+    <section class="portfolio-section">
+        <div class="section-header">
+            <p class="section-subtitle">WORK THAT INSPIRES</p>
+            <h2 class="section-title">Real Events. Real Reels.</h2>
+        </div>
+        
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <!-- Placeholders, to be replaced by actual logic/images -->
+                <div class="portfolio-card"><img src="/assets/logo-optimized.webp" class="portfolio-img" alt="Work 1"></div>
+                <div class="portfolio-card" style="background:#ddd;"></div>
+                <div class="portfolio-card" style="background:#ccc;"></div>
+                <div class="portfolio-card" style="background:#bbb;"></div>
+                <div class="portfolio-card" style="background:#aaa;"></div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="portfolio-card"><img src="/assets/logo-optimized.webp" class="portfolio-img" alt="Work 1"></div>
+                <div class="portfolio-card" style="background:#ddd;"></div>
+                <div class="portfolio-card" style="background:#ccc;"></div>
+                <div class="portfolio-card" style="background:#bbb;"></div>
+                <div class="portfolio-card" style="background:#aaa;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── How It Works ── -->
+    <section class="steps-section">
+        <div class="section-header">
+            <p class="section-subtitle">PROCESS</p>
+            <h2 class="section-title">How Reelife Works</h2>
+        </div>
+        
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Tell Us Your Vision</h3>
+                <p class="text-muted">Fill out our quick form with your dates, events, and preferred package to lock us in.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">We Show Up as Family</h3>
+                <p class="text-muted">Our creators blend into your celebration seamlessly, capturing every raw emotion.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Get Instant Reels</h3>
+                <p class="text-muted">Receive same-day previews and professionally edited reels delivered straight to your phone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Pricing ── -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-header">
+            <p class="section-subtitle">PACKAGES</p>
+            <h2 class="section-title">Pick Your Plan. Book Instantly.</h2>
+        </div>
+        
+        <div class="pricing-grid">
+            <!-- MOMENTS -->
+            <div class="pricing-card">
+                <h3 class="pkg-name">Moments</h3>
+                <div class="pkg-price">₹9,999<span> / EVENT</span></div>
+                <p class="text-muted" style="margin-bottom: 24px;">For intimate celebrations and essential memories.</p>
+                
+                <ul class="pkg-features">
+                    <li><i class="fas fa-check"></i> 1 Content Creator</li>
+                    <li><i class="fas fa-check"></i> Complete Event Coverage</li>
+                    <li><i class="fas fa-check"></i> 2 Professionally Edited Reels</li>
+                    <li><i class="fas fa-check"></i> BTS Coverage</li>
+                    <li><i class="fas fa-check"></i> Up to 15 Stories</li>
+                    <li><i class="fas fa-check"></i> Mobile Portraits</li>
+                    <li><i class="fas fa-check"></i> Same-Day Preview</li>
+                </ul>
+                
+                <a href="contact.html?package=moments" class="btn btn-pricing">SELECT MOMENTS</a>
+            </div>
+
+            <!-- SIGNATURE -->
+            <div class="pricing-card featured">
+                <h3 class="pkg-name">Signature</h3>
+                <div class="pkg-price">₹14,999<span> / EVENT</span></div>
+                <p class="text-muted" style="margin-bottom: 24px;">For couples who want their story shared beautifully.</p>
+                
+                <ul class="pkg-features">
+                    <li><i class="fas fa-check"></i> 1 Content Creator</li>
+                    <li><i class="fas fa-check"></i> Complete Event Coverage</li>
+                    <li><i class="fas fa-check"></i> 4 Professionally Edited Reels</li>
+                    <li><i class="fas fa-check"></i> Live Story Coverage</li>
+                    <li><i class="fas fa-check"></i> Custom Couple Hashtag</li>
+                    <li><i class="fas fa-check"></i> Priority Editing</li>
+                    <li><i class="fas fa-check"></i> Same-Day Highlight Reel</li>
+                </ul>
+                
+                <a href="contact.html?package=signature" class="btn btn-pricing">SELECT SIGNATURE</a>
+            </div>
+
+            <!-- LEGACY -->
+            <div class="pricing-card">
+                <h3 class="pkg-name">Legacy</h3>
+                <div class="pkg-price">₹24,999<span> / EVENT</span></div>
+                <p class="text-muted" style="margin-bottom: 24px;">For couples who want every emotion preserved.</p>
+                
+                <ul class="pkg-features">
+                    <li><i class="fas fa-check"></i> 2 Content Creators</li>
+                    <li><i class="fas fa-check"></i> Complete Event Coverage</li>
+                    <li><i class="fas fa-check"></i> 6 Professionally Edited Reels</li>
+                    <li><i class="fas fa-check"></i> Unlimited Stories</li>
+                    <li><i class="fas fa-check"></i> Same-Day Reel Delivery</li>
+                    <li><i class="fas fa-check"></i> Pre-Event Consultation</li>
+                    <li><i class="fas fa-check"></i> Couple Interaction Clips</li>
+                </ul>
+                
+                <a href="contact.html?package=legacy" class="btn btn-pricing">SELECT LEGACY</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Creator Section ── -->
+    <section class="creator-section">
+        <div class="creator-card">
+            <h2>Join the Reelife Creator Network</h2>
+            <p>Are you a passionate content creator? Join our elite team and work on premium weddings across India. Flexible schedule, competitive pay, and beautiful projects.</p>
+            <a href="mailto:reelifeweddings@gmail.com?subject=Creator Application" class="btn btn-primary">APPLY NOW</a>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-watermark">reelife</div>
+        
+        <div class="footer-content">
+            <img src="/assets/logo-dark.webp" alt="Reelife Weddings" class="footer-logo" onerror="this.src='/assets/logo-optimized.webp'">
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <span>© 2026 Reelife Weddings. All rights reserved.</span>
+                <span>Based in Bangalore. Available Worldwide.</span>
+            </div>
         </div>
     </footer>
 
+    <!-- WhatsApp CTA -->
+    <a href="https://wa.me/919148132417" target="_blank" class="wa-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
     <script type="module" src="/js/main.js"></script>
-    <script type="module" src="/js/instagram.js"></script>
 </body>
-
 </html>
-
-
-

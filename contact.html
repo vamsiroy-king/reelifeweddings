@@ -1,176 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — Reel Life Weddings</title>
+    <title>Contact — Reelife Weddings</title>
     <!-- Core CSS -->
     <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/typography.css">
-    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/sections.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Page Specific Styles */
-        body {
-            background: white;
-            color: black;
+        .contact-page {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            min-height: 100vh;
         }
 
         .contact-section {
-            padding: 180px 20px 100px 20px;
-            /* Top padding for fixed header */
+            padding: 160px 24px 100px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .contact-split {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            grid-template-columns: 1fr;
+            gap: 60px;
             align-items: start;
         }
 
-        /* Left Column: Info */
+        @media (min-width: 960px) {
+            .contact-split {
+                grid-template-columns: 1fr 1fr;
+                gap: 100px;
+            }
+        }
+
         .contact-info h1 {
-            font-size: 4rem;
-            line-height: 1;
-            margin-bottom: 40px;
-            font-family: var(--font-heading);
-            text-transform: uppercase;
+            font-size: clamp(3rem, 5vw, 5rem);
+            margin-bottom: 24px;
+            color: var(--text-dark);
         }
 
         .contact-details p {
             font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 20px;
-            color: #333;
+            margin-bottom: 40px;
+            color: var(--text-muted-light);
+            max-width: 500px;
         }
 
-        .contact-details a {
-            color: black;
-            text-decoration: none;
-            border-bottom: 1px solid #ddd;
-            transition: border-color 0.3s;
+        .contact-box {
+            margin-bottom: 32px;
         }
 
-        .contact-details a:hover {
-            border-color: black;
-        }
-
-        /* Right Column: Quick Form */
-        .form-box {
-            background: #fafafa;
-            padding: 60px;
-            border: 1px solid #eee;
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 10px;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 15px 0;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #ccc;
+        .contact-box h3 {
             font-family: var(--font-body);
-            font-size: 1rem;
-            color: black;
-            transition: border-color 0.3s;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-bottom-color: black;
-        }
-
-        .btn-submit {
-            display: inline-block;
-            background: black;
-            color: white;
-            padding: 15px 40px;
-            border: none;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            font-weight: 700;
             letter-spacing: 0.1em;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
+            margin-bottom: 8px;
+            color: var(--text-dark);
         }
 
-        .btn-submit:hover {
-            background: #333;
+        .contact-box a {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            text-decoration: underline;
+            text-decoration-color: var(--border-light);
+            text-underline-offset: 4px;
         }
 
-        @media (max-width: 900px) {
-            .contact-split {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
+        .contact-box a:hover {
+            color: var(--accent);
+            text-decoration-color: var(--accent);
+        }
 
-            .contact-info h1 {
-                font-size: 3rem;
-            }
+        /* Form overrides for light theme */
+        .form-box {
+            background: var(--bg-white);
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-light);
+        }
 
+        .event-chip {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 600px) {
             .form-box {
-                padding: 30px;
+                padding: 32px 24px;
             }
         }
+        
+        .header-main .nav-link { color: var(--text-dark); }
+        .mobile-toggle span { background-color: var(--text-dark); }
     </style>
 </head>
+<body class="contact-page">
 
-<body>
-
-    <!-- ── Static Header (Consistent) ── -->
-    <header class="header-v10 header-static">
-        <nav class="nav-split">
-            <div class="nav-group desktop-only">
-                <a href="index.html" class="nav-link">HOME</a>
-                <a href="about.html" class="nav-link">ABOUT</a>
-                <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
-            </div>
-            <div class="nav-group desktop-only">
-                <a href="services.html" class="nav-link">SERVICES</a>
-                <a href="pricing.html" class="nav-link">PRICING</a>
-                <a href="faqs.html" class="nav-link">FAQS</a>
-                <a href="contact.html" class="nav-link">CONTACT</a>
-
-                <!-- Centered Logo (Black for Static Header) -->
-                <div class="scroll-logo logo-scrolled"
-                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: auto; pointer-events: all;">
-                    <a href="index.html"><img src="/assets/logo-optimized.webp" alt="Reel Life Weddings"></a>
-                </div>
+    <!-- ── Header ── -->
+    <header class="header-main" id="mainHeader" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--border-light);">
+        <nav class="nav-desktop">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+            <a href="index.html"><img src="/assets/logo-light.webp" alt="Reelife Weddings" class="nav-logo" onerror="this.src='/assets/logo-optimized.webp'"></a>
+            <a href="index.html#pricing" class="nav-link">PRICING</a>
+            <a href="contact.html" class="nav-link" style="color: var(--accent);">BOOK NOW</a>
+        </nav>
+        
+        <button class="mobile-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
-    <!-- ── Mobile Menu (Overlay) ── -->
-    <!-- (Reusing the same mobile menu structure from index) -->
-    <div class="mobile-menu-overlay">
-        <nav class="mobile-nav">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="about.html" class="mobile-link">About</a>
-            <a href="contact.html" class="mobile-link">Contact</a>
-            <a href="contact.html" class="mobile-link">Book Now</a>
-        </nav>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <img src="/assets/logo-dark.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;" onerror="this.src='/assets/logo-optimized.webp'">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="index.html#pricing" class="nav-link">Pricing</a>
+        <a href="contact.html" class="nav-link">Book Now</a>
     </div>
 
     <!-- ── Main Contact Section ── -->
@@ -178,16 +137,19 @@
         <div class="contact-split">
             <!-- Left: Info -->
             <div class="contact-info">
-                <h1>BOOK YOUR<br>SHOOT.</h1>
+                <h1>Book Your<br>Shoot.</h1>
                 <div class="contact-details">
-                    <p>
-                        We take on a limited number of weddings each year to ensure the highest quality of cinematic storytelling.<br><br>
-                        Select your package, choose your events, and secure your dates.
-                    </p>
-                    <br>
-                    <p><strong>EMAIL</strong><br><a
-                            href="mailto:reelifeweddings@gmail.com">reelifeweddings@gmail.com</a></p>
-                    <p><strong>PHONE</strong><br><a href="tel:+919148132417">+91 9148132417</a></p>
+                    <p>We take on a limited number of weddings each year to ensure the highest quality of cinematic storytelling. Select your package, choose your events, and secure your dates.</p>
+                </div>
+                
+                <div class="contact-box">
+                    <h3>Email</h3>
+                    <a href="mailto:reelifeweddings@gmail.com">reelifeweddings@gmail.com</a>
+                </div>
+                
+                <div class="contact-box">
+                    <h3>WhatsApp / Phone</h3>
+                    <a href="tel:+919148132417">+91 9148132417</a>
                 </div>
             </div>
 
@@ -204,7 +166,7 @@
                         <input type="tel" id="contactMobile" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
                         <div class="form-group">
                             <label class="form-label">Event Start Date</label>
                             <input type="date" id="contactDateStart" name="date_start" class="form-input" required>
@@ -217,7 +179,7 @@
 
                     <div class="form-group">
                         <label class="form-label">Package</label>
-                        <select id="contactPackage" name="package" class="form-input" required style="appearance: auto; background: transparent;">
+                        <select id="contactPackage" name="package" class="form-select" required style="appearance: auto;">
                             <option value="" disabled selected>Select Package</option>
                             <option value="Moments – ₹9,999/event">MOMENTS — ₹9,999 / Event</option>
                             <option value="Signature – ₹14,999/event">SIGNATURE — ₹14,999 / Event</option>
@@ -232,7 +194,7 @@
 
                     <div class="form-group">
                         <label class="form-label">Location</label>
-                        <select id="contactLocation" name="location" class="form-input" required style="appearance: auto; background: transparent;">
+                        <select id="contactLocation" name="location" class="form-select" required style="appearance: auto;">
                             <option value="" disabled selected>Select City</option>
                             <option value="Bangalore">Bangalore</option>
                             <option value="Hyderabad">Hyderabad</option>
@@ -248,31 +210,25 @@
                         </select>
                     </div>
 
-                    <div class="form-group" id="weddingEventsGroup" style="padding: 20px; background: rgba(0,0,0,0.03); border-radius: 8px;">
-                        <label class="form-label" style="margin-bottom: 15px;">Choose Events to Cover</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                    <div class="form-group" id="weddingEventsGroup" style="padding: 24px; background: rgba(0,0,0,0.02); border-radius: 8px; border: 1px solid var(--border-light);">
+                        <label class="form-label" style="margin-bottom: 16px;">Choose Events to Cover</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 16px; border-radius: 6px; transition: all 0.2s;" class="event-chip">
                                 <input type="checkbox" name="wedding_events" value="Haldi" style="display:none;"> Haldi
                             </label>
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 16px; border-radius: 6px; transition: all 0.2s;" class="event-chip">
                                 <input type="checkbox" name="wedding_events" value="Mehendi" style="display:none;"> Mehendi
                             </label>
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 16px; border-radius: 6px; transition: all 0.2s;" class="event-chip">
                                 <input type="checkbox" name="wedding_events" value="Sangeet" style="display:none;"> Sangeet
                             </label>
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 16px; border-radius: 6px; transition: all 0.2s;" class="event-chip">
                                 <input type="checkbox" name="wedding_events" value="Wedding" style="display:none;"> Wedding
                             </label>
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 16px; border-radius: 6px; transition: all 0.2s;" class="event-chip">
                                 <input type="checkbox" name="wedding_events" value="Engagement" style="display:none;"> Engagement
                             </label>
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
-                                <input type="checkbox" name="wedding_events" value="Pellikuturu" style="display:none;"> Pellikuturu
-                            </label>
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
-                                <input type="checkbox" name="wedding_events" value="Pellikoduku" style="display:none;"> Pellikoduku
-                            </label>
-                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; transition: all 0.2s;" class="event-chip">
+                            <label style="font-size: 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 10px 16px; border-radius: 6px; transition: all 0.2s;" class="event-chip">
                                 <input type="checkbox" name="wedding_events" value="Reception" style="display:none;"> Reception
                             </label>
                         </div>
@@ -280,22 +236,42 @@
 
                     <div class="form-group">
                         <label class="form-label">Additional Details (Optional)</label>
-                        <textarea id="contactMessage" name="message" class="form-textarea" rows="3" placeholder="Anything else we should know..."></textarea>
+                        <textarea id="contactMessage" name="message" class="form-textarea" placeholder="Anything else we should know..."></textarea>
                     </div>
 
                     <!-- Success Message Container -->
-                    <div id="formSuccessMessage" style="display: none; color: #25D366; font-weight: bold; margin-bottom: 20px; padding: 15px; background: rgba(37, 211, 102, 0.1); border-radius: 8px;">
-                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i> Redirecting to WhatsApp...
+                    <div id="formSuccessMessage" style="display: none; color: #25D366; font-weight: 600; margin-bottom: 24px; padding: 16px; background: rgba(37, 211, 102, 0.1); border-radius: 8px;">
+                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i> Redirecting to WhatsApp...
                     </div>
 
-                    <button type="submit" id="submitBtn" class="btn-submit">BOOK SHOOT ↗</button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">BOOK SHOOT ↗</button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-watermark">reelife</div>
+        
+        <div class="footer-content">
+            <img src="/assets/logo-dark.webp" alt="Reelife Weddings" class="footer-logo" onerror="this.src='/assets/logo-optimized.webp'">
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <span>© 2026 Reelife Weddings. All rights reserved.</span>
+                <span>Based in Bangalore. Available Worldwide.</span>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Auto-select package from URL params (from pricing page)
+        // Auto-select package from URL params
         const urlParams = new URLSearchParams(window.location.search);
         const packageParam = urlParams.get('package');
         if (packageParam) {
@@ -316,13 +292,13 @@
                 e.preventDefault();
                 checkbox.checked = !checkbox.checked;
                 if (checkbox.checked) {
-                    chip.style.background = 'var(--text-main, #5D3A3A)';
-                    chip.style.color = 'white';
-                    chip.style.borderColor = 'var(--text-main, #5D3A3A)';
+                    chip.style.background = 'var(--text-dark)';
+                    chip.style.color = 'var(--bg-white)';
+                    chip.style.borderColor = 'var(--text-dark)';
                 } else {
                     chip.style.background = 'transparent';
-                    chip.style.color = 'inherit';
-                    chip.style.borderColor = '#ddd';
+                    chip.style.color = 'var(--text-dark)';
+                    chip.style.borderColor = 'var(--border-light)';
                 }
             });
         });
@@ -356,22 +332,19 @@
             const dateText = dateEnd ? `${dateStart} to ${dateEnd}` : dateStart;
 
             // Build WhatsApp Message
-            const whatsappMessage = `Hello Reel Life Weddings!%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Dates:* ${dateText}%0A*Package:* ${pkg}%0A*No. of Events:* ${eventCount}%0A*Location:* ${location}${eventsText}%0A*Details:* ${customMessage ? customMessage : 'None'}`;
+            const whatsappMessage = `Hello Reelife Weddings!%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Dates:* ${dateText}%0A*Package:* ${pkg}%0A*No. of Events:* ${eventCount}%0A*Location:* ${location}${eventsText}%0A*Details:* ${customMessage ? customMessage : 'None'}`;
             const whatsappUrl = `https://wa.me/919148132417?text=${whatsappMessage}`;
 
-            // Show success message briefly
             successMsg.style.display = 'block';
             
-            // Redirect to WhatsApp
             setTimeout(() => {
                 window.open(whatsappUrl, '_blank');
                 
-                // Reset form
                 form.reset();
                 document.querySelectorAll('.event-chip').forEach(chip => {
                     chip.style.background = 'transparent';
-                    chip.style.color = 'inherit';
-                    chip.style.borderColor = '#ddd';
+                    chip.style.color = 'var(--text-dark)';
+                    chip.style.borderColor = 'var(--border-light)';
                 });
                 submitBtn.innerText = "BOOK SHOOT ↗";
                 submitBtn.disabled = false;
@@ -379,46 +352,6 @@
             }, 800);
         });
     </script>
-
-    <!-- ── Footer V15 (Dark Icons) ── -->
-    <footer>
-        <div class="footer-centered-stack">
-            <!-- 1. The Brand -->
-            <div class="footer-brand-center">
-                <img src="/assets/logo-optimized.webp" alt="Reel Life Weddings" class="footer-logo-center">
-                <p class="footer-tagline-center">From <strong>REAL</strong> Moments<br>to <strong>REEL</strong>
-                    Memories.</p>
-            </div>
-
-            <!-- 2. The Icons -->
-            <nav class="footer-nav-center">
-                <a href="https://www.instagram.com/reelifeweddings" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="mailto:reelifeweddings@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </nav>
-
-            <div class="footer-action">
-                <a href="contact.html" class="btn-footer-final">START YOUR JOURNEY</a>
-            </div>
-
-            <p class="footer-city">BANGALORE • GOA • WORLDWIDE</p>
-        </div>
-        <div class="footer-minimal-bar">
-            <p>© 2025 REEL LIFE WEDDINGS</p>
-            <a href="#">BACK TO TOP</a>
-        </div>
-    </footer>
-
     <script type="module" src="/js/main.js"></script>
 </body>
-
 </html>
-
-
-
