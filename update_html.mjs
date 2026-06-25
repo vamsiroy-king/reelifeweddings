@@ -24,7 +24,7 @@ const new_header_content = `    <!-- ── Flawless Fixed Header ── -->
             
             <div class="nav-logo-container" style="flex:1; text-align:center;">
                 <a href="index.html">
-                    <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
+                    <img src="/assets/logo.png" alt="Reelife Weddings" class="nav-logo">
                 </a>
             </div>
 
@@ -43,7 +43,7 @@ const new_header_content = `    <!-- ── Flawless Fixed Header ── -->
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px; filter: invert(1); mix-blend-mode: multiply;">
+        <img src="/assets/logo.png" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
