@@ -1,37 +1,29 @@
 /* ═══════════════════════════════════════════════════
-   Design Tokens — Premium Blue Aesthetic
-   Vibe: Elegant, Traditional, Cinematic, High-End
+   Design Tokens — Elegant Minimal Aesthetic
    ═══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
   /* ── Core Colors ── */
-  --color-primary: #0A192F; /* Deep Midnight Blue */
-  --color-primary-light: #172A45;
-  --color-accent: #64FFDA; /* Optional subtle highlight, or maybe stick to gold */
-  --color-gold: #D4AF37; /* Elegant Champagne Gold for traditional Indian feel */
+  --color-primary: #1A1A1A; /* Deep almost-black for text */
+  --color-accent: #FF3B30; /* Reelife Red from logo */
+  --color-gold: #B8860B; /* Subtle elegant accent if needed */
   
-  --color-bg-light: #F8F9FA; /* Off-white for sections */
-  --color-bg-dark: #020C1B;
+  --color-bg-light: #FAFAFA; /* Premium Off-White */
+  --color-bg-footer: #3B1B15; /* Deep reddish brown from ReelOnGo screenshot */
   
   --color-white: #FFFFFF;
-  --color-black: #000000;
   
-  --color-text-main: #333333; /* Dark slate for light bg */
+  --color-text-main: #333333;
   --color-text-muted: #666666;
-  --color-text-light: #E6F1FF; /* Light slate for dark bg */
-
-  /* ── Backgrounds ── */
-  --bg-main: var(--color-bg-light);
-  --bg-card: var(--color-white);
-  --bg-footer: var(--color-primary);
+  --color-text-light: #E0E0E0;
 
   /* ── Typography ── */
-  /* Elegant, traditional Serif for headings */
+  /* Elegant Serif for headings */
   --font-display: 'Playfair Display', serif;
-  /* Clean, highly readable Sans-serif for body */
-  --font-primary: 'Inter', sans-serif;
+  /* Thin, clean Sans-serif for nav and UI */
+  --font-primary: 'Montserrat', sans-serif;
 
   /* ── Spacing & Layout ── */
   --space-xs: 8px;
@@ -40,17 +32,15 @@
   --space-lg: 80px;
   --space-xl: 120px;
   
-  --header-height: 90px;
+  --header-height: 100px;
   --max-width: 1300px;
 
   /* ── Shadows & Radii ── */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 32px;
-  --radius-pill: 100px;
   
-  --shadow-soft: 0 10px 30px rgba(10, 25, 47, 0.08);
-  --shadow-float: 0 20px 50px rgba(10, 25, 47, 0.15);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
 
   /* ── Transitions ── */
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);

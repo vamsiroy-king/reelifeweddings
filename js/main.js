@@ -79,17 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Floating Header Scroll Effect
-    const header = document.querySelector('.header-main');
-    if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    }
+    // 4. Removed Floating Header Scroll Effect as per minimal static design
 
     // 5. Contact Form WhatsApp Submission (The Sky Form)
     const contactForm = document.getElementById('contactForm');

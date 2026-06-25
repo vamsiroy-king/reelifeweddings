@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   Components (Buttons, Nav, Cards, Forms)
+   Components (Buttons, Nav, Forms) - Minimal
    ═══════════════════════════════════════════════════ */
 
 /* ── Buttons ── */
@@ -7,13 +7,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 40px;
+  padding: 14px 32px;
   font-family: var(--font-primary);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border-radius: 4px; /* Classy square corners for premium feel */
+  border-radius: 4px;
   transition: all var(--transition-fast);
   cursor: pointer;
   border: 1px solid transparent;
@@ -25,42 +25,41 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+  background-color: var(--color-text-muted);
 }
 
-.btn-gold {
-  background-color: var(--color-gold);
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
   color: var(--color-white);
 }
 
-.btn-gold:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-}
-
-/* ── Standardized Header ── */
+/* ── Static Header ── */
 .header-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 24px 0;
-  transition: background-color var(--transition-fast);
+  padding: 30px 0;
+  background-color: transparent; 
 }
 
+/* Remove scroll transition completely as requested */
 .header-wrapper.scrolled {
   position: fixed;
-  background-color: var(--color-primary);
-  box-shadow: var(--shadow-float);
-  padding: 16px 0;
+  background-color: var(--color-bg-light); /* Offwhite */
+  padding: 20px 0;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.05);
 }
 
 .header-main {
-  width: 95%;
+  width: 90%;
   max-width: var(--max-width);
   margin: 0 auto;
   display: flex;
@@ -69,7 +68,7 @@
 }
 
 .nav-logo {
-  height: 45px;
+  height: 40px;
   width: auto;
 }
 
@@ -80,27 +79,19 @@
 @media (min-width: 1024px) {
   .nav-group {
     display: flex;
-    gap: 40px;
+    gap: 32px;
     align-items: center;
   }
 }
 
 .nav-link {
   font-family: var(--font-primary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 400;
-  color: var(--color-white); /* White for blue/dark backgrounds */
+  color: var(--color-primary); /* Always dark */
   position: relative;
   letter-spacing: 0.05em;
-}
-
-/* If header is on light bg before scroll, make links dark. But our hero is dark/blue usually, let's keep them dark on light backgrounds until scrolled */
-body:not(.dark-hero) .header-wrapper:not(.scrolled) .nav-link {
-    color: var(--color-primary);
-}
-
-.header-wrapper.scrolled .nav-link {
-    color: var(--color-white);
+  text-transform: uppercase;
 }
 
 .nav-link::after {
@@ -110,15 +101,12 @@ body:not(.dark-hero) .header-wrapper:not(.scrolled) .nav-link {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-gold);
+  background: var(--color-primary);
   transition: width var(--transition-fast);
 }
 
 .nav-link:hover::after, .nav-link.active::after {
   width: 100%;
-}
-.nav-link:hover, .nav-link.active {
-  color: var(--color-gold);
 }
 
 /* Mobile Toggle */
@@ -139,15 +127,9 @@ body:not(.dark-hero) .header-wrapper:not(.scrolled) .nav-link {
 .mobile-toggle span {
   display: block;
   width: 30px;
-  height: 2px;
+  height: 1px;
   background-color: var(--color-primary);
   transition: all 0.3s ease;
-}
-.header-wrapper.scrolled .mobile-toggle span {
-    background-color: var(--color-white);
-}
-body.dark-hero .header-wrapper:not(.scrolled) .mobile-toggle span {
-    background-color: var(--color-white);
 }
 
 /* Mobile Menu */
@@ -157,7 +139,7 @@ body.dark-hero .header-wrapper:not(.scrolled) .mobile-toggle span {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: var(--color-primary);
+  background-color: var(--color-bg-light);
   z-index: 90;
   display: flex;
   flex-direction: column;
@@ -175,16 +157,16 @@ body.dark-hero .header-wrapper:not(.scrolled) .mobile-toggle span {
 }
 
 .mobile-menu .nav-link {
-  font-size: 1.5rem;
-  color: var(--color-white);
+  font-size: 1.25rem;
+  color: var(--color-primary);
 }
 
-/* ── Unified Contact Form ── */
+/* ── Minimal Contact Form ── */
 .unified-form-container {
   background: var(--color-white);
   padding: 60px;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-float);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.03);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -196,41 +178,39 @@ body.dark-hero .header-wrapper:not(.scrolled) .mobile-toggle span {
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   text-align: left;
 }
 
 .form-label {
   display: block;
   font-family: var(--font-primary);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   margin-bottom: 8px;
   color: var(--color-primary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 .form-input, .form-select, .form-textarea {
   width: 100%;
-  padding: 16px 20px;
-  background: var(--color-bg-light);
-  border: 1px solid rgba(10, 25, 47, 0.1);
-  border-radius: 4px;
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-family: var(--font-primary);
   font-size: 1rem;
   color: var(--color-text-main);
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast);
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--color-gold);
-  background: var(--color-white);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+  border-bottom-color: var(--color-primary);
 }
 
 .form-textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 100px;
 }
