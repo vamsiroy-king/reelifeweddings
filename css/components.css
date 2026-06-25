@@ -60,7 +60,11 @@
 .nav-logo {
   height: 40px; /* Adjust as needed */
   width: auto;
-  filter: brightness(0); /* Make the white logo BLACK so it's visible on pink! */
+  /* The logo has a solid black background and white text. 
+     This clever trick inverts it to White BG/Black Text, 
+     then multiply drops the white BG to make it transparent! */
+  filter: invert(1);
+  mix-blend-mode: multiply;
 }
 
 .nav-group {
