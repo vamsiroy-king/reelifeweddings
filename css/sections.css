@@ -313,3 +313,183 @@
   padding: 24px;
   color: var(--color-text-main);
 }
+
+/* ── Radial Story Wheel Section ── */
+.story-wheel-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--color-bg-dark), var(--color-primary));
+    padding: 80px 20px 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wheel-header {
+    margin-bottom: 80px;
+    z-index: 10;
+}
+
+.wheel-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 160px;
+    background: #FF9800; /* Orange center */
+    border-radius: 36px;
+    z-index: 20;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.camera-lens {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #000;
+    border: 4px solid #333;
+    position: absolute;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+}
+.camera-lens:nth-child(1) { top: 25px; left: 30px; }
+.camera-lens:nth-child(2) { top: 25px; right: 30px; }
+.camera-lens:nth-child(3) { bottom: 30px; left: 50%; transform: translateX(-50%); }
+
+.wheel-petal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: 220px;
+    margin-top: -110px;
+    margin-left: -90px;
+    transform-origin: center 320px; /* Pivots around center */
+    transition: transform 0.3s ease;
+}
+
+/* Arrange the 6 petals in a circle */
+.petal-1 { transform: rotate(0deg) translateY(-260px); }
+.petal-2 { transform: rotate(60deg) translateY(-260px); }
+.petal-3 { transform: rotate(120deg) translateY(-260px); }
+.petal-4 { transform: rotate(180deg) translateY(-260px); }
+.petal-5 { transform: rotate(240deg) translateY(-260px); }
+.petal-6 { transform: rotate(300deg) translateY(-260px); }
+
+.wheel-petal:hover {
+    z-index: 30;
+    filter: brightness(1.1);
+}
+
+.petal-img-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    border: 3px solid var(--color-white);
+}
+
+.petal-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.wheel-petal:hover .petal-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.petal-label {
+    position: absolute;
+    top: -40px; /* Above the image */
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-white);
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ── Falling Petals Animation (South Indian Theme) ── */
+.falling-petals {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    top: -10%;
+    width: 15px;
+    height: 15px;
+    background: #FFB300; /* Marigold Yellow */
+    border-radius: 50% 0 50% 0; /* Petal shape */
+    animation: fall linear infinite;
+}
+
+.petal.white {
+    background: #FFFFFF; /* Jasmine White */
+    width: 12px;
+    height: 12px;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .wheel-container {
+        width: 300px;
+        height: 300px;
+        margin-top: 100px;
+    }
+    .wheel-petal {
+        width: 100px;
+        height: 120px;
+        margin-top: -60px;
+        margin-left: -50px;
+        transform-origin: center 180px;
+    }
+    .petal-1 { transform: rotate(0deg) translateY(-140px); }
+    .petal-2 { transform: rotate(60deg) translateY(-140px); }
+    .petal-3 { transform: rotate(120deg) translateY(-140px); }
+    .petal-4 { transform: rotate(180deg) translateY(-140px); }
+    .petal-5 { transform: rotate(240deg) translateY(-140px); }
+    .petal-6 { transform: rotate(300deg) translateY(-140px); }
+    
+    .wheel-center {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+    }
+    .camera-lens { width: 20px; height: 20px; border-width: 2px; }
+    .camera-lens:nth-child(1) { top: 12px; left: 15px; }
+    .camera-lens:nth-child(2) { top: 12px; right: 15px; }
+    .camera-lens:nth-child(3) { bottom: 12px; left: 50%; transform: translateX(-50%); }
+    
+    .petal-label { font-size: 0.6rem; top: -20px; }
+    .petal-img-wrapper { border-radius: 15px; border-width: 2px; }
+}

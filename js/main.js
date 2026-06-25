@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.reel-video').forEach(video => {
                 video.pause();
                 video.currentTime = 0; // reset
-            });
+                    });
             // Play active slide video
             const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
             const activeVideo = activeSlide.querySelector('video');
@@ -139,4 +139,31 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.toggle('active');
         });
     });
+
+    /* ── South Indian Theme: Falling Petals Animation ── */
+    function createPetals() {
+        const heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
+        
+        // Create container
+        const petalContainer = document.createElement('div');
+        petalContainer.className = 'falling-petals';
+        heroSection.appendChild(petalContainer);
+
+        // Generate 30 petals
+        for (let i = 0; i < 30; i++) {
+            const petal = document.createElement('div');
+            petal.className = `petal ${Math.random() > 0.5 ? 'white' : ''}`;
+            
+            // Randomize position, delay, and duration
+            petal.style.left = `${Math.random() * 100}%`;
+            petal.style.animationDuration = `${5 + Math.random() * 5}s`;
+            petal.style.animationDelay = `-${Math.random() * 5}s`;
+            
+            petalContainer.appendChild(petal);
+        }
+    }
+    
+    // Initialize falling petals
+    createPetals();
 });

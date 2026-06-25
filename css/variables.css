@@ -6,20 +6,21 @@
 
 :root {
   /* ── Core Colors ── */
-  --color-primary: #FF2A4D; /* Reelife Red (Base logo color) */
-  --color-primary-dark: #E61536; /* Darker red for hover states */
-  --color-accent: #333333; /* Dark text for readability */
+  /* Brand Colors - Exact Blue, Red, White Theme */
+  --color-primary: #FF2A4D; /* Reelife Red */
+  --color-secondary: #00AEEF; /* Exact Sky Blue */
   
-  --color-bg-light: #FFF0F2; /* Very soft pastel pink/off-white background */
-  --color-bg-white: #FFFFFF;
-  --color-bg-footer: #C91632; /* Deep Solid Red for footer */
-  --color-bg-sky: #D6EFFF; /* Soft sky blue gradient base */
+  /* Backgrounds */
+  --color-bg-light: #FFFFFF; /* Premium White instead of Pink */
+  --color-bg-dark: #0F172A; /* Deep Blue Dark */
   
+  /* Text */
+  --color-text-main: #1E293B; /* Slate Dark */
+  --color-text-muted: #64748B; /* Slate Gray */
   --color-white: #FFFFFF;
   
-  --color-text-main: #222222;
-  --color-text-muted: #555555;
-  --color-text-light: #F8F8F8;
+  /* Traditional Accents */
+  --color-accent-gold: #D4AF37; /* Antique Gold */
 
   /* ── Typography ── */
   /* Friendly, bold Sans-serif for headings (matches the playful premium vibe) */
