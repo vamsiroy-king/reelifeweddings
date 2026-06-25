@@ -35,11 +35,8 @@
   overflow: visible !important; 
 }
 
-/* The wrapper handles the centering in Swiper natively when configured correctly,
-   but we can ensure flex centering just in case */
 .swiper-wrapper {
-  display: flex;
-  align-items: center;
+  /* Swiper handles the wrapper entirely. No flex needed here. */
 }
 
 .swiper-slide-reel {

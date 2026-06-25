@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
             centeredSlides: true,
             slidesPerView: 'auto',
             loop: true,
+            initialSlide: 2,
+            loopedSlides: 5, /* Legacy swiper support */
+            loopAdditionalSlides: 5, /* Modern swiper support */
             coverflowEffect: {
                 rotate: 20,
                 stretch: 0,
