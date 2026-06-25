@@ -60,6 +60,9 @@
 .nav-logo {
   height: 40px; /* Adjust as needed */
   width: auto;
+  /* logo.png has white text on a transparent background. 
+     This filter turns the white text black so it's visible on the pink header. */
+  filter: brightness(0);
 }
 
 .nav-group {
