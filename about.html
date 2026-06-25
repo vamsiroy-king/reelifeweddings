@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — Reel Life Weddings</title>
-                            <!-- Core CSS -->
+                                <!-- Core CSS -->
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/components.css">
@@ -89,152 +89,75 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
-<body style="padding-top: 120px;">
+<body style="padding-top: 140px;">
 
     <!-- ── Static Header (Consistent) ── -->
-        <!-- ── Header ── -->
-    <header class="header-main" id="mainHeader" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--border-light);">
-        <nav class="nav-desktop">
-            <a href="index.html" class="nav-link" style="color: var(--text-dark)">HOME</a>
-            <a href="portfolio.html" class="nav-link" style="color: var(--text-dark)">PORTFOLIO</a>
-            <a href="index.html"><img src="/assets/logo-light.webp" alt="Reelife Weddings" class="nav-logo" onerror="this.src='/assets/logo-optimized.webp'"></a>
-            <a href="index.html#pricing" class="nav-link" style="color: var(--text-dark)">PRICING</a>
-            <a href="contact.html" class="nav-link" style="color: var(--text-dark)">BOOK NOW</a>
-        </nav>
-        
-        <button class="mobile-toggle" aria-label="Menu">
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-        </button>
-    </header>
+                <!-- ── Flawless Fixed Header ── -->
+    <div class="header-wrapper">
+        <header class="header-main" id="mainHeader">
+            <nav class="nav-group left" style="flex:1;">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+            </nav>
+            
+            <div class="nav-logo-container" style="flex:1; text-align:center;">
+                <a href="index.html">
+                    <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
+                </a>
+            </div>
+
+            <nav class="nav-group right" style="flex:1; justify-content:flex-end;">
+                <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
+                <a href="contact.html" class="nav-link">Book Now</a>
+            </nav>
+            
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-dark.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;" onerror="this.src='/assets/logo-optimized.webp'">
+        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
-        <a href="index.html#pricing" class="nav-link">Pricing</a>
-        <a href="contact.html" class="nav-link">Book Now</a>
-    </div><!-- ── Mobile Menu ── -->
-    <div class="mobile-menu-overlay">
-        <nav class="mobile-nav">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="about.html" class="mobile-link">About</a>
-            <a href="contact.html" class="mobile-link">Contact</a>
-            <a href="contact.html" class="mobile-link">Book Now</a>
-        </nav>
+        <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
     </div>
-
-    <!-- ── Content ── -->
-    <section class="about-hero">
-        <h1>WE ARE NOT <br><strong>PHOTOGRAPHERS.</strong></h1>
-        <p>
-            We are India's Premier Wedding Content Creators. We capture the unscripted, raw, and beautiful chaos of your celebration.
-        </p>
-    </section>
-
-    <!-- The Philosophy -->
-    <section class="about-grid" style="padding-top: 0; padding-bottom: 100px;">
-        <div class="about-text" style="order: 2;">
-            <h2>THE PHILOSOPHY</h2>
-            <p>
-                <strong>We don't ask you to pose.</strong> 
-            </p>
-            <p>
-                We mingle with your family as if we've known them for years. We believe the absolute best content comes from genuine comfort, laughter, and raw emotion.
-            </p>
-            <p style="font-weight: 700; color: #d93025; margin-top: 30px;">
-                Please do not book us if you don't want a family-like, candid feel to your wedding coverage. We are here for the unscripted magic.
-            </p>
-            <a href="contact.html" class="btn-read-more"
-                style=" border- margin-top:20px; display:inline-block;">SECURE YOUR DATES</a>
-        </div>
-        <img src="https://images.unsplash.com/photo-1511285560982-1351cdeb9821?w=800&fit=crop" class="about-img" style="order: 1;">
-    </section>
-
-    <!-- Gear Showcase -->
-    <section style="background: #fafafa; padding: 100px 20px;">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-bottom: 60px;">OUR ARSENAL</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-                <!-- Gear Item 1 -->
-                <div style="text-align: center;">
-                    <i class="fas fa-mobile-alt" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 15px;">LATEST iPHONES</h3>
-                    <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">Shooting strictly on the highest tier iPhone Pro models to ensure pristine 4K 60fps quality optimized instantly for social media.</p>
-                </div>
-                <!-- Gear Item 2 -->
-                <div style="text-align: center;">
-                    <i class="fas fa-microphone-alt" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 15px;">WIRELESS MICS</h3>
-                    <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">Crystal clear audio is non-negotiable. We capture the vows, the whispers, and the crazy banter perfectly.</p>
-                </div>
-                <!-- Gear Item 3 -->
-                <div style="text-align: center;">
-                    <i class="fas fa-lightbulb" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 15px;">NIGHT-SHOOT LIGHTING</h3>
-                    <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">Portable, cinematic lighting setups ensure that your late-night Sangeet or twilight Pheras look bright and stunning.</p>
-                </div>
-                <!-- Gear Item 4 -->
-                <div style="text-align: center;">
-                    <i class="fas fa-hdd" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 15px;">SECURE BACKUPS</h3>
-                    <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">Every gigabyte of your memories is instantly backed up on-site to physical hard drives so your data is never lost.</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- ── Footer V15 (Dark Icons) ── -->
-                            <!-- ── ReelOnGo Style Footer ── -->
+                                <!-- ── Solid Red Footer ── -->
     <footer class="footer-solid">
-        <div class="footer-watermark">Reelife</div>
-        
         <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo" style="filter: brightness(0) invert(1);">
-                <p>Instant content, zero hassle. Shot. Edited. Delivered - before your event ends.</p>
-                <div style="margin-bottom: 24px;">
-                    <strong style="display:block; margin-bottom:8px; font-size:0.9rem;">Follow Us</strong>
-                    <div class="footer-socials">
-                        <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links-left">
                 <div class="footer-links">
-                    <a href="faqs.html">Pricing</a>
-                    <a href="services.html">Services</a>
-                    <a href="#">Process</a>
-                    <a href="#">Testimonials</a>
-                    <a href="faqs.html">FAQs</a>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Learn More</h4>
-                <div class="footer-links">
+                    <a href="faqs.html">FAQ</a>
+                    <a href="#">Policy</a>
+                    <a href="#">Return Policy</a>
                     <a href="#">Terms & Conditions</a>
-                    <a href="#">Cancellations & Refund</a>
-                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-brand">
+                <h2>India's Best</h2>
+                <p>Wedding Content Creators</p>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/reelifeweddings" target="_blank" style="color:white; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             
             <div class="footer-contact">
-                <h4 class="footer-heading">Contact</h4>
-                <p><i class="far fa-envelope"></i> reelifeweddings@gmail.com</p>
-                <p><i class="fas fa-phone-alt"></i> +91 91481 32417</p>
-                <p><i class="fas fa-map-marker-alt"></i> Based in Bangalore<br>Available across India</p>
+                <p>Email us at: reelifeweddings@gmail.com</p>
+                <p>Phone No.: +91 91481 32417</p>
+                <p>Based in Bangalore • Available across India</p>
+                
+                <a href="https://wa.me/919148132417" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <span>© 2026 Reelife Weddings. All rights reserved.</span>
         </div>
     </footer>
 

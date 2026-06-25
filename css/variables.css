@@ -1,29 +1,31 @@
 /* ═══════════════════════════════════════════════════
-   Design Tokens — Elegant Minimal Aesthetic
+   Design Tokens — Reelife Red & Pastel Vibe
    ═══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
   /* ── Core Colors ── */
-  --color-primary: #1A1A1A; /* Deep almost-black for text */
-  --color-accent: #FF3B30; /* Reelife Red from logo */
-  --color-gold: #B8860B; /* Subtle elegant accent if needed */
+  --color-primary: #FF2A4D; /* Reelife Red (Base logo color) */
+  --color-primary-dark: #E61536; /* Darker red for hover states */
+  --color-accent: #333333; /* Dark text for readability */
   
-  --color-bg-light: #FAFAFA; /* Premium Off-White */
-  --color-bg-footer: #3B1B15; /* Deep reddish brown from ReelOnGo screenshot */
+  --color-bg-light: #FFF0F2; /* Very soft pastel pink/off-white background */
+  --color-bg-white: #FFFFFF;
+  --color-bg-footer: #C91632; /* Deep Solid Red for footer */
+  --color-bg-sky: #D6EFFF; /* Soft sky blue gradient base */
   
   --color-white: #FFFFFF;
   
-  --color-text-main: #333333;
-  --color-text-muted: #666666;
-  --color-text-light: #E0E0E0;
+  --color-text-main: #222222;
+  --color-text-muted: #555555;
+  --color-text-light: #F8F8F8;
 
   /* ── Typography ── */
-  /* Elegant Serif for headings */
-  --font-display: 'Playfair Display', serif;
-  /* Thin, clean Sans-serif for nav and UI */
-  --font-primary: 'Montserrat', sans-serif;
+  /* Friendly, bold Sans-serif for headings (matches the playful premium vibe) */
+  --font-display: 'Poppins', sans-serif;
+  /* Clean Sans-serif for body */
+  --font-primary: 'Inter', sans-serif;
 
   /* ── Spacing & Layout ── */
   --space-xs: 8px;
@@ -32,15 +34,17 @@
   --space-lg: 80px;
   --space-xl: 120px;
   
-  --header-height: 100px;
-  --max-width: 1300px;
+  --header-height: 90px;
+  --max-width: 1200px;
 
   /* ── Shadows & Radii ── */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 32px;
+  --radius-pill: 100px;
   
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-soft: 0 10px 30px rgba(255, 42, 77, 0.08);
+  --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.08);
 
   /* ── Transitions ── */
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);

@@ -14,11 +14,11 @@ const new_head_content = `    <!-- Core CSS -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">`;
 
-const new_header_content = `    <!-- ── Header ── -->
+const new_header_content = `    <!-- ── Flawless Fixed Header ── -->
     <div class="header-wrapper">
         <header class="header-main" id="mainHeader">
             <nav class="nav-group left" style="flex:1;">
-                <a href="index.html" class="nav-link active">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="portfolio.html" class="nav-link">Portfolio</a>
             </nav>
             
@@ -29,7 +29,7 @@ const new_header_content = `    <!-- ── Header ── -->
             </div>
 
             <nav class="nav-group right" style="flex:1; justify-content:flex-end;">
-                <a href="faqs.html" class="nav-link">Pricing</a>
+                <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
                 <a href="contact.html" class="nav-link">Book Now</a>
             </nav>
             
@@ -44,60 +44,39 @@ const new_header_content = `    <!-- ── Header ── -->
     <!-- Mobile Menu -->
     <div class="mobile-menu">
         <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
-        <a href="index.html" class="nav-link active">Home</a>
+        <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
-        <a href="faqs.html" class="nav-link">Pricing</a>
-        <a href="contact.html" class="nav-link">Book Now</a>
+        <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
     </div>`;
 
-const new_footer_content = `    <!-- ── ReelOnGo Style Footer ── -->
+const new_footer_content = `    <!-- ── Solid Red Footer ── -->
     <footer class="footer-solid">
-        <div class="footer-watermark">Reelife</div>
-        
         <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo" style="filter: brightness(0) invert(1);">
-                <p>Instant content, zero hassle. Shot. Edited. Delivered - before your event ends.</p>
-                <div style="margin-bottom: 24px;">
-                    <strong style="display:block; margin-bottom:8px; font-size:0.9rem;">Follow Us</strong>
-                    <div class="footer-socials">
-                        <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links-left">
                 <div class="footer-links">
-                    <a href="faqs.html">Pricing</a>
-                    <a href="services.html">Services</a>
-                    <a href="#">Process</a>
-                    <a href="#">Testimonials</a>
-                    <a href="faqs.html">FAQs</a>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Learn More</h4>
-                <div class="footer-links">
+                    <a href="faqs.html">FAQ</a>
+                    <a href="#">Policy</a>
+                    <a href="#">Return Policy</a>
                     <a href="#">Terms & Conditions</a>
-                    <a href="#">Cancellations & Refund</a>
-                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-brand">
+                <h2>India's Best</h2>
+                <p>Wedding Content Creators</p>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/reelifeweddings" target="_blank" style="color:white; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             
             <div class="footer-contact">
-                <h4 class="footer-heading">Contact</h4>
-                <p><i class="far fa-envelope"></i> reelifeweddings@gmail.com</p>
-                <p><i class="fas fa-phone-alt"></i> +91 91481 32417</p>
-                <p><i class="fas fa-map-marker-alt"></i> Based in Bangalore<br>Available across India</p>
+                <p>Email us at: reelifeweddings@gmail.com</p>
+                <p>Phone No.: +91 91481 32417</p>
+                <p>Based in Bangalore • Available across India</p>
+                
+                <a href="https://wa.me/919148132417" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <span>© 2026 Reelife Weddings. All rights reserved.</span>
         </div>
     </footer>
 
@@ -109,7 +88,7 @@ const new_footer_content = `    <!-- ── ReelOnGo Style Footer ── -->
 const files = fs.readdirSync(__dirname).filter(f => f.endsWith('.html'));
 
 files.forEach(f => {
-    if (['index.html'].includes(f)) return; // skip index
+    if (['index.html', 'faqs.html'].includes(f)) return; // skip index and faqs
 
     let content = fs.readFileSync(path.join(__dirname, f), 'utf8');
 
@@ -122,13 +101,15 @@ files.forEach(f => {
     }
 
     // 2. Replace Header
-    content = content.replace(/<!-- ── Header .*?<\/div>\s*<\/div>/, new_header_content);
-    
+    content = content.replace(/<!-- ── .*?Header ── -->[\s\S]*?<\/div>\s*<\/div>/, new_header_content);
+    // sometimes it matches wrong if mobile menu is outside. better regex:
+    content = content.replace(/<!-- ── .*?Header ── -->[\s\S]*?<!-- Mobile Menu -->[\s\S]*?<\/div>/, new_header_content);
+
     // 3. Replace Footer
     content = content.replace(/<!-- ── .*?Footer ── -->[\s\S]*?<\/body>/, new_footer_content);
 
     // 4. Force body padding for subpages so header clears (120px for the new tall static header)
-    content = content.replace(/<body[^>]*>/, '<body style="padding-top: 120px;">');
+    content = content.replace(/<body[^>]*>/, '<body style="padding-top: 140px;">');
 
     fs.writeFileSync(path.join(__dirname, f), content, 'utf8');
     console.log(`Updated ${f}`);

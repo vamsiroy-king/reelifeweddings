@@ -18,11 +18,11 @@
 </head>
 <body>
 
-    <!-- ── Header ── -->
+    <!-- ── Flawless Fixed Header ── -->
     <div class="header-wrapper">
         <header class="header-main" id="mainHeader">
             <nav class="nav-group left" style="flex:1;">
-                <a href="index.html" class="nav-link active">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="portfolio.html" class="nav-link">Portfolio</a>
             </nav>
             
@@ -33,7 +33,7 @@
             </div>
 
             <nav class="nav-group right" style="flex:1; justify-content:flex-end;">
-                <a href="faqs.html" class="nav-link">Pricing</a>
+                <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
                 <a href="contact.html" class="nav-link">Book Now</a>
             </nav>
             
@@ -48,37 +48,33 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu">
         <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
-        <a href="index.html" class="nav-link active">Home</a>
+        <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
-        <a href="faqs.html" class="nav-link">Pricing</a>
-        <a href="contact.html" class="nav-link">Book Now</a>
+        <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
     </div>
 
     <!-- ── Hero Coverflow Carousel ── -->
     <section class="hero-carousel-section">
         <div class="hero-text-content">
-            <h1>Book Your Shoot.</h1>
+            <h1>Book Your Shoot</h1>
+            <p>India's Finest Wedding Content Creators</p>
         </div>
 
         <div class="swiper swiper-container-hero">
             <div class="swiper-wrapper">
-                <!-- Slide 1 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
                 </div>
-                <!-- Slide 2 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
                 </div>
-                <!-- Slide 3 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
                 </div>
-                <!-- Slide 4 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
                 </div>
-                <!-- Slide 5 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
                 </div>
@@ -86,16 +82,46 @@
         </div>
     </section>
 
-    <!-- ── Testimonials Minimal ── -->
-    <section class="testimonials-section">
-        <div class="testimonial-minimal">
-            <p>"We didn't even notice them filming, yet they captured every single intimate moment. The same-day edit was absolute magic."</p>
-            <span class="testimonial-author">— Karthik & Sneha, Mumbai</span>
+    <!-- ── Gears We Use Section ── -->
+    <section class="gears-section">
+        <div class="gears-title-wrapper">
+            <h2 class="gears-title">Gears we use</h2>
+        </div>
+        
+        <div class="gears-grid">
+            <div class="gear-card">
+                <i class="fab fa-apple"></i>
+                <h3>iPhone</h3>
+                <p style="font-size: 0.9rem; margin-top:8px;">15 Pro Max</p>
+            </div>
+            <div class="gear-card">
+                <i class="fas fa-video"></i>
+                <h3>Osmo</h3>
+                <p style="font-size: 0.9rem; margin-top:8px;">Pocket 3</p>
+            </div>
+            <div class="gear-card">
+                <i class="fas fa-microphone"></i>
+                <h3>Mic</h3>
+                <p style="font-size: 0.9rem; margin-top:8px;">Wireless Audio</p>
+            </div>
+            <div class="gear-card">
+                <i class="fas fa-camera"></i>
+                <h3>Lens</h3>
+                <p style="font-size: 0.9rem; margin-top:8px;">Cinematic</p>
+            </div>
+            <div class="gear-card">
+                <i class="fas fa-battery-full"></i>
+                <h3>Power Bank</h3>
+                <p style="font-size: 0.9rem; margin-top:8px;">All Day Battery</p>
+            </div>
         </div>
     </section>
 
-    <!-- ── Unified Contact Form Section ── -->
-    <section class="contact-section" id="contact" style="padding: 60px 24px 120px; background: var(--color-bg-light);">
+    <!-- ── Sky Contact Section ── -->
+    <section class="sky-contact-section" id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <p>Instantly book your dates before we sell out.</p>
+        
         <div class="unified-form-container">
             <form id="contactForm">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
@@ -124,59 +150,38 @@
                     <textarea id="venue" class="form-textarea" placeholder="Tell us about your event..."></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-outline" style="width: 100%; margin-top: 16px;">Submit via WhatsApp</button>
+                <button type="submit" class="btn btn-white" style="width: 100%; margin-top: 16px;">Submit via WhatsApp</button>
             </form>
         </div>
     </section>
 
-    <!-- ── ReelOnGo Style Footer ── -->
+    <!-- ── Solid Red Footer ── -->
     <footer class="footer-solid">
-        <div class="footer-watermark">Reelife</div>
-        
         <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo" style="filter: brightness(0) invert(1);">
-                <p>Instant content, zero hassle. Shot. Edited. Delivered - before your event ends.</p>
-                <div style="margin-bottom: 24px;">
-                    <strong style="display:block; margin-bottom:8px; font-size:0.9rem;">Follow Us</strong>
-                    <div class="footer-socials">
-                        <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links-left">
                 <div class="footer-links">
-                    <a href="faqs.html">Pricing</a>
-                    <a href="services.html">Services</a>
-                    <a href="#">Process</a>
-                    <a href="#">Testimonials</a>
-                    <a href="faqs.html">FAQs</a>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Learn More</h4>
-                <div class="footer-links">
+                    <a href="faqs.html">FAQ</a>
+                    <a href="#">Policy</a>
+                    <a href="#">Return Policy</a>
                     <a href="#">Terms & Conditions</a>
-                    <a href="#">Cancellations & Refund</a>
-                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-brand">
+                <h2>India's Best</h2>
+                <p>Wedding Content Creators</p>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/reelifeweddings" target="_blank" style="color:white; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             
             <div class="footer-contact">
-                <h4 class="footer-heading">Contact</h4>
-                <p><i class="far fa-envelope"></i> reelifeweddings@gmail.com</p>
-                <p><i class="fas fa-phone-alt"></i> +91 91481 32417</p>
-                <p><i class="fas fa-map-marker-alt"></i> Based in Bangalore<br>Available across India</p>
+                <p>Email us at: reelifeweddings@gmail.com</p>
+                <p>Phone No.: +91 91481 32417</p>
+                <p>Based in Bangalore • Available across India</p>
+                
+                <a href="https://wa.me/919148132417" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <span>© 2026 Reelife Weddings. All rights reserved.</span>
         </div>
     </footer>
 

@@ -1,13 +1,14 @@
 /* ═══════════════════════════════════════════════════
-   Sections CSS (Hero Carousel, Testimonials, ReelOnGo Footer)
+   Sections CSS (Hero Carousel, Gears, Sky Section, Red Footer, FAQs)
    ═══════════════════════════════════════════════════ */
 
-/* ── Hero Carousel (Fixed Centering) ── */
+/* ── Hero Carousel (Perfectly Centered) ── */
 .hero-carousel-section {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding-top: 180px;
+  /* Push down past the 90px fixed header */
+  padding-top: 140px; 
   padding-bottom: 80px;
   background-color: var(--color-bg-light);
   overflow: hidden;
@@ -19,48 +20,47 @@
 
 .hero-text-content {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   z-index: 10;
   position: relative;
   max-width: 800px;
   padding: 0 24px;
 }
 
-.hero-text-content h1 {
-  margin-bottom: 16px;
-}
-
 /* Force Swiper Container Centering */
 .swiper-container-hero {
   width: 100%;
+  max-width: 100vw;
   padding: 40px 0;
-  overflow: visible; 
+  overflow: visible !important; 
 }
 
+/* The wrapper handles the centering in Swiper natively when configured correctly,
+   but we can ensure flex centering just in case */
 .swiper-wrapper {
-  /* No flex needed here usually as Swiper handles positioning, but let's ensure it's safe */
   display: flex;
   align-items: center;
 }
 
 .swiper-slide-reel {
-  width: 300px;
-  height: 533px; /* 9:16 */
-  border-radius: var(--radius-sm); /* Curved edges */
+  width: 320px;
+  height: 568px; /* 9:16 aspect ratio */
+  border-radius: var(--radius-md); /* Sleek curved edges */
   overflow: hidden;
-  background: var(--color-white);
+  background: var(--color-black);
   transition: opacity 0.3s ease, transform 0.3s ease;
   position: relative;
-  /* Removed white borders! */
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-float);
+  /* Ensure no border as requested */
+  border: none;
 }
 
 .swiper-slide:not(.swiper-slide-active) {
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .swiper-slide-active {
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
 }
 
 .reel-video {
@@ -90,145 +90,216 @@
   font-family: var(--font-display);
 }
 
-/* ── Testimonials (Minimal, Static Quote) ── */
-.testimonials-section {
-  padding: 120px 24px;
-  background: var(--color-white);
+/* ── Gears We Use Section (Red Heading, Grid) ── */
+.gears-section {
+  padding: 100px 24px;
+  background: var(--color-bg-light); /* Pink bg */
   text-align: center;
 }
 
-.testimonial-minimal {
-  max-width: 800px;
+.gears-title-wrapper {
+  margin-bottom: 60px;
+}
+
+.gears-title {
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.gears-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
-.testimonial-minimal p {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+.gear-card {
+  flex: 1 1 200px;
+  max-width: 240px;
+  aspect-ratio: 1; /* Square cards like reference */
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform var(--transition-fast);
+}
+
+.gear-card:hover {
+  transform: translateY(-8px);
+}
+
+.gear-card i {
+  font-size: 3rem;
   color: var(--color-primary);
-  line-height: 1.4;
-  margin-bottom: 32px;
-  font-style: italic;
+  margin-bottom: 16px;
 }
 
-.testimonial-author {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.gear-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-accent);
 }
 
-/* ── ReelOnGo Style Footer ── */
+/* ── Sky Blue Let's Connect Section ── */
+.sky-contact-section {
+  padding: 140px 24px;
+  /* Sky gradient like reference */
+  background: linear-gradient(180deg, #A1DBFF 0%, #E6F4FF 50%, #FFD4DB 100%);
+  text-align: center;
+}
+
+.sky-contact-section .section-title {
+  color: var(--color-primary); /* Red "Let's Connect" text */
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-weight: 800;
+}
+
+.sky-contact-section p {
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+/* ── Solid Red Footer (ReelOnGo Structure) ── */
 .footer-solid {
-  background-color: var(--color-bg-footer);
-  color: rgba(255,255,255,0.8);
-  padding: 100px 24px 40px;
+  background-color: var(--color-bg-footer); /* Solid Red */
+  color: var(--color-white);
+  padding: 60px 24px;
   position: relative;
   overflow: hidden;
-}
-
-/* Large Faded Watermark */
-.footer-watermark {
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-primary);
-  font-size: 20vw;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.03);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 1;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 60px;
+  gap: 40px;
   max-width: var(--max-width);
-  margin: 0 auto 100px;
-  position: relative;
-  z-index: 2;
+  margin: 0 auto;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
   .footer-grid {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    /* 3 column layout: Links | Brand | Contact */
+    grid-template-columns: 1fr 1.5fr 1fr;
+    text-align: left;
   }
-}
-
-.footer-brand .footer-logo {
-  height: 40px;
-  margin-bottom: 24px;
-}
-
-.footer-brand p {
-  font-size: 0.9rem;
-  margin-bottom: 32px;
-  max-width: 280px;
-}
-
-.footer-socials {
-  display: flex;
-  gap: 16px;
-}
-
-.footer-socials a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  color: var(--color-white);
-  transition: all var(--transition-fast);
-}
-
-.footer-socials a:hover {
-  background: rgba(255,255,255,0.2);
-}
-
-.footer-heading {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 24px;
-  color: var(--color-white);
-  text-transform: capitalize;
+  .footer-grid > :nth-child(2) {
+      text-align: center;
+  }
+  .footer-grid > :nth-child(3) {
+      text-align: right;
+  }
 }
 
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.footer-links a {
-  font-size: 0.9rem;
-  transition: opacity var(--transition-fast);
-}
-
-.footer-links a:hover {
-  opacity: 0.7;
-}
-
-.footer-contact p {
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: flex-start;
   gap: 12px;
 }
 
-.footer-bottom {
-  position: relative;
-  z-index: 2;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
+.footer-links a {
+  color: var(--color-white);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.footer-links a:hover { opacity: 0.8; }
+
+.footer-brand h2 {
+  color: var(--color-white);
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.footer-brand p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+}
+
+.footer-contact p {
+  color: var(--color-white);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.footer-contact a {
+  display: inline-block;
+  background: #25D366; /* WhatsApp Green */
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  line-height: 50px;
   text-align: center;
-  max-width: var(--max-width);
+  font-size: 1.5rem;
+  margin-top: 16px;
+}
+
+/* ── FAQs Page (Red Accordions on Pink) ── */
+.faq-section {
+  padding: 160px 24px 80px; /* Push down for fixed header */
+  background: var(--color-bg-light); /* Pink bg */
+  min-height: 100vh;
+}
+
+.faq-container {
+  max-width: 800px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-card {
+  background: var(--color-primary); /* Solid Red Accordion */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.faq-question {
+  padding: 20px 24px;
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-card.active .faq-question i {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: var(--color-white); /* White inside */
+  transition: max-height 0.4s ease;
+}
+
+.faq-card.active .faq-answer {
+  max-height: 500px;
+}
+
+.faq-answer p {
+  padding: 24px;
+  color: var(--color-text-main);
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio — Reel Life Weddings</title>
-                            <!-- Core CSS -->
+                                <!-- Core CSS -->
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/components.css">
@@ -42,64 +42,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
-<body style="padding-top: 120px;">
+<body style="padding-top: 140px;">
 
     <!-- ── Static Header (Consistent) ── -->
-        <!-- ── Header ── -->
-    <header class="header-main" id="mainHeader" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--border-light);">
-        <nav class="nav-desktop">
-            <a href="index.html" class="nav-link" style="color: var(--text-dark)">HOME</a>
-            <a href="portfolio.html" class="nav-link" style="color: var(--text-dark)">PORTFOLIO</a>
-            <a href="index.html"><img src="/assets/logo-light.webp" alt="Reelife Weddings" class="nav-logo" onerror="this.src='/assets/logo-optimized.webp'"></a>
-            <a href="index.html#pricing" class="nav-link" style="color: var(--text-dark)">PRICING</a>
-            <a href="contact.html" class="nav-link" style="color: var(--text-dark)">BOOK NOW</a>
-        </nav>
-        
-        <button class="mobile-toggle" aria-label="Menu">
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-        </button>
-    </header>
+                <!-- ── Flawless Fixed Header ── -->
+    <div class="header-wrapper">
+        <header class="header-main" id="mainHeader">
+            <nav class="nav-group left" style="flex:1;">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+            </nav>
+            
+            <div class="nav-logo-container" style="flex:1; text-align:center;">
+                <a href="index.html">
+                    <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
+                </a>
+            </div>
+
+            <nav class="nav-group right" style="flex:1; justify-content:flex-end;">
+                <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
+                <a href="contact.html" class="nav-link">Book Now</a>
+            </nav>
+            
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-dark.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;" onerror="this.src='/assets/logo-optimized.webp'">
+        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
-        <a href="index.html#pricing" class="nav-link">Pricing</a>
-        <a href="contact.html" class="nav-link">Book Now</a>
-    </div><!-- ── Mobile Menu ── -->
-    <div class="mobile-menu-overlay">
-        <nav class="mobile-nav">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="about.html" class="mobile-link">About</a>
-            <a href="contact.html" class="mobile-link">Contact</a>
-            <a href="contact.html" class="mobile-link">Book Now</a>
-        </nav>
+        <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
     </div>
-
-    <div class="container-fluid page-spacer">
-        <h1 class="page-title">OUR <span class="text-outline">VIRAL REELS</span></h1>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 100px;">
-            <!-- Real Embed 1 -->
-            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
-                <iframe src="https://www.instagram.com/reel/DX4uULlyvGB/embed" width="100%" height="580" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></iframe>
-            </div>
-            <!-- Real Embed 2 -->
-            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
-                <iframe src="https://www.instagram.com/reel/DXwZ4Imy-8e/embed" width="100%" height="580" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></iframe>
-            </div>
-            <!-- Real Embed 3 -->
-            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
-                <iframe src="https://www.instagram.com/reel/DXuQ35PkvPT/embed" width="100%" height="580" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></iframe>
-            </div>
-            <!-- Real Embed 4 -->
-            <div style="width: 100%; max-width: 400px; margin: 0 auto;">
-                <iframe src="https://www.instagram.com/reel/DXrrjdbkg75/embed" width="100%" height="580" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></iframe>
-            </div>
-        </div>
 
         <h1 class="page-title" style="margin-top: 100px;">THE <span class="text-outline">ARCHIVE</span></h1>
 
@@ -145,54 +125,33 @@
     </div>
 
     <!-- ── Footer V15 (Dark Icons) ── -->
-                            <!-- ── ReelOnGo Style Footer ── -->
+                                <!-- ── Solid Red Footer ── -->
     <footer class="footer-solid">
-        <div class="footer-watermark">Reelife</div>
-        
         <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo" style="filter: brightness(0) invert(1);">
-                <p>Instant content, zero hassle. Shot. Edited. Delivered - before your event ends.</p>
-                <div style="margin-bottom: 24px;">
-                    <strong style="display:block; margin-bottom:8px; font-size:0.9rem;">Follow Us</strong>
-                    <div class="footer-socials">
-                        <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links-left">
                 <div class="footer-links">
-                    <a href="faqs.html">Pricing</a>
-                    <a href="services.html">Services</a>
-                    <a href="#">Process</a>
-                    <a href="#">Testimonials</a>
-                    <a href="faqs.html">FAQs</a>
-                </div>
-            </div>
-            
-            <div>
-                <h4 class="footer-heading">Learn More</h4>
-                <div class="footer-links">
+                    <a href="faqs.html">FAQ</a>
+                    <a href="#">Policy</a>
+                    <a href="#">Return Policy</a>
                     <a href="#">Terms & Conditions</a>
-                    <a href="#">Cancellations & Refund</a>
-                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-brand">
+                <h2>India's Best</h2>
+                <p>Wedding Content Creators</p>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/reelifeweddings" target="_blank" style="color:white; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             
             <div class="footer-contact">
-                <h4 class="footer-heading">Contact</h4>
-                <p><i class="far fa-envelope"></i> reelifeweddings@gmail.com</p>
-                <p><i class="fas fa-phone-alt"></i> +91 91481 32417</p>
-                <p><i class="fas fa-map-marker-alt"></i> Based in Bangalore<br>Available across India</p>
+                <p>Email us at: reelifeweddings@gmail.com</p>
+                <p>Phone No.: +91 91481 32417</p>
+                <p>Based in Bangalore • Available across India</p>
+                
+                <a href="https://wa.me/919148132417" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <span>© 2026 Reelife Weddings. All rights reserved.</span>
         </div>
     </footer>
 
