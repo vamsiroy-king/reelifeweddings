@@ -28,11 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
-            slidesPerView: 'auto',
+            slidesPerView: 1.5,
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 5,
+                }
+            },
             loop: true,
-            initialSlide: 2,
-            loopedSlides: 5, /* Legacy swiper support */
-            loopAdditionalSlides: 5, /* Modern swiper support */
+            initialSlide: 0,
             coverflowEffect: {
                 rotate: 20,
                 stretch: 0,

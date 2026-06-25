@@ -43,7 +43,7 @@ const new_header_content = `    <!-- ── Flawless Fixed Header ── -->
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
+        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px; filter: brightness(0);">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="faqs.html" class="nav-link">Pricing & FAQs</a>

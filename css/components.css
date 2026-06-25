@@ -44,9 +44,8 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: var(--color-white);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  padding: 16px 0;
+  background-color: var(--color-bg-light); /* Pink bg to blend in */
+  padding: 24px 0;
 }
 
 .header-main {
@@ -59,8 +58,9 @@
 }
 
 .nav-logo {
-  height: 45px;
+  height: 40px; /* Adjust as needed */
   width: auto;
+  filter: brightness(0); /* Make the white logo BLACK so it's visible on pink! */
 }
 
 .nav-group {
