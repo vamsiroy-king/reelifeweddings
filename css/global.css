@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   Global Reset & Base Layout (Cute & Premium)
+   Global Reset & Base Layout (Premium Blue)
    ═══════════════════════════════════════════════════ */
 
 * {
@@ -12,7 +12,7 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: auto; /* Handled by Lenis */
+  scroll-behavior: auto; /* Lenis */
 }
 
 body {
@@ -29,20 +29,18 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
-.lenis.lenis-smooth iframe { pointer-events: none; }
 
 /* ── Typography ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--color-primary); /* Default headings to Red */
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-primary); /* Deep Blue */
 }
 
-h1 { font-size: clamp(3rem, 7vw, 6rem); }
-h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.03em; }
-h3 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+h1 { font-size: clamp(3rem, 7vw, 5.5rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
 
 a {
   color: inherit;
@@ -51,8 +49,8 @@ a {
 }
 
 p {
-  font-size: 1.125rem;
-  font-weight: 400;
+  font-size: 1.1rem;
+  font-weight: 300;
   color: var(--color-text-muted);
 }
 
@@ -65,8 +63,8 @@ p {
 }
 
 .text-center { text-align: center; }
-.text-dark { color: var(--color-text-main); }
 .text-white { color: var(--color-white); }
+.text-gold { color: var(--color-gold); }
 .text-primary { color: var(--color-primary); }
 
 .visually-hidden {

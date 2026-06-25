@@ -16,17 +16,11 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
-<body>
+<body class="dark-hero">
 
-    <!-- ── Header (Floating Split) ── -->
+    <!-- ── Header ── -->
     <div class="header-wrapper">
         <header class="header-main" id="mainHeader">
-            <nav class="nav-group left">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="faqs.html" class="nav-link">FAQs</a>
-                <a href="portfolio.html" class="nav-link">Portfolio</a>
-            </nav>
-            
             <div class="nav-logo-container">
                 <a href="index.html">
                     <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
@@ -34,9 +28,11 @@
             </div>
 
             <nav class="nav-group right">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Book Now</a>
+                <a href="contact.html" class="btn btn-gold" style="padding: 12px 28px; margin-left: 20px;">Book Now</a>
             </nav>
             
             <button class="mobile-toggle" aria-label="Menu">
@@ -54,73 +50,131 @@
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="faqs.html" class="nav-link">FAQs</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-gold);">Book Now</a>
     </div>
 
     <!-- ── Hero Coverflow Carousel ── -->
     <section class="hero-carousel-section">
         <div class="hero-text-content">
-            <h1>Real Events. Real Reels.</h1>
-            <p style="font-size: 1.25rem;">India's Best Wedding Content Creators <i class="fab fa-instagram" style="color: var(--color-primary);"></i></p>
+            <h1>Real Events.<br>Real Emotions.</h1>
+            <p style="font-size: 1.2rem; color: var(--color-primary-light);">India's Premier Wedding Content Creators</p>
         </div>
 
         <div class="swiper swiper-container-hero">
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
                 <div class="swiper-slide swiper-slide-reel">
+                    <!-- Note: Upload your real .mp4 videos to /assets/videos/ for perfect autoplay -->
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
                 <!-- Slide 2 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
                 <!-- Slide 3 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
                 <!-- Slide 4 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
                 <!-- Slide 5 -->
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
             </div>
-            <!-- Add Pagination if needed -->
-            <div class="swiper-pagination"></div>
         </div>
         
-        <div style="margin-top: 40px;">
-            <a href="contact.html" class="btn btn-primary">Book Reelife Now <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="contact.html" class="btn btn-primary">Check Availability</a>
         </div>
     </section>
 
-    <!-- ── Pricing (Placeholder for future) ── -->
-    <section class="pricing-section" id="pricing" style="background: var(--color-white); padding: 120px 24px;">
+    <!-- ── Gears We Use Section ── -->
+    <section class="gears-section">
         <div class="section-header">
-            <p class="section-subtitle" style="color: var(--color-primary);">PACKAGES</p>
-            <h2 class="section-title">Transparent & Premium</h2>
-            <p>Our pricing details will go here as planned.</p>
+            <span class="section-subtitle">Our Equipment</span>
+            <h2 class="section-title">Gears we use</h2>
+            <p>Great stories need great tools. We use the best phones, lenses, and gear to make your big day unforgettable.</p>
         </div>
-        <div style="text-align: center;">
-            <a href="contact.html" class="btn btn-glass">Discuss Packages</a>
+        
+        <div class="gears-grid">
+            <div class="gear-card">
+                <i class="fab fa-apple"></i>
+                <h3>iPhone 15 Pro Max</h3>
+                <p>Cinematic mode, excellent low light, multiple lenses.</p>
+            </div>
+            <div class="gear-card">
+                <i class="fas fa-video"></i>
+                <h3>DJI Osmo Pocket 3</h3>
+                <p>Super smooth shots, 4K/120fps Slo-Mo, discreet filming.</p>
+            </div>
+            <div class="gear-card">
+                <i class="fas fa-microphone-alt"></i>
+                <h3>Wireless Mics</h3>
+                <p>Crystal clear vows, no cable mess, professional sound.</p>
+            </div>
+            <div class="gear-card">
+                <i class="fas fa-battery-full"></i>
+                <h3>Power Packed</h3>
+                <p>Uninterrupted shooting, power for all gear, full-day coverage.</p>
+            </div>
         </div>
     </section>
 
-    <!-- ── Contact / Sky Section ── -->
-    <section class="contact-sky-section" id="contact">
-        <div class="contact-card-glass">
-            <h2 style="color: var(--color-primary);">Let's Connect</h2>
-            <p class="text-center" style="margin-bottom: 40px; font-weight: 500;">Still wondering if we're the right fit for your wedding? Let's chat and show you what's possible.</p>
-            
+    <!-- ── Testimonials Marquee ── -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <span class="section-subtitle" style="color: var(--color-gold);">Client Love</span>
+            <h2 class="section-title">What they say</h2>
+        </div>
+        
+        <!-- Marquee -->
+        <div class="marquee-container">
+            <!-- Double the content so it loops seamlessly -->
+            <div style="display: flex;">
+                <div class="testimonial-card">
+                    <p>"The Reels were delivered before we even woke up the next morning! Absolute magic. Highly recommend Reelife!"</p>
+                    <span class="testimonial-author">Rohan & Priya, Bangalore</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"We didn't even notice them filming, yet they captured every single intimate moment. The same-day edit was crazy."</p>
+                    <span class="testimonial-author">Karthik & Sneha, Mumbai</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Forget traditional videographers. Reelife gave us the aesthetic, trendy vibe we wanted for our Instagram. They are the best!"</p>
+                    <span class="testimonial-author">Anjali & Vikram, Delhi</span>
+                </div>
+            </div>
+            <div style="display: flex;">
+                <div class="testimonial-card">
+                    <p>"The Reels were delivered before we even woke up the next morning! Absolute magic. Highly recommend Reelife!"</p>
+                    <span class="testimonial-author">Rohan & Priya, Bangalore</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"We didn't even notice them filming, yet they captured every single intimate moment. The same-day edit was crazy."</p>
+                    <span class="testimonial-author">Karthik & Sneha, Mumbai</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Forget traditional videographers. Reelife gave us the aesthetic, trendy vibe we wanted for our Instagram. They are the best!"</p>
+                    <span class="testimonial-author">Anjali & Vikram, Delhi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Unified Contact Form Section ── -->
+    <section class="contact-section" id="contact" style="padding: 120px 24px; background: var(--color-bg-light);">
+        <div class="section-header">
+            <span class="section-subtitle">Let's Connect</span>
+            <h2 class="section-title">Book Reelife</h2>
+            <p>Still wondering if we're the right fit for your wedding? Let's chat and show you what's possible.</p>
+        </div>
+        
+        <div class="unified-form-container">
             <form id="contactForm">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
                     <div class="form-group">
                         <label class="form-label">First name *</label>
                         <input type="text" id="name" class="form-input" required>
@@ -156,35 +210,50 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px; font-size: 1.15rem; padding: 20px;">Submit via WhatsApp</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px;">Submit via WhatsApp</button>
             </form>
         </div>
     </section>
 
-    <!-- ── Solid Red Footer ── -->
+    <!-- ── Robust Footer ── -->
     <footer class="footer-solid">
-        <div class="footer-brand">
-            <h2>India's Best</h2>
-            <p>Wedding Content Creators</p>
-        </div>
-        
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="faqs.html">FAQs</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </div>
-        
-        <div class="footer-socials">
-            <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <!-- Fallback to optimized logo until white logo is placed -->
+                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo">
+                <p>India's Premier Wedding Content Creators. Capturing your unscripted moments flawlessly on iPhone.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="faqs.html">FAQs</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="footer-contact">
+                <h4 class="footer-heading">Contact Us</h4>
+                <p><i class="fas fa-phone-alt"></i> +91 91481 32417</p>
+                <p><i class="fas fa-envelope"></i> reelifeweddings@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jayanagar, Bangalore<br>Available Worldwide</p>
+            </div>
         </div>
         
         <div class="footer-bottom">
             <span>© 2026 Reelife Weddings. All rights reserved.</span>
-            <span>Based in Bangalore. Available Worldwide.</span>
+            <div style="display: flex; gap: 24px;">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
         </div>
     </footer>
 

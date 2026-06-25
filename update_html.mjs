@@ -14,15 +14,9 @@ const new_head_content = `    <!-- Core CSS -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">`;
 
-const new_header_content = `    <!-- ── Header (Floating Split) ── -->
+const new_header_content = `    <!-- ── Header ── -->
     <div class="header-wrapper">
         <header class="header-main" id="mainHeader">
-            <nav class="nav-group left">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="faqs.html" class="nav-link">FAQs</a>
-                <a href="portfolio.html" class="nav-link">Portfolio</a>
-            </nav>
-            
             <div class="nav-logo-container">
                 <a href="index.html">
                     <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
@@ -30,9 +24,11 @@ const new_header_content = `    <!-- ── Header (Floating Split) ── -->
             </div>
 
             <nav class="nav-group right">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
-                <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Book Now</a>
+                <a href="contact.html" class="btn btn-gold" style="padding: 12px 28px; margin-left: 20px;">Book Now</a>
             </nav>
             
             <button class="mobile-toggle" aria-label="Menu">
@@ -50,33 +46,47 @@ const new_header_content = `    <!-- ── Header (Floating Split) ── -->
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="faqs.html" class="nav-link">FAQs</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-gold);">Book Now</a>
     </div>`;
 
-const new_footer_content = `    <!-- ── Solid Red Footer ── -->
+const new_footer_content = `    <!-- ── Robust Footer ── -->
     <footer class="footer-solid">
-        <div class="footer-brand">
-            <h2>India's Best</h2>
-            <p>Wedding Content Creators</p>
-        </div>
-        
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="faqs.html">FAQs</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </div>
-        
-        <div class="footer-socials">
-            <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo">
+                <p>India's Premier Wedding Content Creators. Capturing your unscripted moments flawlessly on iPhone.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="faqs.html">FAQs</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Book Now</a>
+                </div>
+            </div>
+            
+            <div class="footer-contact">
+                <h4 class="footer-heading">Contact Us</h4>
+                <p><i class="fas fa-phone-alt"></i> +91 91481 32417</p>
+                <p><i class="fas fa-envelope"></i> reelifeweddings@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jayanagar, Bangalore<br>Available Worldwide</p>
+            </div>
         </div>
         
         <div class="footer-bottom">
             <span>© 2026 Reelife Weddings. All rights reserved.</span>
-            <span>Based in Bangalore. Available Worldwide.</span>
+            <div style="display: flex; gap: 24px;">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
         </div>
     </footer>
 
@@ -94,21 +104,20 @@ files.forEach(f => {
 
     // 1. Replace head
     content = content.replace(/<!-- Core CSS -->[\s\S]*?<link rel="stylesheet" href="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/font-awesome\/[^"]+">/, new_head_content);
-    // Remove old swiper link if exists
-    content = content.replace(/<link rel="stylesheet" href="https:\/\/cdn\.jsdelivr\.net\/npm\/swiper@11\/swiper-bundle\.min\.css" \/>/, '');
     
-    // Add new Swiper CSS to head
-    content = content.replace(/<\/head>/, '    <!-- Swiper CSS -->\n    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />\n</head>');
+    // Ensure Swiper CSS is in head
+    if (!content.includes('swiper-bundle.min.css')) {
+        content = content.replace(/<\/head>/, '    <!-- Swiper CSS -->\n    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />\n</head>');
+    }
 
-    // 2. Replace Header and mobile menu overlay
+    // 2. Replace Header
     content = content.replace(/<!-- ── Header .*?<\/div>\s*<\/div>/, new_header_content);
     
-    // 3. Replace Footer and everything after to </body>
-    // It might be labeled <!-- ── Footer ── --> or <!-- ── Solid Red Footer ── -->
-    content = content.replace(/<!-- ── (Solid Red )?Footer ── -->[\s\S]*?<\/body>/, new_footer_content);
+    // 3. Replace Footer
+    content = content.replace(/<!-- ── (Solid Red )?(Robust )?Footer ── -->[\s\S]*?<\/body>/, new_footer_content);
 
-    // 4. Force body style for subpages (padding top for the floating header to clear)
-    content = content.replace(/<body[^>]*>/, '<body style="padding-top: 150px;">');
+    // 4. Force body padding for subpages so header clears
+    content = content.replace(/<body[^>]*>/, '<body style="padding-top: 120px;">');
 
     fs.writeFileSync(path.join(__dirname, f), content, 'utf8');
     console.log(`Updated ${f}`);
