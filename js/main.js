@@ -1,6 +1,7 @@
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// Swiper is loaded globally via CDN in head for simplicity, but we can access it here.
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,47 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.ticker.add((time) => { lenis.raf(time * 1000); });
     gsap.ticker.lagSmoothing(0);
 
-    // 2. Mobile Menu Toggle
+    // 2. Swiper Coverflow Initialization
+    if (typeof Swiper !== 'undefined') {
+        const swiper = new Swiper('.swiper-container-hero', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            coverflowEffect: {
+                rotate: 20,
+                stretch: 0,
+                depth: 200,
+                modifier: 1,
+                slideShadows: false,
+            },
+            on: {
+                init: function () {
+                    playActiveVideo(this);
+                },
+                slideChangeTransitionEnd: function () {
+                    playActiveVideo(this);
+                },
+            }
+        });
+
+        function playActiveVideo(swiperInstance) {
+            // Pause all videos
+            document.querySelectorAll('.reel-video').forEach(video => {
+                video.pause();
+                video.currentTime = 0; // reset
+            });
+            // Play active slide video
+            const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+            const activeVideo = activeSlide.querySelector('video');
+            if (activeVideo) {
+                activeVideo.play().catch(e => console.log("Autoplay prevented"));
+            }
+        }
+    }
+
+    // 3. Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-menu .nav-link');
@@ -38,98 +79,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Header Scroll Effect
+    // 4. Floating Header Scroll Effect
     const header = document.querySelector('.header-main');
     if (header) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.style.background = 'var(--glass-bg-dark)';
-                header.style.borderColor = 'rgba(255,255,255,0.1)';
-                header.querySelectorAll('.nav-link').forEach(link => link.style.color = 'var(--color-white)');
-                if(mobileToggle) mobileToggle.querySelectorAll('span').forEach(span => span.style.backgroundColor = 'var(--color-white)');
+                header.classList.add('scrolled');
             } else {
-                header.style.background = 'var(--glass-bg)';
-                header.style.borderColor = 'var(--glass-border)';
-                header.querySelectorAll('.nav-link').forEach(link => link.style.color = 'var(--text-main)');
-                if(mobileToggle) mobileToggle.querySelectorAll('span').forEach(span => span.style.backgroundColor = 'var(--text-main)');
+                header.classList.remove('scrolled');
             }
         });
     }
 
-    // 4. Contact Form WhatsApp Submission
+    // 5. Contact Form WhatsApp Submission (The Sky Form)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
-            const packageSelect = document.getElementById('package').value;
-            const events = document.getElementById('events').value;
+            const mobile = document.getElementById('mobile').value;
+            const email = document.getElementById('email').value;
             const date = document.getElementById('date').value;
+            const venue = document.getElementById('venue').value;
             
-            // Collect checked events
-            const eventTypes = [];
-            document.querySelectorAll('input[name="eventType"]:checked').forEach(checkbox => {
-                eventTypes.push(checkbox.value);
+            let source = 'Not specified';
+            const sourceEl = document.querySelector('input[name="source"]:checked');
+            if (sourceEl) {
+                source = sourceEl.value;
+            }
+
+            if (!name || !mobile || !email || !date) {
+                alert("Please fill all required fields.");
+                return;
+            }
+
+            let message = `*New Booking Inquiry!*%0A%0A`;
+            message += `*Name:* ${name}%0A`;
+            message += `*Phone:* ${mobile}%0A`;
+            message += `*Email:* ${email}%0A`;
+            message += `*Event Date:* ${date}%0A`;
+            if (venue) message += `*Venue:* ${venue}%0A`;
+            message += `*Source:* ${source}`;
+
+            window.open(`https://wa.me/919148132417?text=${message}`, '_blank');
+        });
+    }
+
+    // 6. FAQs Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const card = question.parentElement;
+            
+            // Close others
+            document.querySelectorAll('.faq-card').forEach(c => {
+                if (c !== card) c.classList.remove('active');
             });
-            const details = document.getElementById('details').value;
-
-            // Basic validation
-            if (!name || !packageSelect || !events || !date || eventTypes.length === 0) {
-                alert("Please fill all required fields and select at least one event type.");
-                return;
-            }
-
-            let message = `*New Booking Request!*%0A%0A`;
-            message += `*Name:* ${name}%0A`;
-            message += `*Package:* ${packageSelect}%0A`;
-            message += `*No. of Events:* ${events}%0A`;
-            message += `*Event Types:* ${eventTypes.join(', ')}%0A`;
-            message += `*Date(s):* ${date}%0A`;
-            if (details) message += `*Details:* ${details}`;
-
-            window.open(`https://wa.me/919148132417?text=${message}`, '_blank');
+            
+            // Toggle current
+            card.classList.toggle('active');
         });
-
-        // Pre-select package from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const preselectedPackage = urlParams.get('package');
-        if (preselectedPackage) {
-            const selectElement = document.getElementById('package');
-            if (selectElement) {
-                for (let i = 0; i < selectElement.options.length; i++) {
-                    if (selectElement.options[i].value.toLowerCase().includes(preselectedPackage.toLowerCase())) {
-                        selectElement.selectedIndex = i;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    // 5. Creator Form WhatsApp Submission
-    const creatorForm = document.getElementById('creatorForm');
-    if (creatorForm) {
-        creatorForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('creatorName').value;
-            const mobile = document.getElementById('creatorMobile').value;
-            const insta = document.getElementById('creatorInsta').value;
-            const city = document.getElementById('creatorCity').value;
-            const device = document.getElementById('creatorDevice').value;
-
-            if (!name || !mobile || !insta || !city || !device) {
-                alert("Please fill all fields.");
-                return;
-            }
-
-            let message = `*New Creator Application!*%0A%0A`;
-            message += `*Name:* ${name}%0A`;
-            message += `*Mobile:* ${mobile}%0A`;
-            message += `*Instagram:* ${insta}%0A`;
-            message += `*City:* ${city}%0A`;
-            message += `*Device:* ${device}%0A`;
-
-            window.open(`https://wa.me/919148132417?text=${message}`, '_blank');
-        });
-    }
+    });
 });

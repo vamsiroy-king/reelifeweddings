@@ -1,208 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs — Reel Life Weddings</title>
-            <!-- Core CSS -->
+    <title>FAQs — Reelife Weddings</title>
+    
+    <!-- Core CSS -->
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/sections.css">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        body {
-            
-            
-        }
-
-        .faq-hero {
-            padding: 180px 20px 80px 20px;
-            text-align: center;
-        }
-
-        .faq-hero h1 {
-            font-family: var(--font-heading);
-            font-size: 4rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto 100px auto;
-            border-top: 1px solid #eee;
-        }
-
-        details {
-            border-bottom: 1px solid #eee;
-            padding: 30px 0;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        details:hover {
-            background: #fafafa;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        summary {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            
-        }
-
-        summary::-webkit-details-marker {
-            display: none;
-        }
-
-        summary::after {
-            content: '+';
-            font-family: var(--font-body);
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-
-        details[open] summary::after {
-            content: '-';
-        }
-
-        .faq-answer {
-            padding-top: 20px;
-            color: #666;
-            line-height: 1.6;
-            font-size: 1rem;
-            max-width: 90%;
-        }
-
-        @media (max-width: 768px) {
-            .faq-hero h1 {
-                font-size: 3rem;
-            }
-        }
-    </style>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+<body style="padding-top: 150px;">
 
-<body style="background-color: var(--color-offwhite); color: var(--text-main); padding-top: 100px;">
+    <!-- ── Header (Floating Split) ── -->
+    <div class="header-wrapper">
+        <header class="header-main" id="mainHeader">
+            <nav class="nav-group left">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
+                <a href="portfolio.html" class="nav-link">Portfolio</a>
+            </nav>
+            
+            <div class="nav-logo-container">
+                <a href="index.html">
+                    <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
+                </a>
+            </div>
 
-    <!-- ── Static Header (Consistent) ── -->
-        <!-- ── Header ── -->
-    <header class="header-main" id="mainHeader" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--border-light);">
-        <nav class="nav-desktop">
-            <a href="index.html" class="nav-link" style="color: var(--text-dark)">HOME</a>
-            <a href="portfolio.html" class="nav-link" style="color: var(--text-dark)">PORTFOLIO</a>
-            <a href="index.html"><img src="/assets/logo-light.webp" alt="Reelife Weddings" class="nav-logo" onerror="this.src='/assets/logo-optimized.webp'"></a>
-            <a href="index.html#pricing" class="nav-link" style="color: var(--text-dark)">PRICING</a>
-            <a href="contact.html" class="nav-link" style="color: var(--text-dark)">BOOK NOW</a>
-        </nav>
-        
-        <button class="mobile-toggle" aria-label="Menu">
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-            <span style="background-color: var(--text-dark);"></span>
-        </button>
-    </header>
+            <nav class="nav-group right">
+                <a href="about.html" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Book Now</a>
+            </nav>
+            
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+    </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-dark.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;" onerror="this.src='/assets/logo-optimized.webp'">
+        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
-        <a href="index.html#pricing" class="nav-link">Pricing</a>
-        <a href="contact.html" class="nav-link">Book Now</a>
-    </div><button class="mobile-toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <div class="scroll-logo logo-scrolled"
-        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: auto; pointer-events: all; transition: none;">
-        <a href="index.html"><img src="/assets/logo-optimized.webp" alt="Reel Life Weddings"></a>
-    </div>
-    </header>
-
-    <!-- ── Mobile Menu ── -->
-    <div class="mobile-menu-overlay">
-        <nav class="mobile-nav">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="about.html" class="mobile-link">About</a>
-            <a href="contact.html" class="mobile-link">Contact</a>
-            <a href="contact.html" class="mobile-link">Book Now</a>
-        </nav>
+        <a href="faqs.html" class="nav-link">FAQs</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
     </div>
 
-    <!-- ── Content ── -->
-    <section class="faq-hero">
-        <h1>COMMON QUESTIONS</h1>
-        <p style="color:#666;">Everything you need to know about how we work.</p>
+    <!-- ── FAQs Section ── -->
+    <section class="faq-section">
+        <div class="section-header">
+            <h1 class="section-title">Frequently Asked Questions</h1>
+            <p>Everything you need to know about our iPhone Content Creation services.</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-card">
+                <div class="faq-question">
+                    What services do you offer?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We specialize in real-time wedding content creation using top-tier iPhones. This includes shooting aesthetic vertical videos, crafting cinematic reels, and delivering raw footage instantly via AirDrop. We are essentially your personal paparazzi for the day.</p>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-question">
+                    How is this different from traditional videography?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Traditional videographers shoot horizontally with large cameras, and their edits take months to deliver. We shoot vertically specifically for social media, blend in like guests, and deliver your edited Reels within 24-48 hours (or even on the same day!).</p>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-question">
+                    Do you manage our personal social media account?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, if you choose our Legacy package, we offer complete Social Media Takeovers. We will log into your account, post live stories, upload reels, and engage with your audience so you can just enjoy the wedding without touching your phone.</p>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-question">
+                    How much do your services cost?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer three transparent tiers: Moments, Signature, and Legacy. Our packages start at ₹9,999 per event. Please fill out our booking form, and we'll send you our detailed brochure.</p>
+                </div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-question">
+                    Will you get in the way of the main photographers?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely not. We consider ourselves an "additive" service. Because we shoot on iPhones, we are incredibly nimble and unobtrusive. We work *alongside* your main team, never in front of them.</p>
+                </div>
+            </div>
+            
+            <div class="faq-card">
+                <div class="faq-question">
+                    How far in advance should we book?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We recommend booking 3 to 6 months in advance, especially during the peak Indian wedding seasons. However, feel free to reach out for last-minute availability!</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="faq-container">
-        <details>
-            <summary>Do you travel for weddings?</summary>
-            <p class="faq-answer">Absolutely. We are based in Goa & Bangalore but travel worldwide. From Udaipur to Lake
-                Como, we are ready to fly anywhere your love story takes us.</p>
-        </details>
-
-        <details>
-            <summary>What is your delivery timeline?</summary>
-            <p class="faq-answer">We pride ourselves on speed. You get a set of 10 Social Reels within 24-48 hours. The
-                full cinematic highlights and documentary film are delivered within 4-6 weeks.</p>
-        </details>
-
-        <details>
-            <summary>Do you provide Raw Footage?</summary>
-            <p class="faq-answer">Yes, we believe your memories belong to you. We provide all raw footage on a
-                high-speed SSD upon request at no extra charge (if hard drive is provided by you).</p>
-        </details>
-
-        <details>
-            <summary>How do we book you?</summary>
-            <p class="faq-answer">It is simple. Fill out our <a href="contact.html">Booking Form</a> to check
-                availability. We require a 50% retainer to lock your dates.</p>
-        </details>
-    </div>
-
-    <!-- ── Footer V15 (Dark Icons) ── -->
-            <!-- ── Footer ── -->
-    <footer class="footer">
-        <div class="footer-watermark" style="color: var(--color-offwhite);">reelife</div>
+    <!-- ── Solid Red Footer ── -->
+    <footer class="footer-solid">
+        <div class="footer-brand">
+            <h2>India's Best</h2>
+            <p>Wedding Content Creators</p>
+        </div>
         
-        <div class="footer-content">
-            <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo">
-            
-            <div class="footer-socials">
-                <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-            
-            <div class="footer-bottom">
-                <span>© 2026 Reelife Weddings. All rights reserved.</span>
-                <span>Based in Bangalore. Available Worldwide.</span>
-            </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="faqs.html">FAQs</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        
+        <div class="footer-bottom">
+            <span>© 2026 Reelife Weddings. All rights reserved.</span>
+            <span>Based in Bangalore. Available Worldwide.</span>
         </div>
     </footer>
 
-    <!-- WhatsApp CTA -->
-    <a href="https://wa.me/919148132417" target="_blank" class="wa-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="/js/main.js"></script>
 </body>
-
 </html>
-
-
-

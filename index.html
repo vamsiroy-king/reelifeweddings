@@ -13,25 +13,31 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
 
-    <!-- ── Header (Pill Shaped Glass) ── -->
+    <!-- ── Header (Floating Split) ── -->
     <div class="header-wrapper">
         <header class="header-main" id="mainHeader">
-            <a href="index.html">
-                <!-- Using original logo since theme is light -->
-                <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
-            </a>
-            
-            <nav class="nav-desktop">
+            <nav class="nav-group left">
                 <a href="index.html" class="nav-link active">Home</a>
+                <a href="faqs.html" class="nav-link">FAQs</a>
                 <a href="portfolio.html" class="nav-link">Portfolio</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="contact.html" class="nav-link">Book Now</a>
             </nav>
             
-            <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.85rem; display: none;">Let's Talk</a>
+            <div class="nav-logo-container">
+                <a href="index.html">
+                    <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="nav-logo">
+                </a>
+            </div>
+
+            <nav class="nav-group right">
+                <a href="about.html" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Book Now</a>
+            </nav>
             
             <button class="mobile-toggle" aria-label="Menu">
                 <span></span>
@@ -43,188 +49,147 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 40px; margin-bottom: 20px;">
+        <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px;">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="contact.html" class="nav-link">Book Now</a>
+        <a href="faqs.html" class="nav-link">FAQs</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
     </div>
 
-    <!-- ── Hero 3D Curved Reels ── -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">India's 1st <span class="accent-text">Unscripted</span><br>Wedding Creators</h1>
-            <p class="hero-subtitle">We capture the raw magic of your love story. Turning fleeting moments into forever memories.</p>
-            <div style="display: flex; gap: 16px; justify-content: center;">
-                <a href="contact.html" class="btn btn-primary">Book Your Shoot <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-            </div>
+    <!-- ── Hero Coverflow Carousel ── -->
+    <section class="hero-carousel-section">
+        <div class="hero-text-content">
+            <h1>Real Events. Real Reels.</h1>
+            <p style="font-size: 1.25rem;">India's Best Wedding Content Creators <i class="fab fa-instagram" style="color: var(--color-primary);"></i></p>
         </div>
 
-        <div class="hero-reels-container">
-            <div class="hero-reels-track">
-                <!-- Fallback to image if no video, but user wants reels here -->
-                <!-- I'll use the original video in a loop for the mockup -->
-                <div class="hero-reel-card">
-                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4"></video>
+        <div class="swiper swiper-container-hero">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide swiper-slide-reel">
+                    <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
-                <div class="hero-reel-card">
-                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 0.5s;"></video>
+                <!-- Slide 2 -->
+                <div class="swiper-slide swiper-slide-reel">
+                    <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
-                <div class="hero-reel-card">
-                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 1.2s;"></video>
+                <!-- Slide 3 -->
+                <div class="swiper-slide swiper-slide-reel">
+                    <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
-                <div class="hero-reel-card">
-                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 0.8s;"></video>
+                <!-- Slide 4 -->
+                <div class="swiper-slide swiper-slide-reel">
+                    <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
-                <div class="hero-reel-card">
-                    <video class="reel-video" autoplay muted loop playsinline src="/assets/videos/video.mp4" style="animation-delay: 1.5s;"></video>
+                <!-- Slide 5 -->
+                <div class="swiper-slide swiper-slide-reel">
+                    <video class="reel-video" muted loop playsinline src="/assets/videos/video.mp4"></video>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
             </div>
+            <!-- Add Pagination if needed -->
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <a href="contact.html" class="btn btn-primary">Book Reelife Now <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
         </div>
     </section>
 
-    <!-- ── Pricing (White Cards) ── -->
+    <!-- ── Pricing (Placeholder for future) ── -->
     <section class="pricing-section" id="pricing" style="background: var(--color-white); padding: 120px 24px;">
         <div class="section-header">
-            <p class="section-subtitle">Packages</p>
-            <h2 class="section-title">Pick Your Plan. Book Instantly.</h2>
+            <p class="section-subtitle" style="color: var(--color-primary);">PACKAGES</p>
+            <h2 class="section-title">Transparent & Premium</h2>
+            <p>Our pricing details will go here as planned.</p>
         </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; max-width: 1100px; margin: 0 auto;">
-            <!-- MOMENTS -->
-            <div style="background: var(--color-offwhite); border-radius: 24px; padding: 48px 32px; text-align: left; border: 1px solid var(--color-light-gray);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Moments</h3>
-                <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">₹9,999<span style="font-size: 1rem; color: var(--text-muted);"> / event</span></div>
-                
-                <ul style="list-style: none; margin-bottom: 32px;">
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 1 Content Creator</li>
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Complete Coverage</li>
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 2 Edited Reels</li>
-                    <li style="padding: 12px 0;"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Up to 15 Stories</li>
-                </ul>
-                <a href="contact.html?package=moments" class="btn btn-glass" style="width: 100%;">Select Moments</a>
-            </div>
-
-            <!-- SIGNATURE -->
-            <div style="background: var(--color-white); border-radius: 24px; padding: 48px 32px; text-align: left; border: 2px solid var(--color-primary); box-shadow: 0 20px 40px rgba(255, 32, 51, 0.1); position: relative; transform: translateY(-10px);">
-                <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--color-primary); color: white; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700;">MOST POPULAR</div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Signature</h3>
-                <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">₹14,999<span style="font-size: 1rem; color: var(--text-muted);"> / event</span></div>
-                
-                <ul style="list-style: none; margin-bottom: 32px;">
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 1 Content Creator</li>
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Complete Coverage</li>
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 4 Edited Reels</li>
-                    <li style="padding: 12px 0;"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Same-Day Highlights</li>
-                </ul>
-                <a href="contact.html?package=signature" class="btn btn-primary" style="width: 100%;">Select Signature</a>
-            </div>
-
-            <!-- LEGACY -->
-            <div style="background: var(--color-offwhite); border-radius: 24px; padding: 48px 32px; text-align: left; border: 1px solid var(--color-light-gray);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Legacy</h3>
-                <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px;">₹24,999<span style="font-size: 1rem; color: var(--text-muted);"> / event</span></div>
-                
-                <ul style="list-style: none; margin-bottom: 32px;">
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 2 Content Creators</li>
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Complete Coverage</li>
-                    <li style="padding: 12px 0; border-bottom: 1px solid var(--color-light-gray);"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> 6 Edited Reels</li>
-                    <li style="padding: 12px 0;"><i class="fas fa-check text-primary" style="margin-right: 12px;"></i> Unlimited Stories</li>
-                </ul>
-                <a href="contact.html?package=legacy" class="btn btn-glass" style="width: 100%;">Select Legacy</a>
-            </div>
+        <div style="text-align: center;">
+            <a href="contact.html" class="btn btn-glass">Discuss Packages</a>
         </div>
     </section>
 
-    <!-- ── Creator Application Section ── -->
-    <section class="creator-section">
-        <div class="creator-container">
-            <div class="creator-info">
-                <h2>Join the Reelife <span class="accent-text">Creator</span> Crew</h2>
-                <p>Apply to become a Reelife Creator. We connect top talent with premium wedding assignments across India.</p>
-                
-                <div class="creator-benefits">
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-video"></i></div>
-                        <div class="benefit-text">
-                            <h4>Premium Assignments</h4>
-                            <p>Work on luxury weddings and high-profile events.</p>
-                        </div>
+    <!-- ── Contact / Sky Section ── -->
+    <section class="contact-sky-section" id="contact">
+        <div class="contact-card-glass">
+            <h2 style="color: var(--color-primary);">Let's Connect</h2>
+            <p class="text-center" style="margin-bottom: 40px; font-weight: 500;">Still wondering if we're the right fit for your wedding? Let's chat and show you what's possible.</p>
+            
+            <form id="contactForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="form-group">
+                        <label class="form-label">First name *</label>
+                        <input type="text" id="name" class="form-input" required>
                     </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon"><i class="fas fa-wallet"></i></div>
-                        <div class="benefit-text">
-                            <h4>Fast Payouts</h4>
-                            <p>Earnings are credited directly after your shoot is verified.</p>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number *</label>
+                        <input type="tel" id="mobile" class="form-input" required>
                     </div>
                 </div>
-            </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">When's the big day? *</label>
+                    <input type="date" id="date" class="form-input" required>
+                </div>
 
-            <!-- WhatsApp Integrated Form -->
-            <div class="creator-form-card">
-                <form id="creatorForm">
-                    <div class="form-group">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" id="creatorName" class="form-input" required placeholder="John Doe">
+                <div class="form-group">
+                    <label class="form-label">Venue (if decided)</label>
+                    <input type="text" id="venue" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">How did you find us?</label>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 8px;"><input type="radio" name="source" value="Instagram"> Instagram</label>
+                        <label style="display: flex; align-items: center; gap: 8px;"><input type="radio" name="source" value="Google Search"> Google Search</label>
+                        <label style="display: flex; align-items: center; gap: 8px;"><input type="radio" name="source" value="Friends/Family"> Friends/Family</label>
+                        <label style="display: flex; align-items: center; gap: 8px;"><input type="radio" name="source" value="Others"> Others</label>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Mobile Number</label>
-                        <input type="tel" id="creatorMobile" class="form-input" required placeholder="+91">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Instagram Handle</label>
-                        <input type="text" id="creatorInsta" class="form-input" required placeholder="@username">
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                        <div class="form-group">
-                            <label class="form-label">City</label>
-                            <input type="text" id="creatorCity" class="form-input" required placeholder="e.g. Bangalore">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Primary Device</label>
-                            <select id="creatorDevice" class="form-select" required>
-                                <option value="" disabled selected>Select Phone</option>
-                                <option value="iPhone 15 Pro / Max">iPhone 15 Pro / Max</option>
-                                <option value="iPhone 14 Pro / Max">iPhone 14 Pro / Max</option>
-                                <option value="iPhone 13 Pro / Max">iPhone 13 Pro / Max</option>
-                                <option value="Samsung S24/S23 Ultra">Samsung S24/S23 Ultra</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" id="creatorSubmitBtn" class="btn btn-primary" style="width: 100%; margin-top: 16px;">Apply via WhatsApp</button>
-                </form>
-            </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 16px; font-size: 1.15rem; padding: 20px;">Submit via WhatsApp</button>
+            </form>
         </div>
     </section>
 
-    <!-- ── Footer ── -->
-    <footer class="footer">
-        <div class="footer-watermark" style="color: var(--color-offwhite);">reelife</div>
+    <!-- ── Solid Red Footer ── -->
+    <footer class="footer-solid">
+        <div class="footer-brand">
+            <h2>India's Best</h2>
+            <p>Wedding Content Creators</p>
+        </div>
         
-        <div class="footer-content">
-            <img src="/assets/logo-optimized.webp" alt="Reelife Weddings" class="footer-logo">
-            
-            <div class="footer-socials">
-                <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-            
-            <div class="footer-bottom">
-                <span>© 2026 Reelife Weddings. All rights reserved.</span>
-                <span>Based in Bangalore. Available Worldwide.</span>
-            </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="faqs.html">FAQs</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/reelifeweddings" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:reelifeweddings@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        
+        <div class="footer-bottom">
+            <span>© 2026 Reelife Weddings. All rights reserved.</span>
+            <span>Based in Bangalore. Available Worldwide.</span>
         </div>
     </footer>
 
-    <!-- WhatsApp CTA -->
-    <a href="https://wa.me/919148132417" target="_blank" class="wa-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="/js/main.js"></script>
 </body>
 </html>

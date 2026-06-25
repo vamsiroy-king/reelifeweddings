@@ -1,60 +1,58 @@
 /* ═══════════════════════════════════════════════════
-   Design Tokens — Reelife Red & Glassmorphism
-   Vibe: Vibrant Red, Pure White, Frosted Glass, Apple-esque
+   Design Tokens — Reelife Bespoke "Dopamine" Aesthetic
+   Vibe: Cute, Premium, Playful, Warm, Engaging
    ═══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   /* ── Core Colors ── */
   --color-primary: #FF2033; /* Reelife Red (vibrant) */
   --color-primary-dark: #D91020;
-  --color-primary-light: #FFEBED;
+  --color-primary-light: #FFE5E8;
+  
+  --color-blush: #FDEEF0; /* Pastel Pink / Blush Pearl */
   --color-white: #FFFFFF;
-  --color-offwhite: #F8F9FA;
-  --color-black: #111111;
-  --color-dark-gray: #333333;
-  --color-gray: #888888;
-  --color-light-gray: #E0E0E0;
+  --color-black: #1A1A1A;
+  
+  --color-text-main: #2C181A; /* Very dark warm gray/red */
+  --color-text-muted: #665A5B;
+  
+  --color-border: rgba(255, 32, 51, 0.15);
 
   /* ── Backgrounds ── */
-  --bg-main: var(--color-offwhite);
+  --bg-main: var(--color-blush);
   --bg-card: var(--color-white);
-  --bg-dark: var(--color-black);
-
-  /* ── Text ── */
-  --text-main: var(--color-black);
-  --text-muted: var(--color-gray);
-  --text-inverse: var(--color-white);
-
-  /* ── Glassmorphism ── */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-bg-dark: rgba(17, 17, 17, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-  --glass-blur: blur(16px);
+  --bg-footer: var(--color-primary);
 
   /* ── Typography ── */
-  /* Apple-style primary font */
-  --font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  /* Thick display font */
-  --font-display: 'Inter', var(--font-primary);
-  /* Calligraphy font for accents */
-  --font-accent: 'Dancing Script', cursive;
+  /* Friendly, geometric, bold headings */
+  --font-display: 'Outfit', sans-serif;
+  /* Clean, highly readable body */
+  --font-primary: 'Inter', sans-serif;
 
   /* ── Spacing & Layout ── */
-  --space-unit: 8px;
-  --space-sm: 24px;
-  --space-md: 48px;
-  --space-lg: 120px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 80px;
+  --space-xl: 120px;
   
-  --header-height: 80px;
+  --header-height: 90px;
   --max-width: 1400px;
+
+  /* ── Shadows & Radii ── */
+  --radius-sm: 12px;
+  --radius-md: 24px;
+  --radius-lg: 40px;
+  --radius-pill: 100px;
+  
+  --shadow-soft: 0 12px 40px rgba(255, 32, 51, 0.08);
+  --shadow-float: 0 20px 60px rgba(0, 0, 0, 0.08);
 
   /* ── Transitions ── */
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-fast: 0.2s var(--ease-smooth);
   --transition-normal: 0.4s var(--ease-smooth);
-  --transition-slow: 0.8s var(--ease-smooth);
 }
