@@ -507,13 +507,11 @@
 }
 
 .pricing-section .section-title {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: -1px;
-    color: #111;
-    text-align: center;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: #2C1810;
 }
 
 .pricing-container {
@@ -527,17 +525,40 @@
 @media (max-width: 900px) {
     .pricing-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 24px;
     }
 }
 
 .pricing-card {
-    background: transparent;
-    padding: 20px 16px;
+    background: #FFFFFF;
+    padding: 40px 32px;
     position: relative;
     display: flex;
     flex-direction: column;
-    border: none;
+    border: 1px solid #E8E0DA;
+}
+
+.pricing-card:first-child {
+    border-radius: 16px 0 0 16px;
+}
+.pricing-card:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+@media (max-width: 900px) {
+    .pricing-card:first-child,
+    .pricing-card:last-child {
+        border-radius: 16px;
+    }
+}
+
+.pricing-card.popular {
+    background: #1C1C1C;
+    color: #FFFFFF;
+    border-color: transparent;
+    border-radius: 16px;
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .pricing-badge {
@@ -547,108 +568,149 @@
 .pricing-header {
     text-align: left;
     margin-bottom: 24px;
-    padding-bottom: 0px;
-    border-bottom: none;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E8E0DA;
+}
+
+.pricing-card.popular .pricing-header {
+    border-bottom-color: rgba(255,255,255,0.15);
 }
 
 .pricing-header h2 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-    font-size: 2rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.6rem;
     font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-    color: #111;
+    margin-bottom: 6px;
+    color: #2C1810;
+}
+
+.pricing-card.popular .pricing-header h2 {
+    color: #FFFFFF;
 }
 
 .pricing-subtitle {
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 0.85rem;
+    color: #8B7B74;
     line-height: 1.5;
 }
 
+.pricing-card.popular .pricing-subtitle {
+    color: rgba(255,255,255,0.7);
+}
+
 .pricing-price {
-    margin-top: 24px;
+    margin-top: 16px;
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 4px;
 }
 
 .price-strikethrough {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #999;
     text-decoration: line-through;
     display: block;
     margin-bottom: 2px;
 }
 
+.pricing-card.popular .price-strikethrough {
+    color: rgba(255,255,255,0.5);
+}
+
 .price-current {
-    font-size: 2.8rem;
-    font-weight: 700;
-    letter-spacing: -1.5px;
+    font-size: 2.2rem;
+    font-weight: 800;
     color: #ff3b5c;
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
+.pricing-card.popular .price-current {
+    color: #FFFFFF;
+}
+
 .price-unit {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #555;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #8B7B74;
+}
+
+.pricing-card.popular .price-unit {
+    color: rgba(255,255,255,0.6);
 }
 
 .pricing-features {
     list-style: none;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     flex-grow: 1;
 }
 
 .pricing-features li {
-    padding: 10px 0;
-    font-size: 0.95rem;
+    padding: 8px 0;
+    font-size: 0.9rem;
     text-align: left;
-    color: #222;
+    color: #4A3F3A;
     display: block;
     position: relative;
-    padding-left: 36px;
-    line-height: 1.5;
+    padding-left: 32px;
+    line-height: 1.4;
+    min-height: 72px;
+}
+
+.pricing-card.popular .pricing-features li {
+    color: rgba(255,255,255,0.85);
 }
 
 .pricing-features li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 12px;
-    width: 22px;
-    height: 22px;
-    min-width: 22px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
     border-radius: 50%;
     background: #ff3b5c;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='14' height='14'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 14px;
 }
 
+.pricing-card.popular .pricing-features li::before {
+    background-color: rgba(255,255,255,0.2);
+}
+
 .pricing-btn {
     width: 100%;
     margin-top: auto;
     font-weight: 600;
-    padding: 16px;
-    border-radius: 40px;
-    font-size: 1rem;
-    background: #111;
-    color: #FFFFFF;
-    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #FDF8F4;
+    color: #ff3b5c;
+    border: 1px solid #ff3b5c;
     cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    transition: all 0.2s ease;
 }
 
 .pricing-btn:hover {
-    transform: scale(1.02);
+    background: #ff3b5c;
+    color: #FFFFFF;
+}
+
+.pricing-card.popular .pricing-btn {
+    background: #ff3b5c;
+    color: #FFFFFF;
+    border: none;
+}
+.pricing-card.popular .pricing-btn:hover {
     opacity: 0.9;
+    background: #ff3b5c;
 }
 
 .pricing-notes {
@@ -674,7 +736,7 @@
 }
 
 .note-box h4 {
-    color: #C0392B;
+    color: #ff3b5c;
     margin-bottom: 4px;
     font-size: 0.9rem;
 }
@@ -745,13 +807,13 @@
 }
 
 .event-chip:hover {
-    border-color: #C0392B;
-    color: #C0392B;
+    border-color: #ff3b5c;
+    color: #ff3b5c;
 }
 
 .event-chip.selected {
-    background: #C0392B;
-    border-color: #C0392B;
+    background: #ff3b5c;
+    border-color: #ff3b5c;
     color: #FFFFFF;
 }
 
@@ -793,7 +855,7 @@
 
 .event-date-row input[type="date"]:focus {
     outline: none;
-    border-color: #C0392B;
+    border-color: #ff3b5c;
     box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
 }
 
@@ -814,7 +876,7 @@
 
 .custom-event-add input:focus {
     outline: none;
-    border-color: #C0392B;
+    border-color: #ff3b5c;
 }
 
 .custom-event-add button {
@@ -876,7 +938,7 @@
 .booking-input-group input:focus,
 .booking-input-group textarea:focus {
     outline: none;
-    border-color: #C0392B;
+    border-color: #ff3b5c;
     box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.08);
 }
 
@@ -889,7 +951,7 @@
     width: 100%;
     margin-top: 32px;
     padding: 16px;
-    background: #C0392B;
+    background: #ff3b5c;
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
@@ -927,7 +989,7 @@
 
 .selected-package-banner .pkg-price {
     font-weight: 800;
-    color: #C0392B;
+    color: #ff3b5c;
     font-size: 1.1rem;
 }
 
