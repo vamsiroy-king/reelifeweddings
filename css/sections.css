@@ -78,6 +78,8 @@
   height: 100%;
   object-fit: cover;
   background: #000;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 @media (max-width: 768px) {
@@ -499,7 +501,7 @@
    ══════════════════════════════════════════════ */
 .pricing-section {
     padding: 100px 24px;
-    background: #FDF8F4;
+    background: #FFFFFF;
 }
 
 .pricing-section .section-header {
@@ -507,11 +509,13 @@
 }
 
 .pricing-section .section-title {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 400;
-    font-style: italic;
-    color: #2C1810;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -1px;
+    color: #111;
+    text-align: center;
 }
 
 .pricing-container {
@@ -519,46 +523,30 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    gap: 32px;
 }
 
 @media (max-width: 900px) {
     .pricing-container {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 40px;
     }
 }
 
 .pricing-card {
-    background: #FFFFFF;
-    padding: 40px 32px;
+    background: #FCF8F5;
+    padding: 32px 24px;
     position: relative;
     display: flex;
     flex-direction: column;
-    border: 1px solid #E8E0DA;
-}
-
-.pricing-card:first-child {
-    border-radius: 16px 0 0 16px;
-}
-.pricing-card:last-child {
-    border-radius: 0 16px 16px 0;
-}
-
-@media (max-width: 900px) {
-    .pricing-card:first-child,
-    .pricing-card:last-child {
-        border-radius: 16px;
-    }
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
 .pricing-card.popular {
-    background: #1C1C1C;
-    color: #FFFFFF;
-    border-color: transparent;
-    border-radius: 16px;
-    z-index: 2;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    background: #FDF1EA; /* Slightly warmer for popular */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
 }
 
 .pricing-badge {
@@ -568,151 +556,135 @@
 .pricing-header {
     text-align: left;
     margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #E8E0DA;
-}
-
-.pricing-card.popular .pricing-header {
-    border-bottom-color: rgba(255,255,255,0.15);
+    padding-bottom: 0px;
+    border-bottom: none;
 }
 
 .pricing-header h2 {
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    color: #2C1810;
-}
-
-.pricing-card.popular .pricing-header h2 {
-    color: #FFFFFF;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: #111;
 }
 
 .pricing-subtitle {
-    font-size: 0.85rem;
-    color: #8B7B74;
+    font-size: 0.95rem;
+    color: #555;
     line-height: 1.5;
-}
-
-.pricing-card.popular .pricing-subtitle {
-    color: rgba(255,255,255,0.7);
 }
 
 .pricing-price {
     margin-top: 16px;
     display: flex;
     align-items: baseline;
-    gap: 4px;
+    gap: 6px;
 }
 
 .price-strikethrough {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #999;
     text-decoration: line-through;
     display: block;
     margin-bottom: 2px;
 }
 
-.pricing-card.popular .price-strikethrough {
-    color: rgba(255,255,255,0.5);
-}
-
 .price-current {
-    font-size: 2.2rem;
-    font-weight: 800;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
     color: #ff3b5c;
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
-.pricing-card.popular .price-current {
-    color: #FFFFFF;
-}
-
 .price-unit {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #8B7B74;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
 }
 
-.pricing-card.popular .price-unit {
-    color: rgba(255,255,255,0.6);
+.pricing-action {
+    margin-bottom: 24px;
+}
+
+.pricing-btn {
+    width: 100%;
+    font-weight: 700;
+    padding: 16px;
+    border-radius: 40px;
+    font-size: 1.05rem;
+    background: #111;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+.pricing-btn:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.pricing-card.popular .pricing-btn {
+    background: #ff3b5c;
+}
+.pricing-card.popular .pricing-btn:hover {
+    background: #e02f4d;
+}
+
+.pricing-features-box {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 24px;
+    flex-grow: 1;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.whats-included {
+    font-weight: 700;
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 
 .pricing-features {
     list-style: none;
-    margin-bottom: 32px;
-    flex-grow: 1;
+    margin-bottom: 0;
 }
 
 .pricing-features li {
     padding: 8px 0;
     font-size: 0.9rem;
     text-align: left;
-    color: #4A3F3A;
+    color: #444;
     display: block;
     position: relative;
-    padding-left: 32px;
-    line-height: 1.4;
-    min-height: 72px;
-}
-
-.pricing-card.popular .pricing-features li {
-    color: rgba(255,255,255,0.85);
+    padding-left: 28px;
+    line-height: 1.5;
+    min-height: 48px;
 }
 
 .pricing-features li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 8px;
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
+    top: 10px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: #ff3b5c;
+    border: 1.5px solid #ff3b5c;
+    background: transparent;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='14' height='14'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff3b5c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' width='10' height='10'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 14px;
 }
-
-.pricing-card.popular .pricing-features li::before {
-    background-color: rgba(255,255,255,0.2);
-}
-
-.pricing-btn {
-    width: 100%;
-    margin-top: auto;
-    font-weight: 600;
-    padding: 14px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    background: #FDF8F4;
-    color: #ff3b5c;
-    border: 1px solid #ff3b5c;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.pricing-btn:hover {
-    background: #ff3b5c;
-    color: #FFFFFF;
-}
-
-.pricing-card.popular .pricing-btn {
-    background: #ff3b5c;
-    color: #FFFFFF;
-    border: none;
-}
-.pricing-card.popular .pricing-btn:hover {
-    opacity: 0.9;
-    background: #ff3b5c;
-}
-
 .pricing-notes {
     max-width: 1100px;
     margin: 40px auto 0;

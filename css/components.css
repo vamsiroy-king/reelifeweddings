@@ -37,13 +37,17 @@
 
 /* ── Flawless Fixed Header ── */
 .header-wrapper {
-  position: fixed; /* ALWAYS FIXED */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: var(--color-bg-light); /* Pink bg to blend in */
-  padding: 24px 0;
+  background-color: rgba(253, 248, 244, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 16px 0;
+  transition: all 0.3s ease;
 }
 
 .header-main {
@@ -56,11 +60,9 @@
 }
 
 .nav-logo {
-  height: 40px; /* Adjust as needed */
+  height: 48px;
   width: auto;
-  /* logo.png has white text on a transparent background. 
-     This filter turns the white text black so it's visible on the pink header. */
-  filter: brightness(0);
+  border-radius: 4px;
 }
 
 .nav-group {
