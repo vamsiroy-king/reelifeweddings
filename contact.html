@@ -141,6 +141,34 @@
                     <textarea id="b_notes" placeholder="Anything else you'd like us to know..."></textarea>
                 </div>
 
+                
+                <!-- Live Quotation Receipt -->
+                <div class="quotation-receipt" id="quotationReceipt" style="display: none;">
+                    <h3 class="receipt-title">Live Quotation Summary</h3>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Selected Package:</span>
+                        <span class="receipt-value" id="receiptPackageName">-</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Base Price (Per Event):</span>
+                        <span class="receipt-value" id="receiptBasePrice">₹0</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span class="receipt-label">Total Events Selected:</span>
+                        <span class="receipt-value" id="receiptEventCount">0</span>
+                    </div>
+                    
+                    <div class="receipt-divider"></div>
+                    
+                    <div class="receipt-row receipt-total-row">
+                        <span class="receipt-label">Estimated Total Quotation:</span>
+                        <span class="receipt-value receipt-total-price" id="receiptTotalPrice">₹0</span>
+                    </div>
+                    <p class="receipt-disclaimer">
+                        *Note: Additional professionally edited reels and any customisations will be at an additional cost.
+                    </p>
+                </div>
+
                 <button type="submit" class="booking-submit-btn">
                     Send Booking via WhatsApp <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
                 </button>
