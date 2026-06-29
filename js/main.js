@@ -194,6 +194,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderEventDates() {
         if (!eventDatesContainer) return;
+        
+        // Store current date values before re-rendering to prevent clearing them
+        const currentDates = {};
+        const existingInputs = eventDatesContainer.querySelectorAll('input[type="date"]');
+        existingInputs.forEach(input => {
+            if (input.value) {
+                currentDates[input.dataset.eventDate] = input.value;
+            }
+        });
+
         eventDatesContainer.innerHTML = '';
         
         if (selectedEvents.size === 0) return;
@@ -214,6 +224,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const input = document.createElement('input');
             input.type = 'date';
             input.dataset.eventDate = ev;
+            
+            // Restore previously entered value
+            if (currentDates[ev]) {
+                input.value = currentDates[ev];
+            }
 
             row.appendChild(label);
             row.appendChild(input);
