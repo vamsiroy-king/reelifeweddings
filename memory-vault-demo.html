@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav & Priya - Memory Vault</title>
+    <!-- We link to vault.css which has entirely isolated premium styling -->
+    <link rel="stylesheet" href="/css/vault.css">
+    <!-- Phosphor Icons for elegant thin icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body style="padding-top: 140px;">
+
+    <!-- 01 Hero Trailer -->
+    <section class="vault-hero">
+        <!-- Autoplay muted video -->
+        <video src="/assets/videos/video.mp4" autoplay loop muted playsinline></video>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="vault-welcome">Welcome to your Memory Vault</div>
+            <h1 class="couple-names">Aarav & Priya</h1>
+            <div class="wedding-meta">
+                <span>December 12, 2026</span> &nbsp;|&nbsp; <span>The Taj Palace, Udaipur</span>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- 02 Our Story -->
+    <section class="story-section">
+        "Two souls, one incredible journey. From our first meeting in the rain-washed streets of Bombay to saying our vows under the golden Udaipur sun, every moment has led us to this beautiful forever."
+    </section>
+
+    <!-- 03 Wedding Timeline -->
+    <section class="section-pad" style="background-color: var(--color-surface);">
+        <h2 class="section-title text-center">The Journey</h2>
+        <div class="section-subtitle text-center">Relive every event</div>
+        
+        <div class="timeline-grid">
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">The Haldi</h3>
+                    <i class="ph ph-plus timeline-icon"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-inner">
+                        <img src="/assets/images/haldi_ceremony_1782395055259.png" alt="Haldi" class="timeline-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">The Sangeet</h3>
+                    <i class="ph ph-plus timeline-icon"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-inner">
+                        <img src="/assets/images/sangeet_party_1782395077025.png" alt="Sangeet" class="timeline-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">The Muhurtham</h3>
+                    <i class="ph ph-plus timeline-icon"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-inner">
+                        <img src="/assets/images/wedding_muhurtham_1782395043700.png" alt="Muhurtham" class="timeline-img">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 04 Highlight Reels -->
+    <section class="section-pad">
+        <h2 class="section-title">The Reels</h2>
+        <div class="section-subtitle">Vertical Stories</div>
+        
+        <div class="reels-grid">
+            <div class="video-card">
+                <video src="/assets/videos/video.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="video-card">
+                <video src="/assets/videos/video.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="video-card">
+                <video src="/assets/videos/video.mp4" autoplay loop muted playsinline></video>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 Portrait Gallery -->
+    <section class="section-pad" style="background-color: var(--color-surface);">
+        <h2 class="section-title">The Portraits</h2>
+        <div class="section-subtitle">A curated collection</div>
+        
+        <div class="masonry-gallery">
+            <div class="masonry-item"><img src="/assets/images/wedding_muhurtham_1782395043700.png" alt="Portrait"></div>
+            <div class="masonry-item"><img src="/assets/images/pre_wedding_shoot_1782395089990.png" alt="Portrait"></div>
+            <div class="masonry-item"><img src="/assets/images/sangeet_party_1782395077025.png" alt="Portrait"></div>
+            <div class="masonry-item"><img src="/assets/images/brands_commercial_1782395115830.png" alt="Portrait"></div>
+            <div class="masonry-item"><img src="/assets/images/haldi_ceremony_1782395055259.png" alt="Portrait"></div>
+            <div class="masonry-item"><img src="/assets/images/birthday_event_1782395129361.png" alt="Portrait"></div>
+        </div>
+    </section>
+
+    <!-- 08 Downloads -->
+    <section class="downloads-section">
+        <h2 class="section-title text-center">Your Archives</h2>
+        <div class="section-subtitle text-center">Download original files in high resolution</div>
+        
+        <div class="downloads-grid">
+            <a href="#" class="download-btn">
+                <i class="ph ph-image download-icon"></i>
+                <span class="download-text">All Photos (Zip)</span>
+            </a>
+            <a href="#" class="download-btn">
+                <i class="ph ph-film-strip download-icon"></i>
+                <span class="download-text">Wedding Film</span>
+            </a>
+            <a href="#" class="download-btn">
+                <i class="ph ph-video-camera download-icon"></i>
+                <span class="download-text">Highlight Reels</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 09 Thank You -->
+    <footer class="vault-footer">
+        <img src="/assets/logo.png" alt="Reelife Weddings" class="vault-logo">
+        <p>Captured with love by Reelife Weddings.</p>
+    </footer>
+
+    <!-- Interactive JS -->
+    <script>
+        // Timeline Accordion Logic
+        document.querySelectorAll('.timeline-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.timeline-item').forEach(i => i.classList.remove('active'));
+                
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
