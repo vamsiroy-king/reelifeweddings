@@ -112,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            let message = `*New Booking Inquiry!*%0A%0A`;
-            message += `*Name:* ${name}%0A`;
-            message += `*Phone:* ${mobile}%0A`;
-            message += `*Email:* ${email}%0A`;
-            message += `*Event Date:* ${date}%0A`;
-            if (venue) message += `*Venue:* ${venue}%0A`;
+            let message = `*New Booking Inquiry!*\n\n`;
+            message += `*Name:* ${name}\n`;
+            message += `*Phone:* ${mobile}\n`;
+            message += `*Email:* ${email}\n`;
+            message += `*Event Date:* ${date}\n`;
+            if (venue) message += `*Venue:* ${venue}\n`;
             message += `*Source:* ${source}`;
 
             window.open(`https://wa.me/919148132417?text=${message}`, '_blank');
@@ -350,28 +350,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const totalQuotation = selectedPackagePrice * selectedEvents.size;
 
-            let msg = `*REELIFE WEDDINGS — NEW BOOKING*%0A%0A`;
-            msg += `*Package:* ${packageDisplayNames[selectedPackage]} (${formatCurrency(selectedPackagePrice)}/event)%0A`;
-            msg += `*Total Events:* ${selectedEvents.size}%0A`;
-            msg += `*Estimated Quotation:* ${formatCurrency(totalQuotation)}%0A%0A`;
+            let msg = `*REELIFE WEDDINGS — NEW BOOKING*\n\n`;
+            msg += `*Package:* ${packageDisplayNames[selectedPackage]} (${formatCurrency(selectedPackagePrice)}/event)\n`;
+            msg += `*Total Events:* ${selectedEvents.size}\n`;
+            msg += `*Estimated Quotation:* ${formatCurrency(totalQuotation)}\n\n`;
             
-            msg += `*Couple Details*%0A`;
-            msg += `Name: ${name}%0A`;
-            msg += `Phone: ${mobile}%0A`;
-            msg += `Email: ${email}%0A`;
-            msg += `Venue / City: ${venue}%0A%0A`;
+            msg += `*Couple Details*\n`;
+            msg += `Name: ${name}\n`;
+            msg += `Phone: ${mobile}\n`;
+            msg += `Email: ${email}\n`;
+            msg += `Venue / City: ${venue}\n\n`;
 
-            msg += `*Selected Events and Dates*%0A`;
+            msg += `*Selected Events and Dates*\n`;
             let idx = 1;
             selectedEvents.forEach(ev => {
                 const dateInput = document.querySelector(`input[data-event-date="${ev}"]`);
                 const dateVal = dateInput?.value || 'TBD';
-                msg += `${idx}. ${ev} — ${dateVal}%0A`;
+                msg += `${idx}. ${ev} — ${dateVal}\n`;
                 idx++;
             });
 
             if (notes) {
-                msg += `%0A*Additional Notes:* ${notes}`;
+                msg += `\n*Additional Notes:* ${notes}`;
             }
 
             const url = `https://wa.me/919148132417?text=${encodeURIComponent(msg)}`;
