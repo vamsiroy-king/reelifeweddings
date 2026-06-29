@@ -1,2 +1,7 @@
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../index.html";
+@source "../js/**/*.jsx";
+
+/* Disable preflight manually by reverting basic elements, or just let it be and see if it breaks */
+/* Actually, let's just use regular tailwindcss and if preflight breaks things, we'll fix it */
