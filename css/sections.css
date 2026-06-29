@@ -646,13 +646,13 @@
 
 .pricing-features li {
     padding: 8px 0;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     text-align: left;
     color: #4A3F3A;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    line-height: 1.4;
+    display: block;
+    position: relative;
+    padding-left: 32px;
+    line-height: 1.5;
 }
 
 .pricing-card.popular .pricing-features li {
@@ -661,6 +661,9 @@
 
 .pricing-features li::before {
     content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
     width: 20px;
     height: 20px;
     min-width: 20px;
@@ -669,7 +672,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='14' height='14'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
