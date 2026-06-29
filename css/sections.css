@@ -499,7 +499,7 @@
    ══════════════════════════════════════════════ */
 .pricing-section {
     padding: 100px 24px;
-    background: #FDF8F4;
+    background: #FFFFFF;
 }
 
 .pricing-section .section-header {
@@ -530,12 +530,12 @@
 }
 
 .pricing-card {
-    background: #FFFFFF;
+    background: #bce4fb;
     padding: 40px 32px;
     position: relative;
     display: flex;
     flex-direction: column;
-    border: 1px solid #E8E0DA;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .pricing-card:first-child {
@@ -553,12 +553,12 @@
 }
 
 .pricing-card.popular {
-    background: linear-gradient(145deg, #2C1810, #4A2520);
-    color: #FFFFFF;
+    background: #a9d9f5;
+    color: #111;
     border-color: transparent;
     border-radius: 16px;
     z-index: 2;
-    box-shadow: 0 20px 60px rgba(44, 24, 16, 0.25);
+    box-shadow: 0 20px 60px rgba(0, 100, 200, 0.15);
 }
 
 .pricing-badge {
@@ -569,34 +569,28 @@
     text-align: left;
     margin-bottom: 24px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #E8E0DA;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.pricing-card.popular .pricing-header {
-    border-bottom-color: rgba(255,255,255,0.15);
-}
+/* removed */
 
 .pricing-header h2 {
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 6px;
-    color: #2C1810;
+    color: #111;
 }
 
-.pricing-card.popular .pricing-header h2 {
-    color: #FFFFFF;
-}
+
 
 .pricing-subtitle {
     font-size: 0.85rem;
-    color: #8B7B74;
+    color: #555;
     line-height: 1.5;
 }
 
-.pricing-card.popular .pricing-subtitle {
-    color: rgba(255,255,255,0.7);
-}
+
 
 .pricing-price {
     margin-top: 16px;
@@ -613,30 +607,24 @@
     margin-bottom: 2px;
 }
 
-.pricing-card.popular .price-strikethrough {
-    color: rgba(255,255,255,0.5);
-}
+
 
 .price-current {
     font-size: 2.2rem;
     font-weight: 800;
-    color: #C0392B;
+    color: #ff3b5c;
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
-.pricing-card.popular .price-current {
-    color: #FFFFFF;
-}
+
 
 .price-unit {
     font-size: 0.8rem;
     font-weight: 500;
-    color: #8B7B74;
+    color: #555;
 }
 
-.pricing-card.popular .price-unit {
-    color: rgba(255,255,255,0.6);
-}
+
 
 .pricing-features {
     list-style: none;
@@ -648,16 +636,14 @@
     padding: 8px 0;
     font-size: 0.95rem;
     text-align: left;
-    color: #4A3F3A;
+    color: #222;
     display: block;
     position: relative;
     padding-left: 32px;
     line-height: 1.5;
 }
 
-.pricing-card.popular .pricing-features li {
-    color: rgba(255,255,255,0.85);
-}
+
 
 .pricing-features li::before {
     content: '';
@@ -668,7 +654,7 @@
     height: 20px;
     min-width: 20px;
     border-radius: 50%;
-    background: #C0392B;
+    background: #ff3b5c;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -678,9 +664,7 @@
     background-size: 14px;
 }
 
-.pricing-card.popular .pricing-features li::before {
-    background-color: rgba(255,255,255,0.2);
-}
+
 
 .pricing-btn {
     width: 100%;
@@ -689,7 +673,7 @@
     padding: 14px;
     border-radius: 8px;
     font-size: 0.95rem;
-    background: #2C1810;
+    background: #ff3b5c;
     color: #FFFFFF;
     border: none;
     cursor: pointer;
@@ -702,10 +686,7 @@
     box-shadow: none;
 }
 
-.pricing-card.popular .pricing-btn {
-    background: #FFFFFF;
-    color: #2C1810;
-}
+
 
 .pricing-notes {
     max-width: 1100px;
@@ -736,7 +717,7 @@
 }
 
 .note-box p {
-    color: #8B7B74;
+    color: #555;
 }
 
 /* ══════════════════════════════════════════════
@@ -752,7 +733,7 @@
     max-width: 700px;
     margin: 0 auto;
     background: #FFFFFF;
-    border: 1px solid #E8E0DA;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 16px;
     padding: 48px;
 }
@@ -769,7 +750,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #8B7B74;
+    color: #555;
     margin-bottom: 12px;
 }
 
@@ -806,7 +787,7 @@
 }
 
 .event-chip.selected {
-    background: #C0392B;
+    background: #ff3b5c;
     border-color: #C0392B;
     color: #FFFFFF;
 }
@@ -913,7 +894,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #8B7B74;
+    color: #555;
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
@@ -945,7 +926,7 @@
     width: 100%;
     margin-top: 32px;
     padding: 16px;
-    background: #C0392B;
+    background: #ff3b5c;
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
@@ -966,7 +947,7 @@
 
 .selected-package-banner {
     background: #FDF8F4;
-    border: 1px solid #E8E0DA;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     padding: 16px 20px;
     display: flex;
