@@ -493,3 +493,248 @@
     .petal-label { font-size: 0.6rem; top: -20px; }
     .petal-img-wrapper { border-radius: 15px; border-width: 2px; }
 }
+
+/* ── Pricing Section (Minimalist Elegance) ── */
+.pricing-section {
+    padding: 160px 24px 80px;
+    background: var(--color-bg-light); /* Pink bg */
+    min-height: 100vh;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+.pricing-card {
+    background: var(--color-white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-float);
+}
+
+.pricing-card.popular {
+    border: 2px solid var(--color-primary);
+    transform: scale(1.05);
+    z-index: 2;
+}
+.pricing-card.popular:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 20px;
+}
+
+.pricing-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: var(--color-accent); /* Darker text */
+}
+
+.pricing-subtitle {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    min-height: 44px;
+}
+
+.pricing-price {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price-strikethrough {
+    font-size: 1.1rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: -5px;
+}
+
+.price-current {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+}
+
+.price-unit {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 40px;
+    flex-grow: 1;
+}
+
+.pricing-features li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.95rem;
+    text-align: center;
+    color: var(--color-text-main);
+}
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+.pricing-btn {
+    width: 100%;
+    margin-top: auto;
+    font-weight: 600;
+}
+
+.pricing-card.popular .pricing-btn {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.pricing-notes {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.note-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.note-box h4 {
+    color: var(--color-primary);
+    margin-bottom: 5px;
+}
+
+@media (max-width: 1024px) {
+    .pricing-card.popular {
+        transform: none;
+    }
+    .pricing-card.popular:hover {
+        transform: translateY(-10px);
+    }
+}
+
+/* ── Dynamic Booking Form Section ── */
+.booking-section {
+    padding: 100px 24px;
+    background: #FAFAFA;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 15px;
+}
+
+.event-card {
+    background: var(--color-bg-light);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.event-card:hover {
+    border-color: rgba(229, 57, 53, 0.3);
+    transform: translateY(-3px);
+}
+
+.event-card.selected {
+    background: #FFF0F0;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+.event-card.selected i {
+    color: var(--color-primary);
+}
+
+.event-card i {
+    font-size: 1.8rem;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+}
+
+.event-card span {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.selected-events-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.event-badge {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.3s ease;
+}
+
+.event-badge .remove-btn {
+    cursor: pointer;
+    opacity: 0.8;
+}
+.event-badge .remove-btn:hover {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

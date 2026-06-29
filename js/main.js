@@ -140,6 +140,151 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* ── Dynamic Pricing & Booking Form Logic ── */
+    const pricingBtns = document.querySelectorAll('.pricing-btn');
+    const bookingFormSection = document.getElementById('bookingFormSection');
+    const selectedTierSelect = document.getElementById('selectedTier');
+    
+    // Smooth scroll from pricing card to form and pre-select tier
+    pricingBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const tier = e.target.getAttribute('data-tier');
+            // Map data-tier to the option values in the select element
+            const tierMap = {
+                'moments': 'Moments (₹9,999 / Event)',
+                'signature': 'Signature (₹14,999 / Event)',
+                'legacy': 'Legacy (₹24,999 / Event)'
+            };
+            
+            if (selectedTierSelect && tierMap[tier]) {
+                selectedTierSelect.value = tierMap[tier];
+            }
+            
+            if (bookingFormSection) {
+                lenis.scrollTo(bookingFormSection, { offset: -100, duration: 1.5 });
+            }
+        });
+    });
+
+    // Event Selection Logic
+    const eventCards = document.querySelectorAll('.event-card');
+    const selectedEventsList = document.getElementById('selectedEventsList');
+    const customEventInput = document.getElementById('customEventInput');
+    const addCustomEventBtn = document.getElementById('addCustomEventBtn');
+    
+    let selectedEvents = new Set();
+
+    function renderEventBadges() {
+        if (!selectedEventsList) return;
+        selectedEventsList.innerHTML = '';
+        selectedEvents.forEach(eventName => {
+            const badge = document.createElement('div');
+            badge.className = 'event-badge';
+            badge.innerHTML = `${eventName} <i class="fas fa-times remove-btn" data-event="${eventName}"></i>`;
+            selectedEventsList.appendChild(badge);
+        });
+
+        // Sync card active states
+        eventCards.forEach(card => {
+            const eventName = card.getAttribute('data-event');
+            if (selectedEvents.has(eventName)) {
+                card.classList.add('selected');
+            } else {
+                card.classList.remove('selected');
+            }
+        });
+    }
+
+    // Toggle default events via cards
+    eventCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const eventName = card.getAttribute('data-event');
+            if (selectedEvents.has(eventName)) {
+                selectedEvents.delete(eventName);
+            } else {
+                selectedEvents.add(eventName);
+            }
+            renderEventBadges();
+        });
+    });
+
+    // Add custom events
+    if (addCustomEventBtn && customEventInput) {
+        addCustomEventBtn.addEventListener('click', () => {
+            const customEvent = customEventInput.value.trim();
+            if (customEvent && !selectedEvents.has(customEvent)) {
+                selectedEvents.add(customEvent);
+                customEventInput.value = '';
+                renderEventBadges();
+            }
+        });
+
+        customEventInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addCustomEventBtn.click();
+            }
+        });
+    }
+
+    // Remove events via badge click
+    if (selectedEventsList) {
+        selectedEventsList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-btn')) {
+                const eventName = e.target.getAttribute('data-event');
+                selectedEvents.delete(eventName);
+                renderEventBadges();
+            }
+        });
+    }
+
+    // Handle Booking Form Submission
+    const dynamicBookingForm = document.getElementById('dynamicBookingForm');
+    if (dynamicBookingForm) {
+        dynamicBookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const tier = selectedTierSelect.value;
+            const name = document.getElementById('b_name').value.trim();
+            const mobile = document.getElementById('b_mobile').value.trim();
+            const email = document.getElementById('b_email').value.trim();
+            const venue = document.getElementById('b_venue').value.trim();
+            
+            if (!tier) {
+                alert('Please select a package first.');
+                return;
+            }
+            
+            if (selectedEvents.size === 0) {
+                alert('Please select at least one event.');
+                return;
+            }
+
+            // Create beautiful, structured WhatsApp message payload
+            let message = `*✨ REELIFE WEDDINGS BOOKING ✨*%0A%0A`;
+            
+            message += `*👤 Client Details:*%0A`;
+            message += `• Name: ${name}%0A`;
+            message += `• Phone: ${mobile}%0A`;
+            message += `• Email: ${email}%0A`;
+            message += `• Venue / City: ${venue}%0A%0A`;
+            
+            message += `*💎 Selected Package:*%0A`;
+            message += `• ${tier}%0A%0A`;
+            
+            message += `*📅 Selected Events:*%0A`;
+            let index = 1;
+            selectedEvents.forEach(ev => {
+                message += `${index}. ${ev}%0A`;
+                index++;
+            });
+
+            // Replace spaces and URI encode
+            const finalURL = `https://wa.me/919148132417?text=${message.replace(/ /g, '%20')}`;
+            window.open(finalURL, '_blank');
+        });
+    }
+
     /* ── South Indian Theme: Falling Petals Animation ── */
     function createPetals() {
         const heroSection = document.querySelector('.hero-section');
