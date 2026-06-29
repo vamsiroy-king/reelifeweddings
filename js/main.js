@@ -340,13 +340,13 @@ document.addEventListener('DOMContentLoaded', () => {
             msg += `*Total Events:* ${selectedEvents.size}%0A`;
             msg += `*Estimated Quotation:* ${formatCurrency(totalQuotation)}%0A%0A`;
             
-            msg += `*Client Details*%0A`;
+            msg += `*Couple Details*%0A`;
             msg += `Name: ${name}%0A`;
             msg += `Phone: ${mobile}%0A`;
             msg += `Email: ${email}%0A`;
             msg += `Venue / City: ${venue}%0A%0A`;
 
-            msg += `*Selected Events & Dates*%0A`;
+            msg += `*Selected Events and Dates*%0A`;
             let idx = 1;
             selectedEvents.forEach(ev => {
                 const dateInput = document.querySelector(`input[data-event-date="${ev}"]`);
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 msg += `%0A*Additional Notes:* ${notes}`;
             }
 
-            const url = `https://wa.me/919148132417?text=${msg.replace(/ /g, '%20')}`;
+            const url = `https://wa.me/919148132417?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
         });
     }
