@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact — Reelife Weddings</title>
-                                                                <!-- Core CSS -->
+    <title>Book Now — Reelife Weddings</title>
+    
+    <!-- Core CSS -->
     <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/components.css">
@@ -12,104 +13,12 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        .contact-page {
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            min-height: 100vh;
-        }
-
-        .contact-section {
-            padding: 160px 24px 100px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .contact-split {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        @media (min-width: 960px) {
-            .contact-split {
-                grid-template-columns: 1fr 1fr;
-                gap: 100px;
-            }
-        }
-
-        .contact-info h1 {
-            font-size: clamp(3rem, 5vw, 5rem);
-            margin-bottom: 24px;
-            color: var(--text-dark);
-        }
-
-        .contact-details p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            color: var(--text-muted-light);
-            max-width: 500px;
-        }
-
-        .contact-box {
-            margin-bottom: 32px;
-        }
-
-        .contact-box h3 {
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .contact-box a {
-            font-size: 1.25rem;
-            color: var(--text-dark);
-            text-decoration: underline;
-            text-decoration-color: var(--border-light);
-            text-underline-offset: 4px;
-        }
-
-        .contact-box a:hover {
-            color: var(--accent);
-            text-decoration-color: var(--accent);
-        }
-
-        /* Form overrides for light theme */
-        .form-box {
-            background: var(--bg-white);
-            padding: 48px;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-            border: 1px solid var(--border-light);
-        }
-
-        .event-chip {
-            background-color: transparent;
-            color: var(--text-dark);
-            border: 1px solid var(--border-light);
-        }
-
-        @media (max-width: 600px) {
-            .form-box {
-                padding: 32px 24px;
-            }
-        }
-        
-        .header-main .nav-link { color: var(--text-dark); }
-        .mobile-toggle span { background-color: var(--text-dark); }
-    </style>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body style="padding-top: 140px;">
 
-                                                                        <!-- ── Flawless Fixed Header ── -->
+    <!-- ── Flawless Fixed Header ── -->
     <div class="header-wrapper">
         <header class="header-main" id="mainHeader">
             <nav class="nav-group left" style="flex:1;">
@@ -125,7 +34,7 @@
 
             <nav class="nav-group right" style="flex:1; justify-content:flex-end;">
                 <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
-                <a href="contact.html" class="nav-link">Book Now</a>
+                <a href="contact.html" class="nav-link active">Book Now</a>
             </nav>
             
             <button class="mobile-toggle" aria-label="Menu">
@@ -142,12 +51,133 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
-        <a href="contact.html" class="nav-link" style="color: var(--color-primary);">Book Now</a>
+        <a href="contact.html" class="nav-link active" style="color: var(--color-primary);">Book Now</a>
     </div>
+
+    <!-- ── Booking Section ── -->
+    <section class="booking-section">
+        <div class="section-header">
+            <h1 class="section-title" style="font-family: 'Georgia', 'Times New Roman', serif; font-style: italic; color: #2C1810;">Book your wedding shoot</h1>
+            <p style="color: #8B7B74; font-size: 0.95rem;">Fill in the details and we'll get back to you within 24 hours.</p>
+        </div>
+
+        <div class="booking-form-card">
+            <form id="dynamicBookingForm">
+
+                <!-- Selected Package Banner -->
+                <div class="selected-package-banner" id="packageBanner" style="display: none;">
+                    <span class="pkg-name" id="pkgName"></span>
+                    <span class="pkg-price" id="pkgPrice"></span>
+                </div>
+
+                <!-- Step 1: Package Selection -->
+                <div class="booking-step-label">Step 1</div>
+                <div class="booking-step-title">Choose your package</div>
+                
+                <div class="event-chips" id="packageChips">
+                    <div class="event-chip" data-package="moments" data-price="₹9,999">Moments — ₹9,999</div>
+                    <div class="event-chip" data-package="signature" data-price="₹14,999">Signature — ₹14,999</div>
+                    <div class="event-chip" data-package="legacy" data-price="₹24,999">Legacy — ₹24,999</div>
+                </div>
+
+                <hr class="booking-divider">
+
+                <!-- Step 2: Select Events -->
+                <div class="booking-step-label">Step 2</div>
+                <div class="booking-step-title">Select your events</div>
+                
+                <div class="event-chips" id="eventChips">
+                    <div class="event-chip" data-event="Haldi">Haldi</div>
+                    <div class="event-chip" data-event="Mehendi">Mehendi</div>
+                    <div class="event-chip" data-event="Sangeet">Sangeet</div>
+                    <div class="event-chip" data-event="Muhurtham">Muhurtham</div>
+                    <div class="event-chip" data-event="Reception">Reception</div>
+                    <div class="event-chip" data-event="Engagement">Engagement</div>
+                    <div class="event-chip" data-event="Pre-Wedding">Pre-Wedding</div>
+                </div>
+
+                <div class="custom-event-add">
+                    <input type="text" id="customEventInput" placeholder="Add custom event...">
+                    <button type="button" id="addCustomEventBtn">Add</button>
+                </div>
+
+                <!-- Dynamic Date Pickers -->
+                <div class="event-dates-container" id="eventDatesContainer">
+                    <!-- Date pickers appear here dynamically -->
+                </div>
+
+                <hr class="booking-divider">
+
+                <!-- Step 3: Your Details -->
+                <div class="booking-step-label">Step 3</div>
+                <div class="booking-step-title">Your details</div>
+
+                <div class="booking-form-grid">
+                    <div class="booking-input-group">
+                        <label>Name (Couple)</label>
+                        <input type="text" id="b_name" placeholder="Rahul & Priya" required>
+                    </div>
+                    <div class="booking-input-group">
+                        <label>WhatsApp Number</label>
+                        <input type="tel" id="b_mobile" placeholder="+91" required>
+                    </div>
+                </div>
+
+                <div class="booking-form-grid" style="margin-top: 20px;">
+                    <div class="booking-input-group">
+                        <label>Email</label>
+                        <input type="email" id="b_email" placeholder="hello@example.com" required>
+                    </div>
+                    <div class="booking-input-group">
+                        <label>Venue / City</label>
+                        <input type="text" id="b_venue" placeholder="e.g. Taj West End, Bangalore" required>
+                    </div>
+                </div>
+
+                <div class="booking-input-group" style="margin-top: 20px;">
+                    <label>Additional Notes</label>
+                    <textarea id="b_notes" placeholder="Anything else you'd like us to know..."></textarea>
+                </div>
+
+                <button type="submit" class="booking-submit-btn">
+                    Send Booking via WhatsApp <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ── Solid Red Footer ── -->
+    <footer class="footer-solid">
+        <div class="footer-grid">
+            <div class="footer-links-left">
+                <div class="footer-links">
+                    <a href="faqs.html">FAQ</a>
+                    <a href="#">Policy</a>
+                    <a href="#">Return Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+            
+            <div class="footer-brand">
+                <h2>India's Best</h2>
+                <p>Wedding Content Creators</p>
+                <div style="margin-top: 16px;">
+                    <a href="https://www.instagram.com/reelifeweddings" target="_blank" style="color:white; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-contact">
+                <p>Email us at: reelifeweddings@gmail.com</p>
+                <p>Phone No.: +91 91481 32417</p>
+                <p>Based in Bangalore • Available across India</p>
+                
+                <a href="https://wa.me/919148132417" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 </html>

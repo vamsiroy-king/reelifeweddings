@@ -140,175 +140,150 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ── Dynamic Pricing & Booking Form Logic ── */
-    const pricingBtns = document.querySelectorAll('.pricing-btn');
-    const bookingFormSection = document.getElementById('bookingFormSection');
-    const selectedTierSelect = document.getElementById('selectedTier');
-    
-    // Smooth scroll from pricing card to form and pre-select tier
-    pricingBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const tier = e.target.getAttribute('data-tier');
-            // Map data-tier to the option values in the select element
-            const tierMap = {
-                'moments': 'Moments (₹9,999 / Event)',
-                'signature': 'Signature (₹14,999 / Event)',
-                'legacy': 'Legacy (₹24,999 / Event)'
-            };
-            
-            if (selectedTierSelect && tierMap[tier]) {
-                selectedTierSelect.value = tierMap[tier];
-            }
-            
-            if (bookingFormSection) {
-                lenis.scrollTo(bookingFormSection, { offset: -100, duration: 1.5 });
-            }
-        });
-    });
-
-    // Event Selection Logic
-    const eventCards = document.querySelectorAll('.event-card');
-    const selectedEventsList = document.getElementById('selectedEventsList');
+    /* ── New Booking Form Logic (contact.html) ── */
+    const packageChips = document.querySelectorAll('#packageChips .event-chip');
+    const eventChips = document.querySelectorAll('#eventChips .event-chip');
+    const eventDatesContainer = document.getElementById('eventDatesContainer');
     const customEventInput = document.getElementById('customEventInput');
     const addCustomEventBtn = document.getElementById('addCustomEventBtn');
-    
+    const packageBanner = document.getElementById('packageBanner');
+    const pkgNameEl = document.getElementById('pkgName');
+    const pkgPriceEl = document.getElementById('pkgPrice');
+
+    let selectedPackage = null;
     let selectedEvents = new Set();
 
-    function renderEventBadges() {
-        if (!selectedEventsList) return;
-        selectedEventsList.innerHTML = '';
-        selectedEvents.forEach(eventName => {
-            const badge = document.createElement('div');
-            badge.className = 'event-badge';
-            badge.innerHTML = `${eventName} <i class="fas fa-times remove-btn" data-event="${eventName}"></i>`;
-            selectedEventsList.appendChild(badge);
-        });
-
-        // Sync card active states
-        eventCards.forEach(card => {
-            const eventName = card.getAttribute('data-event');
-            if (selectedEvents.has(eventName)) {
-                card.classList.add('selected');
-            } else {
-                card.classList.remove('selected');
+    // Auto-select package from URL params (redirected from pricing table)
+    const urlParams = new URLSearchParams(window.location.search);
+    const preselectedPkg = urlParams.get('package');
+    if (preselectedPkg && packageChips.length) {
+        packageChips.forEach(chip => {
+            if (chip.getAttribute('data-package') === preselectedPkg) {
+                chip.classList.add('selected');
+                selectedPackage = preselectedPkg;
+                if (packageBanner && pkgNameEl && pkgPriceEl) {
+                    const names = { moments: 'Moments', signature: 'Signature', legacy: 'Legacy' };
+                    pkgNameEl.textContent = names[preselectedPkg] || preselectedPkg;
+                    pkgPriceEl.textContent = chip.getAttribute('data-price') + ' / event';
+                    packageBanner.style.display = 'flex';
+                }
             }
         });
     }
 
-    // Toggle default events via cards
-    eventCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const eventName = card.getAttribute('data-event');
-            if (selectedEvents.has(eventName)) {
-                selectedEvents.delete(eventName);
-            } else {
-                selectedEvents.add(eventName);
+    // Package chip selection
+    packageChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            packageChips.forEach(c => c.classList.remove('selected'));
+            chip.classList.add('selected');
+            selectedPackage = chip.getAttribute('data-package');
+            if (packageBanner && pkgNameEl && pkgPriceEl) {
+                const names = { moments: 'Moments', signature: 'Signature', legacy: 'Legacy' };
+                pkgNameEl.textContent = names[selectedPackage] || selectedPackage;
+                pkgPriceEl.textContent = chip.getAttribute('data-price') + ' / event';
+                packageBanner.style.display = 'flex';
             }
-            renderEventBadges();
         });
     });
 
-    // Add custom events
-    if (addCustomEventBtn && customEventInput) {
-        addCustomEventBtn.addEventListener('click', () => {
-            const customEvent = customEventInput.value.trim();
-            if (customEvent && !selectedEvents.has(customEvent)) {
-                selectedEvents.add(customEvent);
-                customEventInput.value = '';
-                renderEventBadges();
-            }
-        });
-
-        customEventInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                addCustomEventBtn.click();
-            }
+    // Render date pickers for selected events
+    function renderEventDates() {
+        if (!eventDatesContainer) return;
+        eventDatesContainer.innerHTML = '';
+        selectedEvents.forEach(eventName => {
+            const row = document.createElement('div');
+            row.className = 'event-date-row';
+            row.innerHTML = `
+                <label>${eventName}</label>
+                <input type="date" data-event-date="${eventName}">
+                <button type="button" style="background:none; border:none; color:#999; cursor:pointer; font-size:1.1rem;" onclick="this.parentElement.remove(); document.querySelectorAll('.event-chip[data-event=\\'${eventName}\\']').forEach(c => c.classList.remove('selected'));">✕</button>
+            `;
+            eventDatesContainer.appendChild(row);
         });
     }
 
-    // Remove events via badge click
-    if (selectedEventsList) {
-        selectedEventsList.addEventListener('click', (e) => {
-            if (e.target.classList.contains('remove-btn')) {
-                const eventName = e.target.getAttribute('data-event');
+    // Event chip toggle
+    eventChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const eventName = chip.getAttribute('data-event');
+            if (selectedEvents.has(eventName)) {
                 selectedEvents.delete(eventName);
-                renderEventBadges();
+                chip.classList.remove('selected');
+            } else {
+                selectedEvents.add(eventName);
+                chip.classList.add('selected');
             }
+            renderEventDates();
+        });
+    });
+
+    // Add custom event
+    if (addCustomEventBtn && customEventInput) {
+        const addCustom = () => {
+            const val = customEventInput.value.trim();
+            if (val && !selectedEvents.has(val)) {
+                selectedEvents.add(val);
+                customEventInput.value = '';
+                renderEventDates();
+            }
+        };
+        addCustomEventBtn.addEventListener('click', addCustom);
+        customEventInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); addCustom(); }
         });
     }
 
-    // Handle Booking Form Submission
+    // Booking form submission
     const dynamicBookingForm = document.getElementById('dynamicBookingForm');
     if (dynamicBookingForm) {
         dynamicBookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const tier = selectedTierSelect.value;
-            const name = document.getElementById('b_name').value.trim();
-            const mobile = document.getElementById('b_mobile').value.trim();
-            const email = document.getElementById('b_email').value.trim();
-            const venue = document.getElementById('b_venue').value.trim();
-            
-            if (!tier) {
-                alert('Please select a package first.');
+
+            if (!selectedPackage) {
+                alert('Please select a package.');
                 return;
             }
-            
             if (selectedEvents.size === 0) {
                 alert('Please select at least one event.');
                 return;
             }
 
-            // Create beautiful, structured WhatsApp message payload
-            let message = `*✨ REELIFE WEDDINGS BOOKING ✨*%0A%0A`;
-            
-            message += `*👤 Client Details:*%0A`;
-            message += `• Name: ${name}%0A`;
-            message += `• Phone: ${mobile}%0A`;
-            message += `• Email: ${email}%0A`;
-            message += `• Venue / City: ${venue}%0A%0A`;
-            
-            message += `*💎 Selected Package:*%0A`;
-            message += `• ${tier}%0A%0A`;
-            
-            message += `*📅 Selected Events:*%0A`;
-            let index = 1;
+            const name = document.getElementById('b_name').value.trim();
+            const mobile = document.getElementById('b_mobile').value.trim();
+            const email = document.getElementById('b_email').value.trim();
+            const venue = document.getElementById('b_venue').value.trim();
+            const notes = document.getElementById('b_notes')?.value.trim() || '';
+
+            if (!name || !mobile || !email || !venue) {
+                alert('Please fill all required fields.');
+                return;
+            }
+
+            const pkgNames = { moments: 'Moments (₹9,999/event)', signature: 'Signature (₹14,999/event)', legacy: 'Legacy (₹24,999/event)' };
+
+            let msg = `*REELIFE WEDDINGS — NEW BOOKING*%0A%0A`;
+            msg += `*Package:* ${pkgNames[selectedPackage] || selectedPackage}%0A%0A`;
+            msg += `*Client Details*%0A`;
+            msg += `Name: ${name}%0A`;
+            msg += `Phone: ${mobile}%0A`;
+            msg += `Email: ${email}%0A`;
+            msg += `Venue: ${venue}%0A%0A`;
+
+            msg += `*Events & Dates*%0A`;
+            let idx = 1;
             selectedEvents.forEach(ev => {
-                message += `${index}. ${ev}%0A`;
-                index++;
+                const dateInput = document.querySelector(`input[data-event-date="${ev}"]`);
+                const dateVal = dateInput?.value || 'TBD';
+                msg += `${idx}. ${ev} — ${dateVal}%0A`;
+                idx++;
             });
 
-            // Replace spaces and URI encode
-            const finalURL = `https://wa.me/919148132417?text=${message.replace(/ /g, '%20')}`;
-            window.open(finalURL, '_blank');
+            if (notes) {
+                msg += `%0A*Notes:* ${notes}`;
+            }
+
+            const url = `https://wa.me/919148132417?text=${msg.replace(/ /g, '%20')}`;
+            window.open(url, '_blank');
         });
     }
-
-    /* ── South Indian Theme: Falling Petals Animation ── */
-    function createPetals() {
-        const heroSection = document.querySelector('.hero-section');
-        if (!heroSection) return;
-        
-        // Create container
-        const petalContainer = document.createElement('div');
-        petalContainer.className = 'falling-petals';
-        heroSection.appendChild(petalContainer);
-
-        // Generate 30 petals
-        for (let i = 0; i < 30; i++) {
-            const petal = document.createElement('div');
-            petal.className = `petal ${Math.random() > 0.5 ? 'white' : ''}`;
-            
-            // Randomize position, delay, and duration
-            petal.style.left = `${Math.random() * 100}%`;
-            petal.style.animationDuration = `${5 + Math.random() * 5}s`;
-            petal.style.animationDelay = `-${Math.random() * 5}s`;
-            
-            petalContainer.appendChild(petal);
-        }
-    }
-    
-    // Initialize falling petals
-    createPetals();
 });

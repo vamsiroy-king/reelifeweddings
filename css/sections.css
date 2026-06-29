@@ -494,247 +494,498 @@
     .petal-img-wrapper { border-radius: 15px; border-width: 2px; }
 }
 
-/* ── Pricing Section (Minimalist Elegance) ── */
+/* ══════════════════════════════════════════════
+   Pricing Section — Premium Minimal
+   ══════════════════════════════════════════════ */
 .pricing-section {
-    padding: 160px 24px 80px;
-    background: var(--color-bg-light); /* Pink bg */
-    min-height: 100vh;
+    padding: 100px 24px;
+    background: #FDF8F4;
+}
+
+.pricing-section .section-header {
+    margin-bottom: 60px;
+}
+
+.pricing-section .section-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    color: #2C1810;
 }
 
 .pricing-container {
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: 1100px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+}
+
+@media (max-width: 900px) {
+    .pricing-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
 }
 
 .pricing-card {
-    background: var(--color-white);
-    border-radius: 16px;
-    padding: 40px;
-    box-shadow: var(--shadow-soft);
+    background: #FFFFFF;
+    padding: 40px 32px;
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    border: 1px solid #E8E0DA;
 }
 
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-float);
+.pricing-card:first-child {
+    border-radius: 16px 0 0 16px;
+}
+.pricing-card:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+@media (max-width: 900px) {
+    .pricing-card:first-child,
+    .pricing-card:last-child {
+        border-radius: 16px;
+    }
 }
 
 .pricing-card.popular {
-    border: 2px solid var(--color-primary);
-    transform: scale(1.05);
+    background: linear-gradient(145deg, #2C1810, #4A2520);
+    color: #FFFFFF;
+    border-color: transparent;
+    border-radius: 16px;
     z-index: 2;
-}
-.pricing-card.popular:hover {
-    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 20px 60px rgba(44, 24, 16, 0.25);
 }
 
 .pricing-badge {
-    position: absolute;
-    top: -16px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-primary);
-    color: var(--color-white);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    display: none;
 }
 
 .pricing-header {
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    padding-bottom: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E8E0DA;
+}
+
+.pricing-card.popular .pricing-header {
+    border-bottom-color: rgba(255,255,255,0.15);
 }
 
 .pricing-header h2 {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-    color: var(--color-accent); /* Darker text */
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #2C1810;
+}
+
+.pricing-card.popular .pricing-header h2 {
+    color: #FFFFFF;
 }
 
 .pricing-subtitle {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    min-height: 44px;
+    font-size: 0.85rem;
+    color: #8B7B74;
+    line-height: 1.5;
+}
+
+.pricing-card.popular .pricing-subtitle {
+    color: rgba(255,255,255,0.7);
 }
 
 .pricing-price {
-    margin-top: 20px;
+    margin-top: 16px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: baseline;
+    gap: 4px;
 }
 
 .price-strikethrough {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: #999;
     text-decoration: line-through;
-    margin-bottom: -5px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.pricing-card.popular .price-strikethrough {
+    color: rgba(255,255,255,0.5);
 }
 
 .price-current {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    color: var(--color-primary);
-    font-family: var(--font-display);
+    color: #C0392B;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.pricing-card.popular .price-current {
+    color: #FFFFFF;
 }
 
 .price-unit {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--color-text-muted);
-    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #8B7B74;
+}
+
+.pricing-card.popular .price-unit {
+    color: rgba(255,255,255,0.6);
 }
 
 .pricing-features {
     list-style: none;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     flex-grow: 1;
 }
 
 .pricing-features li {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    font-size: 0.95rem;
-    text-align: center;
-    color: var(--color-text-main);
+    padding: 8px 0;
+    font-size: 0.9rem;
+    text-align: left;
+    color: #4A3F3A;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
 }
-.pricing-features li:last-child {
-    border-bottom: none;
+
+.pricing-card.popular .pricing-features li {
+    color: rgba(255,255,255,0.85);
+}
+
+.pricing-features li::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 50%;
+    background: #C0392B;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='14' height='14'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+}
+
+.pricing-card.popular .pricing-features li::before {
+    background-color: rgba(255,255,255,0.2);
 }
 
 .pricing-btn {
     width: 100%;
     margin-top: auto;
     font-weight: 600;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #2C1810;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.pricing-btn:hover {
+    opacity: 0.9;
+    transform: none;
+    box-shadow: none;
 }
 
 .pricing-card.popular .pricing-btn {
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: #FFFFFF;
+    color: #2C1810;
 }
 
 .pricing-notes {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 40px auto 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .pricing-notes {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 
 .note-box {
-    background: rgba(255, 255, 255, 0.5);
     padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+    font-size: 0.85rem;
+    background: transparent;
+}
+
+.note-box h4 {
+    color: #C0392B;
+    margin-bottom: 4px;
     font-size: 0.9rem;
 }
-.note-box h4 {
-    color: var(--color-primary);
-    margin-bottom: 5px;
+
+.note-box p {
+    color: #8B7B74;
 }
 
-@media (max-width: 1024px) {
-    .pricing-card.popular {
-        transform: none;
-    }
-    .pricing-card.popular:hover {
-        transform: translateY(-10px);
-    }
-}
-
-/* ── Dynamic Booking Form Section ── */
+/* ══════════════════════════════════════════════
+   Booking Form Section — Premium Minimal
+   ══════════════════════════════════════════════ */
 .booking-section {
     padding: 100px 24px;
-    background: #FAFAFA;
+    background: #FFFFFF;
+    min-height: 100vh;
 }
 
-.event-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 15px;
+.booking-form-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #E8E0DA;
+    border-radius: 16px;
+    padding: 48px;
 }
 
-.event-card {
-    background: var(--color-bg-light);
-    border: 2px solid transparent;
-    border-radius: 12px;
-    padding: 20px 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+@media (max-width: 600px) {
+    .booking-form-card {
+        padding: 32px 20px;
+    }
 }
 
-.event-card:hover {
-    border-color: rgba(229, 57, 53, 0.3);
-    transform: translateY(-3px);
-}
-
-.event-card.selected {
-    background: #FFF0F0;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-.event-card.selected i {
-    color: var(--color-primary);
-}
-
-.event-card i {
-    font-size: 1.8rem;
-    color: var(--color-text-muted);
-    transition: color var(--transition-fast);
-}
-
-.event-card span {
-    font-size: 0.85rem;
+.booking-step-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 0.8rem;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8B7B74;
+    margin-bottom: 12px;
 }
 
-.selected-events-list {
-    margin-top: 20px;
+.booking-step-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2C1810;
+    margin-bottom: 24px;
+}
+
+.event-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-.event-badge {
-    background: var(--color-primary);
-    color: var(--color-white);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    animation: fadeIn 0.3s ease;
-}
-
-.event-badge .remove-btn {
+.event-chip {
+    padding: 10px 20px;
+    border: 1px solid #D0C8C2;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2C1810;
     cursor: pointer;
-    opacity: 0.8;
-}
-.event-badge .remove-btn:hover {
-    opacity: 1;
+    transition: all 0.15s ease;
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+.event-chip:hover {
+    border-color: #C0392B;
+    color: #C0392B;
+}
+
+.event-chip.selected {
+    background: #C0392B;
+    border-color: #C0392B;
+    color: #FFFFFF;
+}
+
+.event-dates-container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.event-date-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: #FDF8F4;
+    border-radius: 8px;
+    animation: fadeInSlide 0.2s ease;
+}
+
+.event-date-row label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #2C1810;
+    min-width: 120px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.event-date-row input[type="date"] {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #D0C8C2;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    color: #2C1810;
+    background: #FFFFFF;
+}
+
+.event-date-row input[type="date"]:focus {
+    outline: none;
+    border-color: #C0392B;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+
+.custom-event-add {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.custom-event-add input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #D0C8C2;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.custom-event-add input:focus {
+    outline: none;
+    border-color: #C0392B;
+}
+
+.custom-event-add button {
+    padding: 10px 20px;
+    background: #2C1810;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.booking-divider {
+    border: none;
+    border-top: 1px solid #E8E0DA;
+    margin: 32px 0;
+}
+
+.booking-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .booking-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.booking-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.booking-input-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8B7B74;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+.booking-input-group input,
+.booking-input-group textarea {
+    padding: 12px 14px;
+    border: 1px solid #D0C8C2;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    color: #2C1810;
+    background: #FFFFFF;
+    transition: border-color 0.15s ease;
+}
+
+.booking-input-group input:focus,
+.booking-input-group textarea:focus {
+    outline: none;
+    border-color: #C0392B;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.08);
+}
+
+.booking-input-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.booking-submit-btn {
+    width: 100%;
+    margin-top: 32px;
+    padding: 16px;
+    background: #C0392B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    transition: opacity 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.booking-submit-btn:hover {
+    opacity: 0.9;
+}
+
+.selected-package-banner {
+    background: #FDF8F4;
+    border: 1px solid #E8E0DA;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.selected-package-banner .pkg-name {
+    font-weight: 700;
+    color: #2C1810;
+    font-size: 1rem;
+}
+
+.selected-package-banner .pkg-price {
+    font-weight: 800;
+    color: #C0392B;
+    font-size: 1.1rem;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
 }

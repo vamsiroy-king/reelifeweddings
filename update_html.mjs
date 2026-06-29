@@ -76,10 +76,6 @@ const new_footer_content = `    <!-- ── Solid Red Footer ── -->
                 <p>Based in Bangalore • Available across India</p>
                 
                 <a href="https://wa.me/919148132417" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                
-                <div style="margin-top: 20px;">
-                    <a href="memory-vault-demo.html" style="display:inline-block; padding:10px 20px; border:1px solid rgba(255,255,255,0.5); border-radius:30px; color:#fff; text-decoration:none; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; background: rgba(255,255,255,0.1);">✨ View Memory Vault Demo ✨</a>
-                </div>
             </div>
         </div>
     </footer>
@@ -92,7 +88,7 @@ const new_footer_content = `    <!-- ── Solid Red Footer ── -->
 const files = fs.readdirSync(__dirname).filter(f => f.endsWith('.html'));
 
 files.forEach(f => {
-    if (['index.html', 'faqs.html'].includes(f)) return; // skip index and faqs
+    if (['index.html', 'faqs.html', 'contact.html'].includes(f)) return; // skip pages with custom layouts
 
     let content = fs.readFileSync(path.join(__dirname, f), 'utf8');
 
