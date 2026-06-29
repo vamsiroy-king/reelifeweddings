@@ -6,10 +6,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const new_head_content = `    <!-- Core CSS -->
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/global.css">
-    <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/sections.css">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/sections.css">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">`;
@@ -24,7 +24,7 @@ const new_header_content = `    <!-- ── Flawless Fixed Header ── -->
             
             <div class="nav-logo-container" style="flex:1; text-align:center;">
                 <a href="index.html">
-                    <img src="/assets/logo.png" alt="Reelife Weddings" class="nav-logo">
+                    <img src="./assets/logo.png" alt="Reelife Weddings" class="nav-logo">
                 </a>
             </div>
 
@@ -43,7 +43,7 @@ const new_header_content = `    <!-- ── Flawless Fixed Header ── -->
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="/assets/logo.png" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px; filter: brightness(0);">
+        <img src="./assets/logo.png" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px; filter: brightness(0);">
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="faqs.html" class="nav-link">Pricing & FAQs</a>
@@ -86,7 +86,7 @@ const new_footer_content = `    <!-- ── Solid Red Footer ── -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>`;
 
 const files = fs.readdirSync(__dirname).filter(f => f.endsWith('.html'));
