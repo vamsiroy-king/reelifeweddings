@@ -62,9 +62,7 @@
     <!-- ── Hero Coverflow Carousel ── -->
     <section class="hero-carousel-section">
         
-        <button id="unmute-btn" style="position: absolute; top: 120px; right: 24px; z-index: 1000; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.1); padding: 8px 16px; border-radius: 100px; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); color: #111;">
-            <i class="fas fa-volume-xmark" id="unmute-icon"></i> <span id="unmute-text">Unmute</span>
-        </button>
+        
     
         <div class="hero-text-content">
             <h1 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800; font-size: clamp(3rem, 6vw, 5rem); letter-spacing: -2px; margin-bottom: 16px; line-height: 1.1;">Your Wedding.<br>Captured Instantly.</h1>
@@ -72,18 +70,20 @@
             <a href="#pricing" class="btn btn-primary" style="background: #FFFFFF; border: none; color: #111; padding: 16px 40px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">VIEW PACKAGES <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
         </div>
 
-        <div class="swiper swiper-container-hero">
+        <div class="swiper swiper-container-hero" style="position: relative;">
+            
             <div class="swiper-wrapper">
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted autoplay loop playsinline src="./assets/videos/hero_video_1.mp4"></video>
                 </div>
                 <div class="swiper-slide swiper-slide-reel">
-                    <video class="reel-video" muted autoplay loop playsinline src="./assets/videos/hero_video_1.mp4"></video>
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); font-weight: 600;">Coming Soon</div>
                 </div>
                 <div class="swiper-slide swiper-slide-reel">
-                    <video class="reel-video" muted autoplay loop playsinline src="./assets/videos/hero_video_1.mp4"></video>
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); font-weight: 600;">Coming Soon</div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
