@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loopedSlides: 3,
             observer: true,
             observeParents: true,
-            initialSlide: 1,
+            initialSlide: 3,
             coverflowEffect: {
                 rotate: 0,
                 stretch: -20,
@@ -90,35 +90,49 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             on: {
                 init: function () {
-                    // Start all muted
+                    // Mute and pause all videos except the center one
                     document.querySelectorAll('.reel-video').forEach(video => {
                         video.muted = true;
-                        video.play().catch(e => {});
+                        video.pause();
                     });
+                    
+                    // Give swiper a tiny delay to mark the active slide, then play it
+                    setTimeout(() => {
+                        const activeSlide = document.querySelector('.swiper-slide-active');
+                        if (activeSlide) {
+                            const video = activeSlide.querySelector('.reel-video');
+                            if (video) video.play().catch(e => {});
+                        }
+                    }, 100);
                 },
                 slideChangeTransitionEnd: function () {
-                    // When user scrolls, mute everything first
+                    // Pause all videos to save bandwidth and CPU
                     document.querySelectorAll('.swiper-slide').forEach(slide => {
                         const video = slide.querySelector('.reel-video');
                         const btn = slide.querySelector('.slide-mute-btn i');
                         if (video) {
                             video.muted = true;
-                            video.play().catch(e => {});
+                            video.pause(); // Stop playing inactive videos!
                         }
                         if (btn) btn.className = 'fas fa-volume-xmark';
                     });
 
-                    // Unmute the active slide IF global sound is ON
-                    if (isGlobalSoundOn) {
-                        const activeSlide = document.querySelector('.swiper-slide-active');
-                        if (activeSlide) {
-                            const video = activeSlide.querySelector('.reel-video');
-                            if (video) {
+                    // Play and optionally unmute the active slide
+                    const activeSlide = document.querySelector('.swiper-slide-active');
+                    if (activeSlide) {
+                        const video = activeSlide.querySelector('.reel-video');
+                        if (video) {
+                            video.play().catch(e => {}); // Play only the active video
+                            
+                            if (isGlobalSoundOn) {
                                 video.muted = false;
                                 video.volume = 1.0;
                             }
                         }
-                        // Update icons for active & duplicate-active
+                    }
+
+                    // Update UI icons for active
+                    if (isGlobalSoundOn) {
                         document.querySelectorAll('.swiper-slide-active .slide-mute-btn i, .swiper-slide-duplicate-active .slide-mute-btn i').forEach(i => i.className = 'fas fa-volume-high');
                     }
                 },
