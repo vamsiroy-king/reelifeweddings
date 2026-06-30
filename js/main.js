@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 unmuteText.textContent = 'Mute';
             }
             if (window.heroSwiper) {
-                playActiveVideo(window.heroSwiper);
+                playActiveVideo();
             }
         });
     }
@@ -66,21 +66,33 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             on: {
                 init: function () {
-                    playActiveVideo(this);
+                    playActiveVideo();
                 },
                 slideChangeTransitionEnd: function () {
-                    playActiveVideo(this);
+                    playActiveVideo();
                 },
             }
         });
 
-        function playActiveVideo(swiperInstance) {
+        
+        function playActiveVideo() {
             // Let all videos play visually, but mute them all first
             document.querySelectorAll('.reel-video').forEach(video => {
                 video.muted = true;
-                // Ensure they are playing (in case browsers blocked initial autoplay)
+                // Ensure they are playing
                 video.play().catch(e => {}); 
             });
+
+            // If global mute is OFF, unmute ONLY the active slide's video
+            if (!isGlobalMuted) {
+                // Use .swiper-slide-active to perfectly target the center slide
+                const activeVideo = document.querySelector('.swiper-slide-active .reel-video');
+                if (activeVideo) {
+                    activeVideo.muted = false;
+                    activeVideo.volume = 1.0;
+                }
+            }
+        });
 
             // If global mute is OFF, unmute ONLY the active slide's video
             if (!isGlobalMuted) {
