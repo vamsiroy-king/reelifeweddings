@@ -25,18 +25,48 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 2. Swiper Coverflow Initialization
     
+    
     let isGlobalSoundOn = false;
 
-    // Attach click events to all individual slide mute buttons using event delegation
+    // Direct click handler for mute/unmute buttons
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.slide-mute-btn');
         if (btn) {
-            const slide = btn.closest('.swiper-slide');
-            const video = slide.querySelector('.reel-video');
-            if (video) {
-                isGlobalSoundOn = !isGlobalSoundOn;
-                updateVideoSoundStates();
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle sound
+            isGlobalSoundOn = !isGlobalSoundOn;
+            
+            // Immediately apply to the actively visible video
+            const activeSlide = document.querySelector('.swiper-slide-active');
+            if (activeSlide) {
+                const video = activeSlide.querySelector('.reel-video');
+                const icon = btn.querySelector('i');
+                if (video) {
+                    if (isGlobalSoundOn) {
+                        video.muted = false;
+                        video.volume = 1.0;
+                        if(icon) icon.className = 'fas fa-volume-high';
+                        // Also update all duplicate active slides visually
+                        document.querySelectorAll('.swiper-slide-active .slide-mute-btn i, .swiper-slide-duplicate-active .slide-mute-btn i').forEach(i => i.className = 'fas fa-volume-high');
+                    } else {
+                        video.muted = true;
+                        if(icon) icon.className = 'fas fa-volume-xmark';
+                        document.querySelectorAll('.swiper-slide-active .slide-mute-btn i, .swiper-slide-duplicate-active .slide-mute-btn i').forEach(i => i.className = 'fas fa-volume-xmark');
+                    }
+                }
             }
+            
+            // Also force update all other slides to be muted
+            document.querySelectorAll('.swiper-slide').forEach(slide => {
+                if (!slide.classList.contains('swiper-slide-active') && !slide.classList.contains('swiper-slide-duplicate-active')) {
+                    const video = slide.querySelector('.reel-video');
+                    const slideBtn = slide.querySelector('.slide-mute-btn i');
+                    if (video) video.muted = true;
+                    if (slideBtn) slideBtn.className = 'fas fa-volume-xmark';
+                }
+            });
         }
     });
 
@@ -61,37 +91,42 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             on: {
                 init: function () {
-                    updateVideoSoundStates();
+                    // Start all muted
+                    document.querySelectorAll('.reel-video').forEach(video => {
+                        video.muted = true;
+                        video.play().catch(e => {});
+                    });
                 },
                 slideChangeTransitionEnd: function () {
-                    updateVideoSoundStates();
+                    // When user scrolls, mute everything first
+                    document.querySelectorAll('.swiper-slide').forEach(slide => {
+                        const video = slide.querySelector('.reel-video');
+                        const btn = slide.querySelector('.slide-mute-btn i');
+                        if (video) {
+                            video.muted = true;
+                            video.play().catch(e => {});
+                        }
+                        if (btn) btn.className = 'fas fa-volume-xmark';
+                    });
+
+                    // Unmute the active slide IF global sound is ON
+                    if (isGlobalSoundOn) {
+                        const activeSlide = document.querySelector('.swiper-slide-active');
+                        if (activeSlide) {
+                            const video = activeSlide.querySelector('.reel-video');
+                            if (video) {
+                                video.muted = false;
+                                video.volume = 1.0;
+                            }
+                        }
+                        // Update icons for active & duplicate-active
+                        document.querySelectorAll('.swiper-slide-active .slide-mute-btn i, .swiper-slide-duplicate-active .slide-mute-btn i').forEach(i => i.className = 'fas fa-volume-high');
+                    }
                 },
             }
         });
-
-        function updateVideoSoundStates() {
-            document.querySelectorAll('.swiper-slide').forEach(slide => {
-                const video = slide.querySelector('.reel-video');
-                const btn = slide.querySelector('.slide-mute-btn i');
-                
-                if (video) {
-                    // Always make sure video is playing visually
-                    video.play().catch(e => {});
-
-                    // If it's the active slide and global sound is ON, play sound
-                    if (slide.classList.contains('swiper-slide-active') && isGlobalSoundOn) {
-                        video.muted = false;
-                        video.volume = 1.0;
-                        if(btn) btn.className = 'fas fa-volume-high';
-                    } else {
-                        // If it's scrolled away OR global sound is off, MUTE it
-                        video.muted = true;
-                        if(btn) btn.className = 'fas fa-volume-xmark';
-                    }
-                }
-            });
-        }
     }
+
     // 3. Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
