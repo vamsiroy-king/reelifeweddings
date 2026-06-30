@@ -24,26 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // 2. Swiper Coverflow Initialization
-    let isGlobalMuted = true;
-    const unmuteBtn = document.getElementById('unmute-btn');
-    const unmuteIcon = document.getElementById('unmute-icon');
-    const unmuteText = document.getElementById('unmute-text');
+    
+    let isGlobalSoundOn = false;
 
-    if (unmuteBtn) {
-        unmuteBtn.addEventListener('click', () => {
-            isGlobalMuted = !isGlobalMuted;
-            if (isGlobalMuted) {
-                unmuteIcon.className = 'fas fa-volume-xmark';
-                unmuteText.textContent = 'Unmute';
-            } else {
-                unmuteIcon.className = 'fas fa-volume-high';
-                unmuteText.textContent = 'Mute';
+    // Attach click events to all individual slide mute buttons using event delegation
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.slide-mute-btn');
+        if (btn) {
+            const slide = btn.closest('.swiper-slide');
+            const video = slide.querySelector('.reel-video');
+            if (video) {
+                isGlobalSoundOn = !isGlobalSoundOn;
+                updateVideoSoundStates();
             }
-            if (window.heroSwiper) {
-                playActiveVideo();
-            }
-        });
-    }
+        }
+    });
 
     if (typeof Swiper !== 'undefined') {
         window.heroSwiper = new Swiper('.swiper-container-hero', {
@@ -66,35 +61,37 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             on: {
                 init: function () {
-                    playActiveVideo();
+                    updateVideoSoundStates();
                 },
                 slideChangeTransitionEnd: function () {
-                    playActiveVideo();
+                    updateVideoSoundStates();
                 },
             }
         });
 
-        
-        function playActiveVideo() {
-            // Let all videos play visually, but mute them all first
-            document.querySelectorAll('.reel-video').forEach(video => {
-                video.muted = true;
-                // Ensure they are playing
-                video.play().catch(e => {}); 
-            });
+        function updateVideoSoundStates() {
+            document.querySelectorAll('.swiper-slide').forEach(slide => {
+                const video = slide.querySelector('.reel-video');
+                const btn = slide.querySelector('.slide-mute-btn i');
+                
+                if (video) {
+                    // Always make sure video is playing visually
+                    video.play().catch(e => {});
 
-            // If global mute is OFF, unmute ONLY the active slide's video
-            if (!isGlobalMuted) {
-                // Use .swiper-slide-active to perfectly target the center slide
-                const activeVideo = document.querySelector('.swiper-slide-active .reel-video');
-                if (activeVideo) {
-                    activeVideo.muted = false;
-                    activeVideo.volume = 1.0;
+                    // If it's the active slide and global sound is ON, play sound
+                    if (slide.classList.contains('swiper-slide-active') && isGlobalSoundOn) {
+                        video.muted = false;
+                        video.volume = 1.0;
+                        if(btn) btn.className = 'fas fa-volume-high';
+                    } else {
+                        // If it's scrolled away OR global sound is off, MUTE it
+                        video.muted = true;
+                        if(btn) btn.className = 'fas fa-volume-xmark';
+                    }
                 }
-            }
+            });
         }
     }
-
     // 3. Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
