@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue } from "framer-motion";
-
-// --- Types ---
-
+import { Volume2, VolumeX } from "lucide-react";
 
 // --- FlipCard Component ---
 const IMG_WIDTH = 60;
@@ -16,10 +14,19 @@ function FlipCard({
     total,
     phase,
     target,
+    isMuted
 }) {
+    const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = isMuted;
+        }
+    }, [isMuted]);
+
     return (
         <motion.div
-            // Smoothly animate to the coordinates defined by the parent
             animate={{
                 x: target.x,
                 y: target.y,
@@ -32,13 +39,11 @@ function FlipCard({
                 stiffness: 40,
                 damping: 15,
             }}
-
-            // Initial style
             style={{
                 position: "absolute",
                 width: IMG_WIDTH,
                 height: IMG_HEIGHT,
-                transformStyle: "preserve-3d", // Essential for the 3D hover effect
+                transformStyle: "preserve-3d",
                 perspective: "1000px",
             }}
             className="cursor-pointer group"
@@ -54,11 +59,23 @@ function FlipCard({
                     className="absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg bg-gray-200"
                     style={{ backfaceVisibility: "hidden" }}
                 >
-                    <img
-                        src={src}
-                        alt={`hero-${index}`}
-                        className="h-full w-full object-cover"
-                    />
+                    {isVideo ? (
+                        <video
+                            ref={videoRef}
+                            src={src}
+                            autoPlay
+                            loop
+                            muted={isMuted}
+                            playsInline
+                            className="h-full w-full object-cover"
+                        />
+                    ) : (
+                        <img
+                            src={src}
+                            alt={`hero-${index}`}
+                            className="h-full w-full object-cover"
+                        />
+                    )}
                     <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
                 </div>
 
@@ -78,106 +95,56 @@ function FlipCard({
 }
 
 // --- Main Hero Component ---
-const TOTAL_IMAGES = 20;
-const MAX_SCROLL = 3000; // Virtual scroll range
+const TOTAL_MEDIA = 20;
+const MAX_SCROLL = 3000;
 
-// Unsplash Images
-const IMAGES = [
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&q=80",
-    "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=300&q=80",
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300&q=80",
-    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=300&q=80",
-    "https://images.unsplash.com/photo-1506765515384-028b60a970df?w=300&q=80",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&q=80",
-    "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=300&q=80",
-    "https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?w=300&q=80",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=300&q=80",
-    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&q=80",
-    "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=300&q=80",
-    "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=300&q=80",
-    "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=300&q=80",
-    "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=300&q=80",
-    "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=300&q=80",
-    "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=300&q=80",
-    "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=300&q=80",
-    "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=300&q=80",
-    "https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=300&q=80",
-];
+// You can easily upload more videos to the 'assets' folder and add them here:
+const MEDIA = Array(TOTAL_MEDIA).fill("./assets/video.mp4");
 
-// Helper for linear interpolation
 const lerp = (start, end, t) => start * (1 - t) + end * t;
 
 export default function IntroAnimation() {
     const [introPhase, setIntroPhase] = useState("scatter");
     const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
     const containerRef = useRef(null);
+    const [isMuted, setIsMuted] = useState(true);
 
-    // --- Container Size ---
     useEffect(() => {
         if (!containerRef.current) return;
-
         const handleResize = (entries) => {
             for (const entry of entries) {
-                setContainerSize({
-                    width: entry.contentRect.width,
-                    height: entry.contentRect.height,
-                });
+                setContainerSize({ width: entry.contentRect.width, height: entry.contentRect.height });
             }
         };
-
         const observer = new ResizeObserver(handleResize);
         observer.observe(containerRef.current);
-
-        // Initial set
-        setContainerSize({
-            width: containerRef.current.offsetWidth,
-            height: containerRef.current.offsetHeight,
-        });
-
+        setContainerSize({ width: containerRef.current.offsetWidth, height: containerRef.current.offsetHeight });
         return () => observer.disconnect();
     }, []);
 
-    // --- Virtual Scroll Logic ---
     const virtualScroll = useMotionValue(0);
-    const scrollRef = useRef(0); // Keep track of scroll value without re-renders
+    const scrollRef = useRef(0);
 
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
 
         const handleWheel = (e) => {
-            // Prevent default to stop browser overscroll/bounce ONLY if we are scrolling within the range
-            // We want the user to be able to scroll the rest of the page when they reach MAX_SCROLL
-            
             const newScroll = Math.min(Math.max(scrollRef.current + e.deltaY, 0), MAX_SCROLL);
-            
-            // Allow default scrolling if we are at the top or bottom of the virtual scroll
-            if ((scrollRef.current === 0 && e.deltaY < 0) || (scrollRef.current === MAX_SCROLL && e.deltaY > 0)) {
-                return; // Let browser handle it
-            }
-
+            if ((scrollRef.current === 0 && e.deltaY < 0) || (scrollRef.current === MAX_SCROLL && e.deltaY > 0)) return;
             e.preventDefault();
             scrollRef.current = newScroll;
             virtualScroll.set(newScroll);
         };
 
-        // Touch support
         let touchStartY = 0;
-        const handleTouchStart = (e) => {
-            touchStartY = e.touches[0].clientY;
-        };
+        const handleTouchStart = (e) => { touchStartY = e.touches[0].clientY; };
         const handleTouchMove = (e) => {
             const touchY = e.touches[0].clientY;
             const deltaY = touchStartY - touchY;
             touchStartY = touchY;
-
             const newScroll = Math.min(Math.max(scrollRef.current + deltaY, 0), MAX_SCROLL);
-            
-            if ((scrollRef.current === 0 && deltaY < 0) || (scrollRef.current === MAX_SCROLL && deltaY > 0)) {
-                return;
-            }
-
+            if ((scrollRef.current === 0 && deltaY < 0) || (scrollRef.current === MAX_SCROLL && deltaY > 0)) return;
             e.preventDefault();
             scrollRef.current = newScroll;
             virtualScroll.set(newScroll);
@@ -194,22 +161,17 @@ export default function IntroAnimation() {
         };
     }, [virtualScroll]);
 
-    // 1. Morph Progress: 0 (Circle) -> 1 (Bottom Arc)
     const morphProgress = useTransform(virtualScroll, [0, 600], [0, 1]);
     const smoothMorph = useSpring(morphProgress, { stiffness: 40, damping: 20 });
-
-    // 2. Scroll Rotation (Shuffling)
     const scrollRotate = useTransform(virtualScroll, [600, 3000], [0, 360]);
     const smoothScrollRotate = useSpring(scrollRotate, { stiffness: 40, damping: 20 });
 
-    // --- Mouse Parallax ---
     const mouseX = useMotionValue(0);
     const smoothMouseX = useSpring(mouseX, { stiffness: 30, damping: 20 });
 
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
-
         const handleMouseMove = (e) => {
             const rect = container.getBoundingClientRect();
             const relativeX = e.clientX - rect.left;
@@ -220,16 +182,14 @@ export default function IntroAnimation() {
         return () => container.removeEventListener("mousemove", handleMouseMove);
     }, [mouseX]);
 
-    // --- Intro Sequence ---
     useEffect(() => {
         const timer1 = setTimeout(() => setIntroPhase("line"), 500);
         const timer2 = setTimeout(() => setIntroPhase("circle"), 2500);
         return () => { clearTimeout(timer1); clearTimeout(timer2); };
     }, []);
 
-    // --- Random Scatter Positions ---
     const scatterPositions = useMemo(() => {
-        return IMAGES.map(() => ({
+        return MEDIA.map(() => ({
             x: (Math.random() - 0.5) * 1500,
             y: (Math.random() - 0.5) * 1000,
             rotation: (Math.random() - 0.5) * 180,
@@ -238,7 +198,6 @@ export default function IntroAnimation() {
         }));
     }, []);
 
-    // --- Render Loop (Manual Calculation for Morph) ---
     const [morphValue, setMorphValue] = useState(0);
     const [rotateValue, setRotateValue] = useState(0);
     const [parallaxValue, setParallaxValue] = useState(0);
@@ -259,8 +218,16 @@ export default function IntroAnimation() {
 
     return (
         <div ref={containerRef} className="relative w-full h-[100vh] bg-[#fbf9f6] overflow-hidden" style={{ minHeight: '800px' }}>
+            {/* Audio Toggle */}
+            <button 
+                onClick={() => setIsMuted(!isMuted)} 
+                className="absolute top-24 right-8 z-50 flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-gray-200 text-gray-800 font-medium text-sm transition-transform hover:scale-105"
+            >
+                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                {isMuted ? "Unmute Videos" : "Mute Videos"}
+            </button>
+
             <div className="flex h-full w-full flex-col items-center justify-center" style={{ perspective: '1000px' }}>
-                {/* Intro Text */}
                 <div className="absolute z-0 flex flex-col items-center justify-center text-center pointer-events-none top-1/2 -translate-y-1/2">
                     <motion.h1
                         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
@@ -281,7 +248,6 @@ export default function IntroAnimation() {
                     </motion.p>
                 </div>
 
-                {/* Arc Active Content */}
                 <motion.div
                     style={{ opacity: contentOpacity, y: contentY }}
                     className="absolute top-[10%] z-10 flex flex-col items-center justify-center text-center pointer-events-none px-4"
@@ -295,53 +261,37 @@ export default function IntroAnimation() {
                     </p>
                 </motion.div>
 
-                {/* Main Container */}
                 <div className="relative flex items-center justify-center w-full h-full">
-                    {IMAGES.slice(0, TOTAL_IMAGES).map((src, i) => {
+                    {MEDIA.slice(0, TOTAL_MEDIA).map((src, i) => {
                         let target = { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 };
-
                         if (introPhase === "scatter") {
                             target = scatterPositions[i];
                         } else if (introPhase === "line") {
                             const lineSpacing = 70;
-                            const lineTotalWidth = TOTAL_IMAGES * lineSpacing;
+                            const lineTotalWidth = TOTAL_MEDIA * lineSpacing;
                             const lineX = i * lineSpacing - lineTotalWidth / 2;
                             target = { x: lineX, y: 0, rotation: 0, scale: 1, opacity: 1 };
                         } else {
                             const isMobile = containerSize.width < 768;
                             const minDimension = Math.min(containerSize.width, containerSize.height);
-
                             const circleRadius = Math.min(minDimension * 0.35, 350);
-                            const circleAngle = (i / TOTAL_IMAGES) * 360;
+                            const circleAngle = (i / TOTAL_MEDIA) * 360;
                             const circleRad = (circleAngle * Math.PI) / 180;
-                            const circlePos = {
-                                x: Math.cos(circleRad) * circleRadius,
-                                y: Math.sin(circleRad) * circleRadius,
-                                rotation: circleAngle + 90,
-                            };
+                            const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius, rotation: circleAngle + 90 };
 
                             const baseRadius = Math.min(containerSize.width, containerSize.height * 1.5);
                             const arcRadius = baseRadius * (isMobile ? 1.4 : 1.1);
                             const arcApexY = containerSize.height * (isMobile ? 0.35 : 0.25);
                             const arcCenterY = arcApexY + arcRadius;
-
                             const spreadAngle = isMobile ? 100 : 130;
                             const startAngle = -90 - (spreadAngle / 2);
-                            const step = spreadAngle / (TOTAL_IMAGES - 1);
-
+                            const step = spreadAngle / (TOTAL_MEDIA - 1);
                             const scrollProgress = Math.min(Math.max(rotateValue / 360, 0), 1);
                             const maxRotation = spreadAngle * 0.8;
                             const boundedRotation = -scrollProgress * maxRotation;
-
                             const currentArcAngle = startAngle + (i * step) + boundedRotation;
                             const arcRad = (currentArcAngle * Math.PI) / 180;
-
-                            const arcPos = {
-                                x: Math.cos(arcRad) * arcRadius + parallaxValue,
-                                y: Math.sin(arcRad) * arcRadius + arcCenterY,
-                                rotation: currentArcAngle + 90,
-                                scale: isMobile ? 1.4 : 1.8,
-                            };
+                            const arcPos = { x: Math.cos(arcRad) * arcRadius + parallaxValue, y: Math.sin(arcRad) * arcRadius + arcCenterY, rotation: currentArcAngle + 90, scale: isMobile ? 1.4 : 1.8 };
 
                             target = {
                                 x: lerp(circlePos.x, arcPos.x, morphValue),
@@ -357,9 +307,10 @@ export default function IntroAnimation() {
                                 key={i}
                                 src={src}
                                 index={i}
-                                total={TOTAL_IMAGES}
+                                total={TOTAL_MEDIA}
                                 phase={introPhase}
                                 target={target}
+                                isMuted={isMuted}
                             />
                         );
                     })}
