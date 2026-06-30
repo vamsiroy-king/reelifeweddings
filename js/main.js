@@ -154,6 +154,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    // Auto-pause and mute videos when carousel scrolls out of view
+    const carouselSection = document.querySelector('.hero-carousel-section');
+    if (carouselSection && typeof IntersectionObserver !== 'undefined') {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    document.querySelectorAll('.reel-video').forEach(video => {
+                        video.muted = true;
+                        video.pause();
+                        // Reset play button states
+                        const btn = video.nextElementSibling;
+                        if (btn && btn.classList.contains('slide-mute-btn')) {
+                            btn.innerHTML = '<i class="fas fa-volume-xmark"></i>';
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0 });
+        observer.observe(carouselSection);
+    }
+
+
     // 3. Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');

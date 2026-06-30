@@ -51,7 +51,7 @@
             
             <div class="nav-logo-container" style="flex:1; text-align:center;">
                 <a href="index.html">
-                    <img src="./assets/logo-red.svg" alt="Reelife Weddings" class="nav-logo">
+                    <div class="nav-logo"></div>
                 </a>
             </div>
 
@@ -71,7 +71,7 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <img src="./assets/logo-red.svg" alt="Reelife Weddings" style="height: 50px; margin-bottom: 20px; border-radius: 4px;">
+        <div class="nav-logo mobile-nav-logo"></div>
         <a href="index.html" class="nav-link">Home</a>
         <a href="portfolio.html" class="nav-link">Portfolio</a>
         <a href="index.html#pricing" class="nav-link">Pricing</a>
@@ -81,15 +81,45 @@
 
     
     <!-- ── Hero Coverflow Carousel ── -->
-    <section class="hero-carousel-section">
+    
+    <!--  Dedicated Hero Text Section  -->
+    <section class="hero-text-section" style="padding-top: 160px; text-align: center; position: relative; padding-bottom: 40px; overflow: hidden;">
+        
+        <!-- Wedding Motifs -->
+        <svg class="wedding-motif" viewBox="0 0 50 100" style="position: absolute; left: 10%; top: 120px; width: 45px; opacity: 0.8; z-index: -1;">
+            <path d="M25 100 Q25 50 10 10" fill="none" stroke="#FF2A4D" stroke-width="1.5"/>
+            <path d="M22 80 Q40 70 45 50 Q30 60 22 80" fill="#FDE8EA" stroke="#FF2A4D" stroke-width="1"/>
+            <path d="M18 60 Q5 50 2 30 Q15 40 18 60" fill="#FDE8EA" stroke="#FF2A4D" stroke-width="1"/>
+            <path d="M15 35 Q30 25 35 5 Q20 15 15 35" fill="#FDE8EA" stroke="#FF2A4D" stroke-width="1"/>
+            <circle cx="45" cy="50" r="2" fill="#FF2A4D"/>
+            <circle cx="2" cy="30" r="2" fill="#FF2A4D"/>
+            <circle cx="35" cy="5" r="2" fill="#FF2A4D"/>
+        </svg>
+        <svg class="wedding-motif" viewBox="0 0 50 100" style="position: absolute; right: 10%; top: 120px; width: 45px; opacity: 0.8; z-index: -1; transform: scaleX(-1);">
+            <path d="M25 100 Q25 50 10 10" fill="none" stroke="#FF2A4D" stroke-width="1.5"/>
+            <path d="M22 80 Q40 70 45 50 Q30 60 22 80" fill="#FDE8EA" stroke="#FF2A4D" stroke-width="1"/>
+            <path d="M18 60 Q5 50 2 30 Q15 40 18 60" fill="#FDE8EA" stroke="#FF2A4D" stroke-width="1"/>
+            <path d="M15 35 Q30 25 35 5 Q20 15 15 35" fill="#FDE8EA" stroke="#FF2A4D" stroke-width="1"/>
+            <circle cx="45" cy="50" r="2" fill="#FF2A4D"/>
+            <circle cx="2" cy="30" r="2" fill="#FF2A4D"/>
+            <circle cx="35" cy="5" r="2" fill="#FF2A4D"/>
+        </svg>
+
+        <h1 style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 10vw, 8rem); letter-spacing: -3px; margin-bottom: 0px; line-height: 1.1; color: var(--color-primary);">India's Best</h1>
+        <h2 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(1rem, 3vw, 1.8rem); color: var(--color-primary); letter-spacing: 1px; margin-bottom: 24px; margin-top: 10px;">- WEDDING CONTENT CREATORS -</h2>
+        
+        <p style="margin-bottom: 32px; font-size: 1.05rem; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.7; color: #5D4037; padding: 0 20px;">
+            We specialize in live social media coverage of your wedding with stunning reels, engaging stories, and curated posts. Our team provides professional editing and personalized content, ensuring your celebration shines online. Let's make every moment shareable, memorable & uniquely yours!
+        </p>
+        
+        <a href="#pricing" class="btn btn-primary" style="background: transparent; border: 1px solid var(--color-text-main); color: var(--color-text-main); padding: 12px 32px; border-radius: 50px; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; justify-content: center; margin-top: 10px;">BROCHURE <i class="fas fa-arrow-down" style="margin-left: 8px;"></i></a>
+    </section>
+
+    <section class="hero-carousel-section" style="padding-top: 20px;">
         
         
     
-        <div class="hero-text-content">
-            <h1 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800; font-size: clamp(3rem, 6vw, 5rem); letter-spacing: -2px; margin-bottom: 16px; line-height: 1.1;">Your Wedding.<br>Captured Instantly.</h1>
-            <p style="margin-bottom: 32px; font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">We capture the authentic joy, tears, and celebrations of your big day, delivering stunning cinematic reels within 24 hours.</p>
-            <a href="#pricing" class="btn btn-primary" style="background: #FFFFFF; border: none; color: #111; padding: 16px 40px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">VIEW PACKAGES <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-        </div>
+        
 
         <div class="swiper swiper-container-hero" style="position: relative;">
             

@@ -37,7 +37,7 @@
 
 /* ── Flawless Fixed Header ── */
 .header-wrapper {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -60,9 +60,23 @@
 }
 
 .nav-logo {
-  height: 85px;
-  width: auto;
-  border-radius: 4px;
+  height: 90px;
+  width: 140px;
+  background-color: var(--color-primary);
+  -webkit-mask-image: url('../assets/logo-optimized.webp');
+  mask-image: url('../assets/logo-optimized.webp');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.mobile-nav-logo {
+  height: 60px;
+  width: 100px;
+  margin-bottom: 20px;
 }
 
 .nav-group {
