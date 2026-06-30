@@ -42,10 +42,10 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(10, 10, 10, 0.9);
+  background-color: transparent;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: none;
   padding: 16px 0;
   transition: all 0.3s ease;
 }
@@ -60,7 +60,7 @@
 }
 
 .nav-logo {
-  height: 48px;
+  height: 85px;
   width: auto;
   border-radius: 4px;
 }
@@ -81,7 +81,7 @@
   font-family: var(--font-primary);
   font-size: 0.95rem;
   font-weight: 500;
-  color: #ffffff;
+  color: #5D4037;
   transition: color var(--transition-fast);
 }
 
@@ -120,7 +120,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(10, 10, 10, 0.98);
+  background-color: #FDE8EA;
   z-index: 900;
   display: flex;
   flex-direction: column;
@@ -184,7 +184,7 @@
   border-radius: var(--radius-sm);
   font-family: var(--font-primary);
   font-size: 1rem;
-  color: #ffffff;
+  color: #5D4037;
   transition: all var(--transition-fast);
 }
 
