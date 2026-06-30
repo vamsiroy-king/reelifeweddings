@@ -60,7 +60,7 @@
 
     
     <!-- ── Hero Coverflow Carousel ── -->
-    <section class="hero-carousel-section">
+    <section class="hero-carousel-section" style="background: #000;">
         
         
     
@@ -71,19 +71,21 @@
         </div>
 
         <div class="swiper swiper-container-hero" style="position: relative;">
-            
             <div class="swiper-wrapper">
                 <div class="swiper-slide swiper-slide-reel">
                     <video class="reel-video" muted autoplay loop playsinline src="./assets/videos/hero_video_1.mp4"></video>
                 </div>
                 <div class="swiper-slide swiper-slide-reel">
-                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); font-weight: 600;">Coming Soon</div>
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); color: rgba(255,255,255,0.5); font-weight: 600;">Coming Soon</div>
                 </div>
                 <div class="swiper-slide swiper-slide-reel">
-                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); font-weight: 600;">Coming Soon</div>
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); color: rgba(255,255,255,0.5); font-weight: 600;">Coming Soon</div>
                 </div>
             </div>
-        </div>
+            
+            <button id="unmute-btn" style="position: absolute; bottom: 20px; right: 20px; z-index: 1000; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); padding: 12px 16px; border-radius: 100px; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); color: #fff;">
+                <i class="fas fa-volume-xmark" id="unmute-icon"></i> <span id="unmute-text">Unmute</span>
+            </button>
         </div>
     </section>
 
