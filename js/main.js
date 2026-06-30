@@ -92,16 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     activeVideo.volume = 1.0;
                 }
             }
-        });
-
-            // If global mute is OFF, unmute ONLY the active slide's video
-            if (!isGlobalMuted) {
-                const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
-                const activeVideo = activeSlide.querySelector('video');
-                if (activeVideo) {
-                    activeVideo.muted = false;
-                }
-            }
         }
     }
 
