@@ -59,14 +59,13 @@
   overflow: hidden;
   background: var(--color-black);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  position: relative;
+  position: relative;
   box-shadow: var(--shadow-float);
-  /* Ensure no border as requested */
   border: none;
 }
 
 .swiper-slide:not(.swiper-slide-active) {
-  opacity: 0.4;
+  opacity: 1;
 }
 
 .swiper-slide-active {
