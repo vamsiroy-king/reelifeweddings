@@ -1,0 +1,42 @@
+const fs = require('fs');
+
+// 1. Delete the files
+try {
+    fs.unlinkSync('C:/reelifeweddingsAG/assets/videos/hero_video_4.mp4');
+    fs.unlinkSync('C:/reelifeweddingsAG/assets/videos/hero_video_5.mp4');
+} catch (e) {
+    console.log('Files already deleted or not found');
+}
+
+// 2. Update index.html
+let html = fs.readFileSync('C:/reelifeweddingsAG/index.html', 'utf8');
+
+const createSlide = (videoName) => `
+                <div class="swiper-slide swiper-slide-reel">
+                    <video class="reel-video" muted loop playsinline preload="metadata" src="./assets/videos/${videoName}"></video>
+                    <button class="slide-mute-btn swiper-no-swiping" style="position: absolute; bottom: 20px; right: 20px; z-index: 100; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px); width: 40px; height: 40px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;">
+                        <i class="fas fa-volume-xmark"></i>
+                    </button>
+                </div>`;
+
+const wrapperContent = `
+            <div class="swiper-wrapper">
+${createSlide('hero_video_1.mp4')}
+${createSlide('hero_video_2.mp4')}
+${createSlide('hero_video_3.mp4')}
+${createSlide('hero_video_6.mp4')}
+${createSlide('hero_video_7.mp4')}
+${createSlide('hero_video_8.mp4')}
+            </div>`;
+
+const wrapperRegex = /<div class="swiper-wrapper">[\s\S]*?<\/div>\s*<\/div>\s*<\/section>/;
+html = html.replace(wrapperRegex, wrapperContent + '\n        </div>\n    </section>');
+
+fs.writeFileSync('C:/reelifeweddingsAG/index.html', html, 'utf8');
+
+// 3. Update main.js initialSlide to 2 (center for 6 items)
+let js = fs.readFileSync('C:/reelifeweddingsAG/js/main.js', 'utf8');
+js = js.replace(/initialSlide: \d+,/, "initialSlide: 2,");
+fs.writeFileSync('C:/reelifeweddingsAG/js/main.js', js, 'utf8');
+
+console.log('Removed 2 videos, updated HTML and JS for 6 videos!');
