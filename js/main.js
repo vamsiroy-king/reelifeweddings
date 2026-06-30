@@ -70,6 +70,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    
+    // Dynamically clone slides if there are too few for a wide desktop screen
+    // This keeps the HTML clean but ensures Swiper's loop engine has enough elements to render infinitely without breaking
+    const swiperWrapper = document.querySelector('.swiper-container-hero .swiper-wrapper');
+    if (swiperWrapper) {
+        const slides = Array.from(swiperWrapper.children);
+        if (slides.length > 0 && slides.length < 10) {
+            slides.forEach(slide => {
+                const clone = slide.cloneNode(true);
+                swiperWrapper.appendChild(clone);
+            });
+        }
+    }
+
     if (typeof Swiper !== 'undefined') {
         window.heroSwiper = new Swiper('.swiper-container-hero', {
             effect: 'coverflow',
@@ -80,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loopedSlides: 3,
             observer: true,
             observeParents: true,
-            initialSlide: 2,
+            initialSlide: 5,
             coverflowEffect: {
                 rotate: 0,
                 stretch: -20,
