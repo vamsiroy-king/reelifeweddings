@@ -1,247 +1,87 @@
 const fs = require('fs');
+let js = fs.readFileSync('C:/reelifeweddingsAG/js/main.js', 'utf8');
 
-const jsPath = 'C:/reelifeweddingsAG/js/main.js';
-let jsContent = fs.readFileSync(jsPath, 'utf8');
+const newSwiperInit = `
+    // 2. Swiper Coverflow Initialization
+    let isGlobalMuted = true;
+    const unmuteBtn = document.getElementById('unmute-btn');
+    const unmuteIcon = document.getElementById('unmute-icon');
+    const unmuteText = document.getElementById('unmute-text');
 
-// We need to replace the logic from `/* ── New Booking Form Logic (contact.html) ── */`
-// to the end of the `dynamicBookingForm.addEventListener('submit'` block.
-
-const newJS = `    /* ── New Booking Form Logic (contact.html) ── */
-    const packageChips = document.querySelectorAll('#packageChips .event-chip');
-    const eventChipsContainer = document.getElementById('eventChips');
-    const eventDatesContainer = document.getElementById('eventDatesContainer');
-    const customEventInput = document.getElementById('customEventInput');
-    const addCustomEventBtn = document.getElementById('addCustomEventBtn');
-    
-    // Receipt Elements
-    const quotationReceipt = document.getElementById('quotationReceipt');
-    const receiptPackageName = document.getElementById('receiptPackageName');
-    const receiptBasePrice = document.getElementById('receiptBasePrice');
-    const receiptEventCount = document.getElementById('receiptEventCount');
-    const receiptTotalPrice = document.getElementById('receiptTotalPrice');
-
-    let selectedPackage = null;
-    let selectedPackagePrice = 0;
-    let selectedEvents = new Set();
-    
-    const packagePricing = {
-        moments: 9999,
-        signature: 14999,
-        legacy: 24999
-    };
-    
-    const packageDisplayNames = {
-        moments: 'Moments',
-        signature: 'Signature',
-        legacy: 'Legacy'
-    };
-
-    function formatCurrency(num) {
-        return '₹' + num.toLocaleString('en-IN');
+    if (unmuteBtn) {
+        unmuteBtn.addEventListener('click', () => {
+            isGlobalMuted = !isGlobalMuted;
+            if (isGlobalMuted) {
+                unmuteIcon.className = 'fas fa-volume-xmark';
+                unmuteText.textContent = 'Unmute';
+            } else {
+                unmuteIcon.className = 'fas fa-volume-high';
+                unmuteText.textContent = 'Mute';
+            }
+            if (window.heroSwiper) {
+                playActiveVideo(window.heroSwiper);
+            }
+        });
     }
 
-    function updateQuotation() {
-        if (!quotationReceipt) return;
-        
-        if (selectedPackage && selectedEvents.size > 0) {
-            quotationReceipt.style.display = 'block';
-            
-            receiptPackageName.textContent = packageDisplayNames[selectedPackage];
-            receiptBasePrice.textContent = formatCurrency(selectedPackagePrice);
-            receiptEventCount.textContent = selectedEvents.size;
-            
-            const total = selectedPackagePrice * selectedEvents.size;
-            receiptTotalPrice.textContent = formatCurrency(total);
-        } else {
-            quotationReceipt.style.display = 'none';
+    if (typeof Swiper !== 'undefined') {
+        window.heroSwiper = new Swiper('.swiper-container-hero', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 1.5,
+            breakpoints: {
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 5 }
+            },
+            loop: true,
+            initialSlide: 0,
+            coverflowEffect: {
+                rotate: 20,
+                stretch: 0,
+                depth: 200,
+                modifier: 1,
+                slideShadows: false,
+            },
+            on: {
+                init: function () {
+                    playActiveVideo(this);
+                },
+                slideChangeTransitionEnd: function () {
+                    playActiveVideo(this);
+                },
+            }
+        });
+
+        function playActiveVideo(swiperInstance) {
+            // Let all videos play visually, but mute them all first
+            document.querySelectorAll('.reel-video').forEach(video => {
+                video.muted = true;
+                // Ensure they are playing (in case browsers blocked initial autoplay)
+                video.play().catch(e => {}); 
+            });
+
+            // If global mute is OFF, unmute ONLY the active slide's video
+            if (!isGlobalMuted) {
+                const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+                const activeVideo = activeSlide.querySelector('video');
+                if (activeVideo) {
+                    activeVideo.muted = false;
+                }
+            }
         }
     }
+`;
 
-    function renderEventDates() {
-        if (!eventDatesContainer) return;
-        eventDatesContainer.innerHTML = '';
-        
-        if (selectedEvents.size === 0) return;
+// Replace the old Swiper initialization
+// Need to find the start of "// 2. Swiper Coverflow Initialization" and the end of that block.
+const startIndex = js.indexOf('// 2. Swiper Coverflow Initialization');
+const endIndex = js.indexOf('// 3. Mobile Menu Toggle');
 
-        const title = document.createElement('h4');
-        title.textContent = 'Event Dates & Venue Details';
-        title.style.marginBottom = '15px';
-        title.style.color = 'var(--color-primary)';
-        eventDatesContainer.appendChild(title);
-
-        selectedEvents.forEach(ev => {
-            const row = document.createElement('div');
-            row.className = 'event-date-row';
-
-            const label = document.createElement('label');
-            label.textContent = ev + ' Date:';
-
-            const input = document.createElement('input');
-            input.type = 'date';
-            input.dataset.eventDate = ev;
-
-            row.appendChild(label);
-            row.appendChild(input);
-            eventDatesContainer.appendChild(row);
-        });
-        
-        updateQuotation();
-    }
-
-    // Auto-select package from URL params
-    const urlParams = new URLSearchParams(window.location.search);
-    const preselectedPkg = urlParams.get('package');
-    if (preselectedPkg && packageChips.length) {
-        packageChips.forEach(chip => {
-            if (chip.getAttribute('data-package') === preselectedPkg) {
-                chip.classList.add('selected');
-                selectedPackage = preselectedPkg;
-                selectedPackagePrice = packagePricing[preselectedPkg] || 0;
-            }
-        });
-        updateQuotation();
-    }
-
-    // Package Chip Click
-    if (packageChips.length) {
-        packageChips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                packageChips.forEach(c => c.classList.remove('selected'));
-                chip.classList.add('selected');
-                
-                selectedPackage = chip.getAttribute('data-package');
-                selectedPackagePrice = packagePricing[selectedPackage] || 0;
-                
-                updateQuotation();
-            });
-        });
-    }
-
-    // Event Chip Click (Delegated for dynamically added custom events)
-    if (eventChipsContainer) {
-        eventChipsContainer.addEventListener('click', (e) => {
-            const chip = e.target.closest('.event-chip');
-            if (!chip) return;
-            
-            // Handle Delete Button Click
-            if (e.target.closest('.chip-delete-btn')) {
-                const eventName = chip.getAttribute('data-event');
-                selectedEvents.delete(eventName);
-                chip.remove();
-                renderEventDates();
-                return;
-            }
-
-            // Handle Standard Toggle
-            const eventName = chip.getAttribute('data-event');
-            if (chip.classList.contains('selected')) {
-                chip.classList.remove('selected');
-                selectedEvents.delete(eventName);
-            } else {
-                chip.classList.add('selected');
-                selectedEvents.add(eventName);
-            }
-            renderEventDates();
-        });
-    }
-
-    // Add custom event
-    if (addCustomEventBtn && customEventInput) {
-        const addCustom = () => {
-            const val = customEventInput.value.trim();
-            if (val && !selectedEvents.has(val)) {
-                // Create new chip
-                const newChip = document.createElement('div');
-                newChip.className = 'event-chip custom-chip selected';
-                newChip.setAttribute('data-event', val);
-                
-                newChip.innerHTML = \`\${val} <button type="button" class="chip-delete-btn" aria-label="Delete">&times;</button>\`;
-                
-                eventChipsContainer.appendChild(newChip);
-                
-                // Add to set
-                selectedEvents.add(val);
-                customEventInput.value = '';
-                
-                renderEventDates();
-            }
-        };
-        addCustomEventBtn.addEventListener('click', addCustom);
-        customEventInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') { e.preventDefault(); addCustom(); }
-        });
-    }
-
-    // Booking form submission
-    const dynamicBookingForm = document.getElementById('dynamicBookingForm');
-    if (dynamicBookingForm) {
-        dynamicBookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            if (!selectedPackage) {
-                alert('Please select a package.');
-                return;
-            }
-            if (selectedEvents.size === 0) {
-                alert('Please select at least one event.');
-                return;
-            }
-
-            const name = document.getElementById('b_name').value.trim();
-            const mobile = document.getElementById('b_mobile').value.trim();
-            const email = document.getElementById('b_email').value.trim();
-            const venue = document.getElementById('b_venue').value.trim();
-            const notes = document.getElementById('b_notes')?.value.trim() || '';
-
-            if (!name || !mobile || !email || !venue) {
-                alert('Please fill all required fields.');
-                return;
-            }
-
-            const totalQuotation = selectedPackagePrice * selectedEvents.size;
-
-            let msg = \`*REELIFE WEDDINGS — NEW BOOKING*%0A%0A\`;
-            msg += \`*Package:* \${packageDisplayNames[selectedPackage]} (\${formatCurrency(selectedPackagePrice)}/event)%0A\`;
-            msg += \`*Total Events:* \${selectedEvents.size}%0A\`;
-            msg += \`*Estimated Quotation:* \${formatCurrency(totalQuotation)}%0A%0A\`;
-            
-            msg += \`*Client Details*%0A\`;
-            msg += \`Name: \${name}%0A\`;
-            msg += \`Phone: \${mobile}%0A\`;
-            msg += \`Email: \${email}%0A\`;
-            msg += \`Venue / City: \${venue}%0A%0A\`;
-
-            msg += \`*Selected Events & Dates*%0A\`;
-            let idx = 1;
-            selectedEvents.forEach(ev => {
-                const dateInput = document.querySelector(\`input[data-event-date="\${ev}"]\`);
-                const dateVal = dateInput?.value || 'TBD';
-                msg += \`\${idx}. \${ev} — \${dateVal}%0A\`;
-                idx++;
-            });
-
-            if (notes) {
-                msg += \`%0A*Additional Notes:* \${notes}\`;
-            }
-
-            const url = \`https://wa.me/919148132417?text=\${msg.replace(/ /g, '%20')}\`;
-            window.open(url, '_blank');
-        });
-    }`;
-
-// Replace the block in jsContent
-const startStr = '/* ── New Booking Form Logic (contact.html) ── */';
-const endStr = '});\n    }';
-
-const startIdx = jsContent.indexOf(startStr);
-const endIdx = jsContent.indexOf(endStr, startIdx);
-
-if (startIdx !== -1 && endIdx !== -1) {
-    const before = jsContent.substring(0, startIdx);
-    const after = jsContent.substring(endIdx + endStr.length);
-    jsContent = before + newJS + after;
-    fs.writeFileSync(jsPath, jsContent, 'utf8');
-    console.log('Successfully updated JS logic.');
+if (startIndex !== -1 && endIndex !== -1) {
+    js = js.substring(0, startIndex) + newSwiperInit + '\n    ' + js.substring(endIndex);
+    fs.writeFileSync('C:/reelifeweddingsAG/js/main.js', js, 'utf8');
+    console.log('Updated main.js successfully.');
 } else {
-    console.log('Could not find JS injection points.');
+    console.log('Could not find boundaries in main.js');
 }
