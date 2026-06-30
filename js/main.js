@@ -75,11 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
-            slidesPerView: 1.5,
-            breakpoints: {
-                768: { slidesPerView: 3 },
-                1024: { slidesPerView: 5 }
-            },
+            slidesPerView: 'auto',
             loop: true,
             initialSlide: 0,
             coverflowEffect: {
