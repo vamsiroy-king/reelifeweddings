@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loopedSlides: 3,
             observer: true,
             observeParents: true,
-            initialSlide: 5,
+            initialSlide: 7,
             coverflowEffect: {
                 rotate: 0,
                 stretch: -20,
