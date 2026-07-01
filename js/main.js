@@ -178,6 +178,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    
+    // Play/Pause toggle on click
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('reel-video')) {
+            const video = e.target;
+            const slide = video.closest('.swiper-slide');
+            
+            if (video.paused) {
+                video.play().catch(e => console.log('Play prevented'));
+                if (slide) slide.classList.remove('video-paused');
+            } else {
+                video.pause();
+                if (slide) slide.classList.add('video-paused');
+            }
+        }
+    });
+
+
     // 3. Mobile Menu Toggle
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
