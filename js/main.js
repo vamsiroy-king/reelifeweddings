@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const video = activeSlide.querySelector('.reel-video');
                         if (video) {
                             video.play().catch(e => {}); // Play only the active video
+                            activeSlide.classList.remove('video-paused');
                             
                             if (isGlobalSoundOn) {
                                 video.muted = false;
